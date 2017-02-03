@@ -5,6 +5,8 @@ import utils.Utils;
 
 import javax.rmi.CORBA.Util;
 import java.awt.*;
+import java.lang.reflect.Array;
+
 //SEE RES/WORLD/WORLD.TXT FOR MORE INFO
 public class World {
 
@@ -24,9 +26,11 @@ public class World {
 
     public void render(Graphics g) {
         //ITERATE THROUGH THE TILES ARRAY AND RENDER
+
+
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-               getTile(x, y).render(g, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT);
+                getTile(x, y).render(g, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT);
             }
         }
     }

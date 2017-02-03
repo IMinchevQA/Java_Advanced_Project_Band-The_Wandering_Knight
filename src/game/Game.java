@@ -100,6 +100,7 @@ public class Game implements Runnable {
                 timer = 0;
             }
         }
+        stop();//A-10
 
     }
 
