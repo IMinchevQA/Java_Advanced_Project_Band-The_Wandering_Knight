@@ -1,6 +1,7 @@
 package entity;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
+//COMMENT BY KALOYAN
 import entity.Entity;
 
 public abstract class Creature extends Entity {
