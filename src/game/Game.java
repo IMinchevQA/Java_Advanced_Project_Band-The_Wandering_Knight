@@ -1,6 +1,7 @@
 package game;
 
 import gfx.Assets;
+import gfx.GameCamera;
 
 import javax.net.ssl.KeyManager;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.image.BufferStrategy;
 public class Game implements Runnable {
 
     public String title;
-    public int width, height;
+    private int width, height;
 
     private Display display;
     private boolean running = false;
@@ -22,6 +23,8 @@ public class Game implements Runnable {
     private State gameState;
 
     private InputManager keyManager;
+
+    private GameCamera gameCamera;
 
     public Game(String title, int width, int height) {
 
@@ -36,6 +39,8 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         Assets.init();
+
+        gameCamera = new GameCamera(this , 0,0);
 
         gameState = new GameState(this);
         State.setState(gameState);
@@ -106,6 +111,18 @@ public class Game implements Runnable {
 
     public InputManager getKeyManager() {
         return keyManager;
+    }
+
+    public GameCamera getGameCamera(){
+        return gameCamera;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
     }
 
     public synchronized void start() {

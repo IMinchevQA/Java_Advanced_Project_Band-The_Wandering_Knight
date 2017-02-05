@@ -1,5 +1,6 @@
 package world;
 
+import game.Game;
 import tiles.Tile;
 import utils.Utils;
 
@@ -11,12 +12,14 @@ import java.lang.reflect.Array;
 public class World {
 
     //WORLD WIDTH AND HEIGHT, HERO SPAWN COORDINATES WILL BE INITIALIZED IN LOADWORLD METHOD FROM OUR WORLD FILE
+    private Game game;
     private int width, height;
     private int spawnX, spawnY;
 
     private int[][] tiles;
 
-    public World(String path) {
+    public World(Game game, String path) {
+        this.game = game;
         loadWorld(path);
     }
 
@@ -30,7 +33,7 @@ public class World {
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                getTile(x, y).render(g, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT);
+                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset()), (int)(y * Tile.TILE_HEIGHT - game.getGameCamera().getyOffset()));
             }
         }
     }

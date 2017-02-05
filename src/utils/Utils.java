@@ -23,6 +23,7 @@ public class Utils {
         return builder.toString();
     }
 
+    //RETURNING LEVEL TERRAIN IDS AS INTEGERS
     public static int parseInt(String number) {
         try{
             return Integer.parseInt(number);
