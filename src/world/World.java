@@ -1,6 +1,6 @@
 package world;
 
-import game.Game;
+import game.Handler;
 import tiles.Tile;
 import utils.Utils;
 
@@ -10,13 +10,13 @@ import java.awt.*;
 public class World {
 
     //WORLD WIDTH AND HEIGHT, HERO SPAWN COORDINATES WILL BE INITIALIZED IN LOADWORLD METHOD FROM OUR WORLD FILE
-    private Game game;
+    private Handler handler;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tilesWorldMatrix;
 
-    public World(Game game, String path) {
-        this.game = game;
+    public World(Handler handler, String path) {
+        this.handler = handler;
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);
     }
@@ -29,16 +29,16 @@ public class World {
         //xStart AND yStart CONTAIN THE Most-Top-Left Tile THAT THE USER CAN CURRENTLY SEE ON THE SCREEN.
         //xEnd AND yEnd CONTAIN THE Most-Bottom-Right Tile THAT THE USER CAN CURRENTLY SEE ON THE SCREEN.
         //THE PURPOSE IS TO render ONLY TILES VISIBLE ON DISPLAY.
-        int xStart = (int) Math.max(0, game.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
-        int xEnd = (int) Math.min(width, (game.getGameCamera().getxOffset() + game.getWidth()) / Tile.TILE_WIDTH + 1);
-        int yStart = (int) Math.max(0, game.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
-        int yEnd = (int) Math.min(height, (game.getGameCamera().getyOffset() + game.getHeight()) / Tile.TILE_HEIGHT + 1);
+        int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
+        int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
+        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
+        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILE_HEIGHT + 1);
 
         //ITERATE THROUGH THE TILES ARRAY AND RENDER
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
-                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset()),
-                                         (int) (y * Tile.TILE_HEIGHT - game.getGameCamera().getyOffset()));
+                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
+                                         (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
     }

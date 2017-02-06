@@ -15,10 +15,10 @@ public abstract class State {
         return currentState;
     }
 
-    protected Game game;
+    protected Handler handler;
 
-    public State(Game game) {
-        this.game = game;
+    public State(Handler handler) {
+        this.handler = handler;
     }
 
     public abstract void tick();

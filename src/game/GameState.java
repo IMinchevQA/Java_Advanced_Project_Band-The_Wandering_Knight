@@ -12,20 +12,21 @@ public class GameState extends State {
     private Player player;
     private World world;
 
-    public GameState(Game game) {
-        super(game);
+    public GameState(Handler handler) {
+        super(handler);
         //PLAYER'S START POSITION INITIALIZING
-        player = new Player(game, 10, 10);
-        world = new World(game, "./res/World/world.txt");
+        world = new World(handler, "./res/World/world.txt");
+        handler.setWorld(world);
+        player = new Player(handler, 100, 100);
 
-        game.getGameCamera().move(0, 0);
+        handler.getGameCamera().move(0, 0);
     }
 
     @Override
     public void tick() {
         world.update();
         player.tick();
-        game.getGameCamera().move(1, 1);
+        handler.getGameCamera().move(1, 1);
     }
 
     @Override
