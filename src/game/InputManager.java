@@ -33,6 +33,5 @@ public class InputManager implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys[e.getKeyCode()] = false;
-    }
+        keys[e.getKeyCode()] = false; }
 }

@@ -21,7 +21,7 @@ public class Assets {
         player = hero.crop(0,0, 50, 50);
         water = sheet.crop(0, 0, TILE_WIDTH, TILE_HEIGHT);
         grass = sheet.crop(3 * TILE_WIDTH, 2* TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
-        stone = sheet.crop(4 * TILE_WIDTH, 0, TILE_WIDTH, TILE_HEIGHT);
+        stone = sheet.crop(141, 45, TILE_WIDTH, TILE_HEIGHT);
 
     }
 }

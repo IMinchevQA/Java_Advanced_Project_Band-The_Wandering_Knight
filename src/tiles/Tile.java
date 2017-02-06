@@ -14,8 +14,8 @@ public class Tile {
     //ARRAY WITH THE UNIQUE IDS OF ALL TYPE OF TILES WE WILL HAVE , 256 SHOULD BE MORE THAN ENOUGH
     public static Tile[] tiles = new Tile[256];
     //INITIALIZE ALL TYPES OF TILES HERE
-    public static Tile grassTile = new GrassTile(GRASS_ID);
     public static Tile dirtTile = new WaterTile(WATER_ID);//A
+    public static Tile grassTile = new GrassTile(GRASS_ID);
     public static Tile rockTile = new StoneTile(STONE_ID);//A
 
 

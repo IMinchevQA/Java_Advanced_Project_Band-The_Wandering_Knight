@@ -7,6 +7,7 @@ import game.Game;
 public class GameCamera {
 
     private Game game;
+    //OFFSET VARIABLES - DEFINE HOW FAR OFF FROM THE ORIGINAL POSITION DO WE DRAW SOMETHING;
     private float xOffset, yOffset;
 
     public GameCamera(Game game, float xOffset, float yOffset){
@@ -16,10 +17,11 @@ public class GameCamera {
     }
 
     public void centerOnEntity(Entity e){
-        xOffset = e.getX() - game.getWidth() / 2 + e.getWidth() / 2;
+        xOffset = e.getX() - game.getWidth() / 2  + e.getWidth() / 2;
         yOffset = e.getY() - game.getHeight() / 2 + e.getHeight() / 2;
     }
 
+    // xAmt, yAmt respectively - move amount by axis x, and axis y
     public void move(float xAmt, float yAmt){
         xOffset += xAmt;
         yOffset += yAmt;

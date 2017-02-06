@@ -1,6 +1,7 @@
 package entity;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
+import entity.Entity;
 import game.Game;
 
 public abstract class Creature extends Entity {
@@ -28,7 +29,7 @@ public abstract class Creature extends Entity {
         y += yMove;
     }
 
-    //GETTERS SETTERS
+    //GETTERS & SETTERS
 
     public float getxMove() {
         return xMove;
