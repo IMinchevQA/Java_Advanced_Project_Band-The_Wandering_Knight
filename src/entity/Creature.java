@@ -1,8 +1,6 @@
 package entity;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
-
-import com.sun.org.apache.xpath.internal.SourceTree;
 import entity.Entity;
 import game.Game;
 import game.Handler;
@@ -29,57 +27,64 @@ public abstract class Creature extends Entity {
     }
 
     public void move() {
-        moveX();
-        moveY();
+        if (!checkEntityCollisions(xMove, 0f))
+            moveX();
+        if (!checkEntityCollisions(0f, yMove))
+            moveY();
     }
 
     public void moveX() {
-        if (xMove >= 0) {//Move right
-            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
-            if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+        if (xMove > 0) { //MOVE RIGHT
+            //X COORDINATE OF THE TILE PLAYER TRIES TO MOVE INTO
+            //RIGHT LINE OF THE BOUNDS RECTANGLE
+            int tx = (int) (x + bounds.x + xMove + bounds.width) / Tile.TILE_WIDTH;
+            //IF THE TILE WE TRY TO MOVE INTO IS NOT SOLID
+            //CHECKING THE UPPER RIGHT && LOWER RIGHT CORNER OF THE BOUNDS SQUARE INSIDE
+            //OUR PLAYER
+            if (collisionWithTile(tx, (int) (bounds.y + y) / Tile.TILE_HEIGHT) &&
+                    collisionWithTile(tx, (int) (bounds.y + y + bounds.height) / Tile.TILE_HEIGHT)) {
                 x += xMove;
             } else {
                 x = tx * Tile.TILE_WIDTH - bounds.x - bounds.width - 1;
             }
-        } else if (xMove < 0) { //Move left
-            int tx = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
 
-            if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+        } else if (xMove < 0) { //MOVE LEFT
+            //LEFT LINE OF THE OF BOUNDS RECTANGLE
+            int tx = (int) (x + bounds.x + xMove) / Tile.TILE_WIDTH;
+            if (collisionWithTile(tx, (int) (bounds.y + y) / Tile.TILE_HEIGHT) &&
+                    collisionWithTile(tx, (int) (bounds.y + y + bounds.height) / Tile.TILE_HEIGHT)) {
                 x += xMove;
-            } else {
-                x = tx * Tile.TILE_WIDTH + Tile.TILE_WIDTH - bounds.width;
             }
         }
     }
 
     public void moveY() {
-        if (yMove <0) {// Up
-            int ty =(int) (y + yMove + bounds.y) /Tile.TILE_HEIGHT;
+        if (yMove > 0) { //MOVE DOWN
+            //LOWER LINE OF BOUNDS RECTANGLE
+            int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
 
-            if (!collisionWithTile((int) (x+ bounds.x)/Tile.TILE_WIDTH,ty) &&
-                    !collisionWithTile((int) (x+ bounds.x + bounds.width)/Tile.TILE_WIDTH,ty)) {
-                y+=yMove;
-            } else {
-                y = ty * Tile.TILE_HEIGHT + Tile.TILE_HEIGHT - bounds.y;
+            if (collisionWithTile((int) (x + bounds.x + xMove) / Tile.TILE_WIDTH, ty) &&
+                    collisionWithTile((int) (x + bounds.x + xMove + bounds.width) / Tile.TILE_WIDTH, ty)) {
+                y += yMove;
             }
-        } else if (yMove >0) {
-            int ty =(int) (y + yMove + bounds.y + bounds.height ) /Tile.TILE_HEIGHT;
 
-            if (!collisionWithTile((int) (x+ bounds.x)/Tile.TILE_WIDTH,ty) &&
-                    !collisionWithTile((int) (x+ bounds.x + bounds.width)/Tile.TILE_WIDTH,ty)) {
-                y+=yMove;
-            } else {
-                y = ty* Tile.TILE_HEIGHT - bounds.y  - bounds.height -1;
+        } else if (yMove < 0) { //MOVE UP
+            //UPPER LINE OF BOUNDS RECTANGLE
+            int ty = (int) (y + yMove + bounds.y) / Tile.TILE_HEIGHT;
+
+            if (collisionWithTile((int) (x + bounds.x + xMove + bounds.width) / Tile.TILE_WIDTH, ty) &&
+                    collisionWithTile((int) (x + bounds.x + xMove) / Tile.TILE_HEIGHT, ty)) {
+                y += yMove;
             }
+
         }
-
     }
 
+    //TAKE COORDINATE AND RETURN IS WALKABLE, RETURNS TRUE IF CAN WALK OVER IT
     protected boolean collisionWithTile(int x, int y) {
-        return handler.getWorld().getTile(x, y).isSolid();
+        return handler.getWorld().getTile(x, y).isWalkable();
     }
+
 
     //GETTERS & SETTERS
 

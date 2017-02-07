@@ -1,5 +1,8 @@
 package world;
 
+import entity.EntityManager;
+import entity.Player;
+import entity.staticEntity.Tree;
 import game.Handler;
 import tiles.Tile;
 import utils.Utils;
@@ -11,18 +14,31 @@ public class World {
 
     //WORLD WIDTH AND HEIGHT, HERO SPAWN COORDINATES WILL BE INITIALIZED IN LOADWORLD METHOD FROM OUR WORLD FILE
     private Handler handler;
+
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tilesWorldMatrix;
 
+    private EntityManager entityManager;
+
     public World(Handler handler, String path) {
+        //Initializing the entity manager
+        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+
+        //TODO: ADD ENTITIES HERE
+        entityManager.addEntity(new Tree(handler, 100, 100));
+
+
         this.handler = handler;
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);
+
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
     }
 
     public void update() {
-
+        entityManager.update();
     }
 
     public void render(Graphics g) {
@@ -38,20 +54,17 @@ public class World {
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
                 getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
-                        (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
+                                         (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height) {
-            return Tile.grassTile;
-        }
         Tile t = Tile.tiles[tilesWorldMatrix[x][y]];
         //IF WE CALL WITH EMPTY MATRIX INDEX RETURN GRASSTILE
-        if (t == null) {
-            return Tile.dirtTile;
-        }
+        if (t == null)
+            return Tile.grassTile;
         return t;
     }
 
@@ -70,8 +83,27 @@ public class World {
 
                 //ASSIGNING EVERY INDEX TO THE ARRAY
                 //NUMBER 4 IS ADDED BECAUSE FIRST 4 ELEMENTS VALUES ARE ASSIGNED TO - width, height, spawnX, spawnY
-                tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
+                tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x+y*width) + 4]);
             }
         }
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
