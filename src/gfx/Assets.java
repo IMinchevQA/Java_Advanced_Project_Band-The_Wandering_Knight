@@ -14,7 +14,11 @@ public class Assets {
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
-    public static BufferedImage player, grass, water, stone;
+    public static BufferedImage player, grass, water, stone,
+            w_lilly,w_stone,mushroom1,mushroom2,
+            bush1,bush2,bush3,flower1,well_full,flower2,
+            stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
+            stone_wall_left,stone_wall_right;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
 
     public static void init() {
@@ -38,5 +42,23 @@ public class Assets {
         grass = sheet.crop(3 * TILE_WIDTH, 2* TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
         stone = sheet.crop(141, 45, TILE_WIDTH, TILE_HEIGHT);
 
+        //new
+        w_lilly = sheet.crop(15,395, TILE_WIDTH+10, TILE_HEIGHT+10);
+        w_stone = sheet.crop(15,525, TILE_WIDTH+5, TILE_HEIGHT+5);
+        mushroom1 = sheet.crop(85,438, TILE_WIDTH+5, TILE_HEIGHT+5);
+        mushroom2 = sheet.crop(78,530, TILE_WIDTH+10, TILE_HEIGHT+10);
+        bush1 = sheet.crop(150, 430, TILE_WIDTH+5, TILE_HEIGHT+5);
+        bush2 = sheet.crop(150, 535, TILE_WIDTH+5, TILE_HEIGHT+5);
+        bush3 = sheet.crop(270, 430, TILE_WIDTH+5, TILE_HEIGHT+5);
+        flower1 = sheet.crop(210, 430, TILE_WIDTH+10, TILE_HEIGHT+10);
+        well_full = sheet.crop(210, 525, TILE_WIDTH+5, TILE_HEIGHT+5);
+        flower2 = sheet.crop(395, 520, TILE_WIDTH+5, TILE_HEIGHT+5);
+
+        stone_wall_up1 = sheet.crop(438, 505-TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+        stone_wall_up2 = sheet.crop(435+TILE_WIDTH, 505-TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+        stone_wall_down1 = sheet.crop(445, 450, TILE_WIDTH, TILE_HEIGHT);
+        stone_wall_down2 = sheet.crop(445+TILE_WIDTH, 450, TILE_WIDTH, TILE_HEIGHT);
+        stone_wall_left = sheet.crop(510-TILE_WIDTH, 398, TILE_WIDTH-5, TILE_HEIGHT-5);
+        stone_wall_right = sheet.crop(500, 400, TILE_WIDTH-5, TILE_HEIGHT-5);
     }
 }
