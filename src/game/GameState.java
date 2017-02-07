@@ -6,22 +6,27 @@ import world.World;
 
 import java.awt.*;
 
-//GAME STATE, WILL GET USEFULL IF WE HAVE OTHER STATES LIKE MENU STATE, RENDER LOGIC GOES HERE
+//GAME STATE, WILL GET USEFUL IF WE HAVE OTHER STATES LIKE MENU STATE, RENDER LOGIC GOES HERE
 public class GameState extends State {
 
     private Player player;
     private World world;
 
-    public GameState(Game game) {
-        super(game);
-        player = new Player(game, 100, 100);
-        world = new World("./res/World/world.txt");
+    public GameState(Handler handler) {
+        super(handler);
+        //PLAYER'S START POSITION INITIALIZING
+        world = new World(handler, "./res/World/world.txt");
+        handler.setWorld(world);
+        player = new Player(handler, 30, 30);
+
+        handler.getGameCamera().move(0, 0);
     }
 
     @Override
     public void tick() {
         world.update();
         player.tick();
+        handler.getGameCamera().move(1, 1);
     }
 
     @Override
