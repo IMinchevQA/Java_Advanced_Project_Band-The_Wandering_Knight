@@ -15,9 +15,9 @@ public class GameState extends State {
     public GameState(Handler handler) {
         super(handler);
         //PLAYER'S START POSITION INITIALIZING
+        player = new Player(handler, 100, 100);
         world = new World(handler, "./res/World/world.txt");
         handler.setWorld(world);
-        player = new Player(handler, 100, 100);
 
         handler.getGameCamera().move(0, 0);
     }

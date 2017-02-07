@@ -16,6 +16,10 @@ public class Player extends Creature {
         //Player MUST TAKE THE game OBJECT.
         //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
+        bounds.x = 36;
+        bounds.y = 31;
+        bounds.width=18;
+        bounds.height = 32;
     }
 
     @Override
@@ -44,6 +48,10 @@ public class Player extends Creature {
         //x AND y ARE CASTED TO (int) - INTEGER
         //WHY? - TO DRAW IMAGE RAPID TAKES IN INTEGERS AND NOT FLOATS
         g.drawImage(Assets.player, (int) (x - handler.getGameCamera().getxOffset()),
-                                    (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+                (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.setColor(Color.red);
+        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
+                (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
+                bounds.width,bounds.height);
     }
 }

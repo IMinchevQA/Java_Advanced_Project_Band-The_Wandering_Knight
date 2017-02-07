@@ -1,9 +1,12 @@
 package entity;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
+
+import com.sun.org.apache.xpath.internal.SourceTree;
 import entity.Entity;
 import game.Game;
 import game.Handler;
+import tiles.Tile;
 
 public abstract class Creature extends Entity {
 
@@ -25,9 +28,57 @@ public abstract class Creature extends Entity {
         yMove = 0;
     }
 
-    public void move(){
-        x += xMove;
-        y += yMove;
+    public void move() {
+        moveX();
+        moveY();
+    }
+
+    public void moveX() {
+        if (xMove >= 0) {//Move right
+            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
+            if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+                x += xMove;
+            } else {
+                x = tx * Tile.TILE_WIDTH - bounds.x - bounds.width - 1;
+            }
+        } else if (xMove < 0) { //Move left
+            int tx = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
+
+            if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+                x += xMove;
+            } else {
+                x = tx * Tile.TILE_WIDTH + Tile.TILE_WIDTH - bounds.width;
+            }
+        }
+    }
+
+    public void moveY() {
+        if (yMove <0) {// Up
+            int ty =(int) (y + yMove + bounds.y) /Tile.TILE_HEIGHT;
+
+            if (!collisionWithTile((int) (x+ bounds.x)/Tile.TILE_WIDTH,ty) &&
+                    !collisionWithTile((int) (x+ bounds.x + bounds.width)/Tile.TILE_WIDTH,ty)) {
+                y+=yMove;
+            } else {
+                y = ty * Tile.TILE_HEIGHT + Tile.TILE_HEIGHT - bounds.y;
+            }
+        } else if (yMove >0) {
+            int ty =(int) (y + yMove + bounds.y + bounds.height ) /Tile.TILE_HEIGHT;
+
+            if (!collisionWithTile((int) (x+ bounds.x)/Tile.TILE_WIDTH,ty) &&
+                    !collisionWithTile((int) (x+ bounds.x + bounds.width)/Tile.TILE_WIDTH,ty)) {
+                y+=yMove;
+            } else {
+                y = ty* Tile.TILE_HEIGHT - bounds.y  - bounds.height -1;
+            }
+        }
+
+    }
+
+    protected boolean collisionWithTile(int x, int y) {
+        return handler.getWorld().getTile(x, y).isSolid();
     }
 
     //GETTERS & SETTERS

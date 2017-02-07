@@ -38,16 +38,20 @@ public class World {
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
                 getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
-                                         (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
+                        (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
     }
 
     public Tile getTile(int x, int y) {
+        if (x < 0 || y < 0 || x >= width || y >= height) {
+            return Tile.grassTile;
+        }
         Tile t = Tile.tiles[tilesWorldMatrix[x][y]];
         //IF WE CALL WITH EMPTY MATRIX INDEX RETURN GRASSTILE
-        if (t == null)
-            return Tile.grassTile;
+        if (t == null) {
+            return Tile.dirtTile;
+        }
         return t;
     }
 
@@ -66,7 +70,7 @@ public class World {
 
                 //ASSIGNING EVERY INDEX TO THE ARRAY
                 //NUMBER 4 IS ADDED BECAUSE FIRST 4 ELEMENTS VALUES ARE ASSIGNED TO - width, height, spawnX, spawnY
-                tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x+y*width) + 4]);
+                tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
             }
         }
     }

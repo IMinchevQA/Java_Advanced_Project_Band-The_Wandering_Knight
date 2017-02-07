@@ -10,8 +10,8 @@ public class StoneTile extends Tile {
     }
 
     @Override
-    public boolean isWalkable(){
-        return false;
+    public boolean isSolid(){
+        return true;
     }
 
 }
