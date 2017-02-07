@@ -2,7 +2,6 @@ package tiles;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
 //TILE CLASS ALL TILES WILL EXTEND THIS CLASS
 public class Tile {
     //SO WE DONT HAVE MAGIC NUMBERS DIFFERENT TILES IDS
@@ -18,6 +17,7 @@ public class Tile {
     public static Tile dirtTile = new WaterTile(WATER_ID);//A
     public static Tile grassTile = new GrassTile(GRASS_ID);
     public static Tile rockTile = new StoneTile(STONE_ID);//A
+
 
 
     //END INITIALIZE TILES
@@ -48,7 +48,7 @@ public class Tile {
         return false;
     }
 
-    boolean isBreakable() {
+    public boolean isBreakable() {
         return false;
     }
 
