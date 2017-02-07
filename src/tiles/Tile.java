@@ -2,7 +2,6 @@ package tiles;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
 //TILE CLASS ALL TILES WILL EXTEND THIS CLASS
 public class Tile {
     //SO WE DONT HAVE MAGIC NUMBERS DIFFERENT TILES IDS
@@ -20,9 +19,14 @@ public class Tile {
     public static Tile rockTile = new StoneTile(STONE_ID);//A
 
 
+
     //END INITIALIZE TILES
 
-    public static final int TILE_WIDTH = 32, TILE_HEIGHT = 32;
+    //BECAUSE OF THE WAY WE DO COLLISION HANDLING WE NEED BIGGER BLOCKS
+    //BECAUSE WE ONLY CHECK FOR COLLISION THE 2 CORNERS OF THE BOUNDS RECTANGLE
+    //AND IF THE COLLISION(BOUNDS) RECTANGLE TRIES TO GO THROUGH A TILE WITHOUT TOUCHING THE CORNER
+    //COLLISION DOESNT WORK
+    public static final int TILE_WIDTH = 42, TILE_HEIGHT = 42;
 
     protected BufferedImage texture;
     protected final int id;
@@ -44,11 +48,11 @@ public class Tile {
         g.drawImage(texture, x, y, TILE_WIDTH, TILE_HEIGHT, null);
     }
 
-    public boolean isSolid() {
-        return false;
+    public boolean isWalkable() {
+        return true;
     }
 
-    boolean isBreakable() {
+    public boolean isBreakable() {
         return false;
     }
 

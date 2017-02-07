@@ -9,5 +9,4 @@ public class WaterTile extends Tile {
         super(Assets.water, id);
     }
 
-
 }

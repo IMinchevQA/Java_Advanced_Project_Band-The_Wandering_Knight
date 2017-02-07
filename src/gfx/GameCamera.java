@@ -2,47 +2,53 @@ package gfx;
 
 import entity.Entity;
 import game.Game;
+import game.Handler;
+import tiles.Tile;
 
-//CLASS FOR MAKING INGAME CAMERA MOVEMENT
+
 public class GameCamera {
 
-    private Game game;
-    //OFFSET VARIABLES - DEFINE HOW FAR OFF FROM THE ORIGINAL POSITION DO WE DRAW SOMETHING;
+    private Handler handler;
     private float xOffset, yOffset;
 
-    public GameCamera(Game game, float xOffset, float yOffset){
-        this.game = game;
+    public GameCamera(Handler handler, float xOffset, float yOffset) {
+        System.out.println(xOffset + " " + yOffset);
+        this.handler = handler;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
     }
 
-    public void centerOnEntity(Entity e){
-        xOffset = e.getX() - game.getWidth() / 2  + e.getWidth() / 2;
-        yOffset = e.getY() - game.getHeight() / 2 + e.getHeight() / 2;
+    public void checkBlankSpace() {
+        if(xOffset < 0) {
+            xOffset = 0;
+        } else if (xOffset > handler.getWorld().getWidth() * Tile.TILE_WIDTH - handler.getWidth()) {
+            xOffset = handler.getWorld().getWidth() * Tile.TILE_WIDTH - handler.getWidth();
+        }
+        if(yOffset < 0) {
+            yOffset = 0;
+        } else if (yOffset > handler.getWorld().getHeight() * Tile.TILE_HEIGHT - handler.getHeight()) {
+            yOffset = handler.getWorld().getHeight() * Tile.TILE_HEIGHT - handler.getHeight();
+        }
     }
 
-    // xAmt, yAmt respectively - move amount by axis x, and axis y
-    public void move(float xAmt, float yAmt){
+    public void centerOnEntity(Entity e) {
+        //CURRENT COORDINATES - GAME SIZE / 2 + PLAYER SIZE / 2
+        xOffset = e.getX() - handler.getWidth() / 2 + 50;
+        yOffset = e.getY() - handler.getHeight() / 2 + 50;
+        checkBlankSpace();
+    }
+
+    public void move(float xAmt, float yAmt) {
         xOffset += xAmt;
         yOffset += yAmt;
+        checkBlankSpace();
     }
 
     public float getxOffset() {
         return xOffset;
     }
 
-    public void setxOffset(float xOffset) {
-        this.xOffset = xOffset;
-    }
-
-    public void setyOffset(float yOffset) {
-        this.yOffset = yOffset;
-    }
-
     public float getyOffset() {
         return yOffset;
     }
-
-
-
 }
