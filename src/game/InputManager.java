@@ -19,7 +19,6 @@ public class InputManager implements KeyListener {
         down = keys[KeyEvent.VK_DOWN];
         left = keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_RIGHT];
-
     }
 
     @Override
@@ -34,5 +33,6 @@ public class InputManager implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys[e.getKeyCode()] = false; }
+        keys[e.getKeyCode()] = false;
+    }
 }
