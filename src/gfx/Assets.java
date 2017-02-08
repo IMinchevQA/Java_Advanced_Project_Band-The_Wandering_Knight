@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
     //FILE SIZE DIVIDED BY TILES PER ROW/ HEIGHT (SPRITE.PNG)
     public static final int TILE_WIDTH = 500/16 -2, TILE_HEIGHT = 330/12;
-    private static final int TREE_WIDTH = 65, TREE_HEIGHT = 97;
+    private static final int TREE_WIDTH = 63, TREE_HEIGHT = 97;
 
     //IMAGE PATHS
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
@@ -67,6 +67,6 @@ public class Assets {
         tree1 = trees.crop(0, 0, TREE_WIDTH, TREE_HEIGHT);
         tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);
         tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
-        forest = trees.crop(385, 287, TREE_WIDTH, TREE_HEIGHT);
+        forest = trees.crop(385, 287, 120, 220);
     }
 }

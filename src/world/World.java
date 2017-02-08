@@ -2,6 +2,7 @@ package world;
 
 import entity.EntityManager;
 import entity.Player;
+import entity.Tree;
 import game.Handler;
 import tiles.Tile;
 import utils.Utils;
@@ -23,6 +24,13 @@ public class World {
         entityManager = new EntityManager(handler, new Player(handler, 30, 30));
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);
+
+        entityManager.addEntity(new Tree(handler, 100, 250));
+        entityManager.addEntity(new Tree(handler, 150, 250));
+        entityManager.addEntity(new Tree(handler, 1000, 59));
+        entityManager.addEntity(new Tree(handler, 300, 400));
+        entityManager.addEntity(new Tree(handler, 600, 300));
+        entityManager.addEntity(new Tree(handler, 360, 231));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
@@ -91,4 +99,7 @@ public class World {
         return height;
     }
 
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }
