@@ -1,5 +1,7 @@
 package world;
 
+import entity.EntityManager;
+import entity.Player;
 import game.Handler;
 import tiles.Tile;
 import utils.Utils;
@@ -14,15 +16,20 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tilesWorldMatrix;
+    private EntityManager entityManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
+        entityManager = new EntityManager(handler, new Player(handler, 30, 30));
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);
+
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
     }
 
     public void update() {
-
+        entityManager.tick();
     }
 
     public void render(Graphics g) {
@@ -41,6 +48,8 @@ public class World {
                         (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
+
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y) {

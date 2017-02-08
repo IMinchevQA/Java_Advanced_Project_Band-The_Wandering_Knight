@@ -6,11 +6,12 @@ import java.awt.image.BufferedImage;
 public class Assets {
     //FILE SIZE DIVIDED BY TILES PER ROW/ HEIGHT (SPRITE.PNG)
     public static final int TILE_WIDTH = 500/16 -2, TILE_HEIGHT = 330/12;
+    private static final int TREE_WIDTH = 65, TREE_HEIGHT = 97;
 
     //IMAGE PATHS
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
-    public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
+    public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/Trees.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -18,12 +19,13 @@ public class Assets {
             w_lilly,w_stone,mushroom1,mushroom2,
             bush1,bush2,bush3,flower1,well_full,flower2,
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
-            stone_wall_left,stone_wall_right;
+            stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
 
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(PATH));
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
+        SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
 
 //        player = hero.crop(0,0, 50, 50);
         player_Left = new BufferedImage[2];
@@ -60,5 +62,11 @@ public class Assets {
         stone_wall_down2 = sheet.crop(445+TILE_WIDTH, 450, TILE_WIDTH, TILE_HEIGHT);
         stone_wall_left = sheet.crop(510-TILE_WIDTH, 398, TILE_WIDTH-5, TILE_HEIGHT-5);
         stone_wall_right = sheet.crop(500, 400, TILE_WIDTH-5, TILE_HEIGHT-5);
+
+
+        tree1 = trees.crop(0, 0, TREE_WIDTH, TREE_HEIGHT);
+        tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);
+        tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
+        forest = trees.crop(385, 287, TREE_WIDTH, TREE_HEIGHT);
     }
 }
