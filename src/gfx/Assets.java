@@ -1,8 +1,6 @@
 package gfx;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.file.Path;
 
 //ALL PRELOADED OBJECTS
 public class Assets {
@@ -12,6 +10,8 @@ public class Assets {
     //IMAGE PATHS
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
+    public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
+
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
     public static BufferedImage player, grass, water, stone,
