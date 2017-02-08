@@ -7,16 +7,15 @@ import java.awt.*;
 
 public class Tree extends StaticEntity {
 
-    private static final int TREE_WIDTH = 60, TREE_HEIGHT = 100;
+    private static final int TREE_WIDTH = 60, TREE_HEIGHT = 120;
 
     public Tree(Handler handler, float x, float y) {
         super(handler, x, y, TREE_WIDTH, TREE_HEIGHT);
-        
-        //need to be fixed
-        bounds.x = 32;
-        bounds.y = 48;
-        bounds.width = width - 20;
-        bounds.height = (int) (height - height / 1.5f);
+
+        bounds.x = 20;
+        bounds.y = 92;
+        bounds.width = 22;
+        bounds.height = 1;
     }
 
     @Override

@@ -67,6 +67,6 @@ public class Assets {
         tree1 = trees.crop(0, 0, TREE_WIDTH, TREE_HEIGHT);
         tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);
         tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
-        forest = trees.crop(385, 287, 120, 220);
+        forest = trees.crop(385, 290, 120, 220);
     }
 }
