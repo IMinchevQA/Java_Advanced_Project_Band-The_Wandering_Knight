@@ -31,6 +31,5 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
         world.render(g);
-        Tile.tiles[0].render(g, 0, 0);
     }
 }

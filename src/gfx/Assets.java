@@ -12,6 +12,8 @@ public class Assets {
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
     public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/Trees.png";
+    public static final String START_BUTTON = "./res/Buttons/Start-2-icon.png";
+    public static final String START_BUTTON_ANIM = "./res/Buttons/Start-icon.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -21,13 +23,19 @@ public class Assets {
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
             stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
+    public static BufferedImage[] btn_start;
 
     public static void init() {
+        SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
+        SpriteSheet button2 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON_ANIM));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(PATH));
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
 
 //        player = hero.crop(0,0, 50, 50);
+        btn_start = new BufferedImage[2];
+        btn_start[0] = button1.crop(0, 0, 256, 256);
+        btn_start[1] = button2.crop(0, 0, 256, 256);
         player_Left = new BufferedImage[2];
         player_Right = new BufferedImage[2];
         player_Up = new BufferedImage[2];
