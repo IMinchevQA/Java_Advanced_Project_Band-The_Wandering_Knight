@@ -24,10 +24,12 @@ public class Game implements Runnable {
     private Graphics g;
 
     //States
-    private State gameState;
+    public State gameState;
+    public State menuState;
 
     //Input
     private InputManager keyManager;
+    private MouseManager mouseManager;
 
     //Camera
     private GameCamera gameCamera;
@@ -40,6 +42,7 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         keyManager = new InputManager();
+        mouseManager = new MouseManager();
 
     }
 
@@ -49,6 +52,11 @@ public class Game implements Runnable {
         //ADDING KeyListener TO THE frame VARIABLE OF CLASS Display!!!
         //HOW? - BY PASSING THE INSTANCE keyManager OF CLASS InputManager!!!
         display.getFrame().addKeyListener(keyManager);
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+
         Assets.init();
 
         handler = new Handler(this);
@@ -57,7 +65,8 @@ public class Game implements Runnable {
 
 
         gameState = new GameState(handler);
-        State.setState(gameState);
+        menuState = new MenuState(handler);
+        State.setState(menuState);
     }
 
     private void tick() {
@@ -135,6 +144,10 @@ public class Game implements Runnable {
 
     public InputManager getKeyManager() {
         return keyManager;
+    }
+
+    public MouseManager getMouseManager() {
+        return mouseManager;
     }
 
     public GameCamera getGameCamera() {
