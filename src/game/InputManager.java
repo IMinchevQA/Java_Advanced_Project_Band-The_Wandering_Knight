@@ -9,6 +9,7 @@ public class InputManager implements KeyListener {
 
     private boolean[] keys;
     public boolean up, down, right, left;
+    public boolean aUp, aDown, aLeft, aRight;
 
     public InputManager () {
         keys = new boolean[256];
@@ -19,6 +20,11 @@ public class InputManager implements KeyListener {
         down = keys[KeyEvent.VK_DOWN];
         left = keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_RIGHT];
+
+        aUp = keys[KeyEvent.VK_W];
+        aDown = keys[KeyEvent.VK_S];
+        aLeft = keys[KeyEvent.VK_A];
+        aRight = keys[KeyEvent.VK_D];
 
     }
 

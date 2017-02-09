@@ -14,6 +14,8 @@ public class Player extends Creature {
 
     // Animations
     private Animation animLeft, animRight, animUp, animDown;
+    // Attack timer
+    private long lastAtackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -44,7 +46,54 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+        
+        checkAttacks();
+    }
 
+    private void checkAttacks() {
+        attackTimer += System.currentTimeMillis() - lastAtackTimer;
+        lastAtackTimer = System.currentTimeMillis();
+        if(attackTimer < attackCooldown){
+            return;
+        }
+        Rectangle cb = getCollisionBounds(0, 0);
+        Rectangle at = new Rectangle();
+        int arSize = 20;
+        at.width = arSize;
+        at.height = arSize;
+
+        if(handler.getKeyManager().aUp){
+            at.x = cb.x + cb.width /2 - arSize /2;
+            at.y = cb.y - arSize;
+        }else if(handler.getKeyManager().aDown){
+            at.x = cb.x + cb.width /2 - arSize /2;
+            at.y = cb.y + cb.height;
+        }else if (handler.getKeyManager().aLeft){
+            at.x = cb.x - arSize;
+            at.y = cb.y + cb.height /2 - arSize/2;
+        }else if (handler.getKeyManager().aRight){
+            at.x = cb.x + cb.width;
+            at.y = cb.y + cb.height /2 - arSize/2;
+        }else {
+            return;
+        }
+
+        attackTimer = 0;
+
+        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
+            if(e.equals(this)){
+                continue;
+            }
+            if(e.getCollisionBounds(0, 0).intersects(at)){
+                e.hurt(1);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void die(){
+        System.out.println("Dead");
     }
 
     public void getInput() {
