@@ -1,9 +1,10 @@
 package world;
 
-import entity.EntityManager;
-import entity.Player;
-import entity.Tree;
+import entities.EntityManager;
+import entities.creature.Player;
+import entities.statics.Tree;
 import game.Handler;
+import items.ItemManager;
 import tiles.Tile;
 import utils.Utils;
 
@@ -18,10 +19,12 @@ public class World {
     private int spawnX, spawnY;
     private int[][] tilesWorldMatrix;
     private EntityManager entityManager;
+    private ItemManager itemManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Player(handler, 30, 30));
+        itemManager = new ItemManager(handler);
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);
 
@@ -36,7 +39,8 @@ public class World {
         entityManager.getPlayer().setY(spawnY);
     }
 
-    public void update() {
+    public void tick() {
+        itemManager.tick();
         entityManager.tick();
     }
 
@@ -56,6 +60,8 @@ public class World {
                         (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
+
+        itemManager.render(g);
 
         entityManager.render(g);
     }
@@ -89,6 +95,22 @@ public class World {
                 tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x+y*width) + 4]);
             }
         }
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
+
+    public void setItemManager(ItemManager itemManager) {
+        this.itemManager = itemManager;
     }
 
     public int getWidth(){

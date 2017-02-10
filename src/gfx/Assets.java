@@ -21,7 +21,7 @@ public class Assets {
             w_lilly,w_stone,mushroom1,mushroom2,
             bush1,bush2,bush3,flower1,well_full,flower2,
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
-            stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest;
+            stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
     public static BufferedImage[] btn_start;
 
@@ -76,5 +76,6 @@ public class Assets {
         tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);
         tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
         forest = trees.crop(385, 290, 120, 220);
+        cutDownTree = trees.crop(69, 385, 57,56);
     }
 }

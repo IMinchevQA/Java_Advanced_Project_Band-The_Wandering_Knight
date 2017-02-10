@@ -1,5 +1,6 @@
-package game;
+package game.states;
 
+import game.Handler;
 import gfx.Assets;
 import gfx.ClickListener;
 import gfx.UIImageButton;
@@ -7,10 +8,7 @@ import gfx.UIManager;
 
 import java.awt.*;
 
-/**
- * Created by Home on 2/9/2017.
- */
-public class MenuState extends State{
+public class MenuState extends State {
 
     private UIManager uiManager;
 

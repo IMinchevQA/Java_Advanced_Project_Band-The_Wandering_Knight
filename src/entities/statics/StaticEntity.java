@@ -1,5 +1,6 @@
-package entity;
+package entities.statics;
 
+import entities.Entity;
 import game.Handler;
 
 public abstract class StaticEntity extends Entity {

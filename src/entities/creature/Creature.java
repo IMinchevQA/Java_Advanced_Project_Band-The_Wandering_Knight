@@ -1,6 +1,7 @@
-package entity;
+package entities.creature;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
+import entities.Entity;
 import game.Handler;
 import tiles.Tile;
 

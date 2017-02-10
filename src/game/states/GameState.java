@@ -1,8 +1,8 @@
-package game;
+package game.states;
 
-import entity.Player;
-import entity.Tree;
-import tiles.Tile;
+import entities.creature.Player;
+import entities.statics.Tree;
+import game.Handler;
 import world.World;
 
 import java.awt.*;
@@ -24,7 +24,7 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-        world.update();
+        world.tick();
         handler.getGameCamera().move(1, 1);
     }
 

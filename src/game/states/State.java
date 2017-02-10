@@ -1,4 +1,6 @@
-package game;
+package game.states;
+
+import game.Handler;
 
 import java.awt.*;
 
