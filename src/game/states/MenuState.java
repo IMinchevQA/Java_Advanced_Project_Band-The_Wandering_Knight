@@ -3,8 +3,8 @@ package game.states;
 import game.Handler;
 import gfx.Assets;
 import gfx.ClickListener;
-import gfx.UIImageButton;
-import gfx.UIManager;
+import gfx.UI.UIImageButton;
+import gfx.UI.UIManager;
 
 import java.awt.*;
 

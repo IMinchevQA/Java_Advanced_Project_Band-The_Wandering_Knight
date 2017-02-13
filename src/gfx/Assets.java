@@ -24,6 +24,7 @@ public class Assets {
             stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
     public static BufferedImage[] btn_start;
+    public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill ;
 
     public static void init() {
         SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
@@ -40,14 +41,18 @@ public class Assets {
         player_Right = new BufferedImage[2];
         player_Up = new BufferedImage[2];
         player_Down = new BufferedImage[2];
-        player_Left[0] = playerSheet.crop(28, 142, 45, 58);
+        player_Left[0] = playerSheet.crop(28, 144, 45, 55);
         player_Left[1] = playerSheet.crop(222, 150, 45, 50);
         player_Right[0] = playerSheet.crop(20, 245, 45, 55);
         player_Right[1] = playerSheet.crop(229, 252, 45, 50);
-        player_Up[0] = playerSheet.crop(23, 350, 41, 49);
-        player_Up[1] = playerSheet.crop(113, 348, 50, 49);
+        player_Up[0] = playerSheet.crop(26, 350, 45, 49);
+        player_Up[1] = playerSheet.crop(116, 348, 50, 49);
         player_Down[0] = playerSheet.crop(120, 50, 45, 50);
         player_Down[1] = playerSheet.crop(211, 50, 50, 50);
+        player_DownStill = playerSheet.crop(20, 50, 45, 50);
+        player_UpStill = playerSheet.crop(324, 350, 53, 50);
+        player_RightStill = playerSheet.crop(330, 250, 50, 50);
+        player_LeftStill = playerSheet.crop(315, 150, 50, 50);
         water = sheet.crop(0, 0, TILE_WIDTH, TILE_HEIGHT);
         grass = sheet.crop(3 * TILE_WIDTH, 2* TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
         stone = sheet.crop(141, 45, TILE_WIDTH, TILE_HEIGHT);
@@ -70,7 +75,6 @@ public class Assets {
         stone_wall_down2 = sheet.crop(445+TILE_WIDTH, 450, TILE_WIDTH, TILE_HEIGHT);
         stone_wall_left = sheet.crop(510-TILE_WIDTH, 398, TILE_WIDTH-5, TILE_HEIGHT-5);
         stone_wall_right = sheet.crop(500, 400, TILE_WIDTH-5, TILE_HEIGHT-5);
-
 
         tree1 = trees.crop(0, 0, TREE_WIDTH, TREE_HEIGHT);
         tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);

@@ -1,6 +1,6 @@
 package game;
 
-import gfx.UIManager;
+import gfx.UI.UIManager;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

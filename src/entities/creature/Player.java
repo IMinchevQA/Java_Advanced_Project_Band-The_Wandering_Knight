@@ -19,6 +19,7 @@ public class Player extends Creature {
     // Attack timer
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
     private Inventory inventory;
+    private String lastMovedDirection = "Down";
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -105,6 +106,7 @@ public class Player extends Creature {
     public void getInput() {
         xMove = 0;
         yMove = 0;
+
         if (handler.getKeyManager().up) {
             yMove -= playerSpeed;
         }
@@ -135,13 +137,28 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
+            lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();
         } else if (xMove > 0) {
+            lastMovedDirection = "Right";
             return animRight.getCurrentFrame();
         } else if (yMove < 0) {
+            lastMovedDirection = "Up";
             return animUp.getCurrentFrame();
-        } else {
+        } else if (yMove > 0){
+            lastMovedDirection = "Down";
             return animDown.getCurrentFrame();
+        } else {
+            switch (lastMovedDirection) {
+                case "Down":
+                    return Assets.player_DownStill;
+                case "Left":
+                    return Assets.player_LeftStill;
+                case "Right":
+                    return Assets.player_RightStill;
+                default:
+                    return Assets.player_UpStill;
+            }
         }
     }
 

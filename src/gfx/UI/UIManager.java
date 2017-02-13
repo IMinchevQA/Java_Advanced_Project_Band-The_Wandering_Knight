@@ -1,4 +1,4 @@
-package gfx;
+package gfx.UI;
 
 import game.Handler;
 
@@ -6,9 +6,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-/**
- * Created by Home on 2/9/2017.
- */
 public class UIManager {
 
     private Handler handler;

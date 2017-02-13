@@ -1,11 +1,9 @@
-package gfx;
+package gfx.UI;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-/**
- * Created by Home on 2/9/2017.
- */
+
 public abstract class UIObject {
     protected float x, y;
     protected int width, height;
