@@ -1,17 +1,19 @@
 package entities.creature.villains;
 
-import entities.Entity;
 import entities.creature.Creature;
+import entities.creature.Player;
 import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
-import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Villain extends Creature {
+/**
+ * Created by Home on 2/14/2017.
+ */
+public class ChaserVillan extends Creature {
 
     //public static int villainSpeed = 2;
     private Animation animLeft, animRight, animUp, animDown;
@@ -19,8 +21,7 @@ public class Villain extends Creature {
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
 
 
-
-    public Villain(Handler handler, float x, float y) {
+    public ChaserVillan(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 
         bounds.x = 32;
@@ -60,6 +61,7 @@ public class Villain extends Creature {
     public void die() {
 
     }
+
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
         lastAttackTimer = System.currentTimeMillis();
@@ -72,33 +74,51 @@ public class Villain extends Creature {
         at.width = arSize;
         at.height = arSize;
 
-        at.x = cb.x -10;
-        at.y = cb.y -10;
+        at.x = cb.x - 10;
+        at.y = cb.y - 10;
 
         attackTimer = 0;
 
-        if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0).intersects(at)){
+        if (handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0).intersects(at)) {
             handler.getWorld().getEntityManager().getPlayer().hurt(1);
         }
     }
 
-    public void timeChecker(){
-        Random random = new Random();
-        if(System.nanoTime() % (random.nextInt(50) + 30 )== 0){
-            moveVillain();
+    private void timeChecker() {
+        if (System.nanoTime() % 25 == 0) {
+            chase();
         }
     }
 
-    public void moveVillain(){
-        Random rand = new Random();
-        xMove = rand.nextInt(3) - 1;
-        yMove = rand.nextInt(3) - 1;
-        if(rand.nextInt(3) == 0){
-            xMove = 0;
-            yMove = 0;
+    private void chase() {
+        xMove = 0;
+        yMove = 0;
+        Player player = handler.getWorld().getEntityManager().getPlayer();
+
+        if (Math.abs(x - player.getX()) < 150 || Math.abs(y - player.getY()) < 150) {
+            if (x < player.getX()) {
+                xMove++;
+            }
+            if (x > player.getX()) {
+                xMove--;
+            }
+            if (y < player.getY()) {
+                yMove++;
+            }
+            if (y > player.getY()) {
+                yMove--;
+            }
+        } else {
+            Random rand = new Random();
+            xMove = rand.nextInt(3) - 1;
+            yMove = rand.nextInt(3) - 1;
+
+
         }
 
+
     }
+
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             lastMovedDirection = "Left";
@@ -109,7 +129,7 @@ public class Villain extends Creature {
         } else if (yMove < 0) {
             lastMovedDirection = "Up";
             return animUp.getCurrentFrame();
-        } else if(yMove > 0){
+        } else if (yMove > 0) {
             lastMovedDirection = "Down";
             return animDown.getCurrentFrame();
         } else {

@@ -15,6 +15,7 @@ public class Assets {
     public static final String START_BUTTON = "./res/Buttons/Start-2-icon.png";
     public static final String START_BUTTON_ANIM = "./res/Buttons/Start-icon.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
+    public static final String END_GAME = "./res/game-over-png-20.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -22,12 +23,13 @@ public class Assets {
             w_lilly,w_stone,mushroom1,mushroom2,
             bush1,bush2,bush3,flower1,well_full,flower2,
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
-            stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree;
+            stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree, endGame;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
     public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
     public static BufferedImage[] btn_start;
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
+    public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
 
     public static void init() {
         SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
@@ -36,6 +38,7 @@ public class Assets {
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
         SpriteSheet villains = new SpriteSheet(ImageLoader.loadImage(VILLAIN_PATH));
+        SpriteSheet end = new SpriteSheet(ImageLoader.loadImage(END_GAME));
 
 //        player = hero.crop(0,0, 50, 50);
         btn_start = new BufferedImage[2];
@@ -74,6 +77,10 @@ public class Assets {
         villain_Down[0] = villains.crop(4, 0, 59, 64);
         villain_Down[1] = villains.crop(132, 0, 59, 64);
         villains_DownFighting = villains.crop(69, 0, 59, 64);
+        villains_DownStill = villains.crop(4, 0, 59, 64);
+        villains_UpStill = villains.crop(4, 193, 59, 64);
+        villains_LeftStill = villains.crop(7, 64, 59, 64);
+        villains_RightStill = villains.crop(7, 128, 59, 64);
 
         water = sheet.crop(0, 0, TILE_WIDTH, TILE_HEIGHT);
         grass = sheet.crop(3 * TILE_WIDTH, 2* TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
@@ -103,5 +110,7 @@ public class Assets {
         tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
         forest = trees.crop(385, 290, 120, 220);
         cutDownTree = trees.crop(69, 385, 57,56);
+
+        endGame = end.crop(0,0, 178, 178);
     }
 }

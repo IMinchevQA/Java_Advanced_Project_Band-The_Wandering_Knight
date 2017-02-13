@@ -1,5 +1,6 @@
 package game;
 
+import entities.creature.Player;
 import gfx.GameCamera;
 import world.World;
 
@@ -47,5 +48,7 @@ public class Handler {
     public void setWorld(World world) {
         this.world = world;
     }
+
+
 
 }

@@ -2,6 +2,7 @@ package world;
 
 import entities.EntityManager;
 import entities.creature.Player;
+import entities.creature.villains.ChaserVillan;
 import entities.creature.villains.Villain;
 import entities.statics.Tree;
 import game.Handler;
@@ -37,6 +38,8 @@ public class World {
         entityManager.addEntity(new Tree(handler, 360, 231));
 
         entityManager.addEntity(new Villain(handler, 75, 100));
+
+        entityManager.addEntity(new ChaserVillan(handler, 300, 300));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);

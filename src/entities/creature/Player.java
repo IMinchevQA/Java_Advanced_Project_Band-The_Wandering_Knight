@@ -1,7 +1,11 @@
 package entities.creature;
 
 import entities.Entity;
+import game.Game;
 import game.Handler;
+import game.states.EndGame;
+import game.states.MenuState;
+import game.states.State;
 import gfx.Animation;
 import gfx.Assets;
 import inventory.Inventory;
@@ -101,6 +105,8 @@ public class Player extends Creature {
     @Override
     public void die() {
         System.out.println("Dead");
+        State.setState(new EndGame(handler));
+
     }
 
     public void getInput() {
