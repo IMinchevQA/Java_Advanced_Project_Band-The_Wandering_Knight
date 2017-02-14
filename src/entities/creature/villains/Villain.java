@@ -5,6 +5,7 @@ import entities.creature.Creature;
 import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import items.Item;
 import tiles.Tile;
 
 import java.awt.*;
@@ -59,6 +60,7 @@ public class Villain extends Creature {
     @Override
     public void die() {
 
+        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
     }
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;

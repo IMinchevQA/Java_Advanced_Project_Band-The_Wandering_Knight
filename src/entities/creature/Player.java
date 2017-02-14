@@ -24,7 +24,7 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
     private Inventory inventory;
     private String lastMovedDirection = "Down";
-    private final int totalHealth;
+    public final int totalHealth;
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -172,15 +172,6 @@ public class Player extends Creature {
         }
 
     }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
     //health bar
     public void drawHealth(Graphics g){
         g.drawImage(Assets.playerHealth, 0, 0, 24,24,null);
@@ -189,4 +180,19 @@ public class Player extends Creature {
         g.setColor(Color.green);
         g.fillRect(30,10,this.getHealth(), 10);
     }
+
+    public int getTotalHealth(){
+        return this.totalHealth;
+    }
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+
+
+
 }

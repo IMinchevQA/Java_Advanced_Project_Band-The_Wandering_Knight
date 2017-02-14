@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 public class Item {
 
     public static Item[] items = new Item[256];
+    public static  Item coinItem = new Item(Assets.coin, "coin", 0);
     public static Item woodItem = new Item(Assets.cutDownTree, "Wood", 1);
 
     public static final int ITEMWIDTH = 42, ITEMHEIGHT = 42;

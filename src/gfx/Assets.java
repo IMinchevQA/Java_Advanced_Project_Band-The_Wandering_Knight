@@ -17,6 +17,8 @@ public class Assets {
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
+    public static final String INVENTORY = "./res/GameField/inventory.png";
+    public static final String COIN = "./res/GameField/coin.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -31,8 +33,7 @@ public class Assets {
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
-    //hero health image
-    public static BufferedImage playerHealth;
+    public static BufferedImage playerHealth, inventory, coin;
 
     public static void init() {
         SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
@@ -43,6 +44,8 @@ public class Assets {
         SpriteSheet villains = new SpriteSheet(ImageLoader.loadImage(VILLAIN_PATH));
         SpriteSheet end = new SpriteSheet(ImageLoader.loadImage(END_GAME));
         SpriteSheet playerHealthSheet = new SpriteSheet(ImageLoader.loadImage(PlAYER_HEALTH));
+        SpriteSheet inventorySheet = new SpriteSheet(ImageLoader.loadImage(INVENTORY));
+        SpriteSheet coinSheet = new SpriteSheet(ImageLoader.loadImage(COIN));
 
 //        player = hero.crop(0,0, 50, 50);
         btn_start = new BufferedImage[2];
@@ -116,7 +119,10 @@ public class Assets {
         tree2 = trees.crop(TILE_WIDTH, 0, TREE_WIDTH, TREE_HEIGHT);
         tree3 = trees.crop(TREE_WIDTH * 2, 0, TREE_WIDTH, TREE_HEIGHT);
         forest = trees.crop(385, 290, 120, 220);
-        cutDownTree = trees.crop(69, 385, 57,56);
+        cutDownTree = trees.crop(69, 385, 57, 56);
+        coin = coinSheet.crop(0,0,30, 30);
+
+        inventory = inventorySheet.crop(0,0, 600,50);
 
         endGame = end.crop(0,0, 178, 178);
     }

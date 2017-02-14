@@ -5,6 +5,7 @@ import entities.creature.Player;
 import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import items.Item;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -59,6 +60,7 @@ public class ChaserVillan extends Creature {
 
     @Override
     public void die() {
+        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
 
     }
 
