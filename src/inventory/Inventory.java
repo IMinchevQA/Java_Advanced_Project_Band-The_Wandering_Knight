@@ -9,17 +9,17 @@ import items.Item;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
 
     private Handler handler;
     private boolean active = false;
-    private ArrayList<Item> inventoryItems;
+    private HashMap<Integer, Integer> inventoryItems; //the key is the item id, the value is the count
 
     public Inventory(Handler handler) {
         this.handler = handler;
-        inventoryItems = new ArrayList<>();
+        inventoryItems = new HashMap<>();
     }
 
     public void tick() {
@@ -29,30 +29,26 @@ public class Inventory {
         if (!active) {
             return;
         }
-
     }
 
     public void render(Graphics g) {
         if (!active) {
             return;
         }
-
         drawInventory(g);
     }
 
     public void addItem(Item item) {
-
-        for (Item i : inventoryItems) {
-            if (i.getId() == item.getId()) {
-                i.setCount(i.getCount() + item.getCount());
-                return;
-            }
+        int id = item.getId();
+        if (inventoryItems.containsKey(id)) {
+            inventoryItems.put(id, inventoryItems.get(id) + 1);
+        } else {
+            inventoryItems.put(id, 1);
         }
-        inventoryItems.add(item);
     }
 
 
-    public void drawInventory(Graphics g){
+    public void drawInventory(Graphics g) {
 
         int invX = handler.getWorld().getEntityManager().getPlayer().getTotalHealth() + 40;
 
@@ -64,12 +60,20 @@ public class Inventory {
         g.setFont(f);
 
         //coin item
-        g.drawImage(Assets.coin, invX + 5 , 15, 42,42,null);
-        g.drawString("1", invX + 50, 50);
+        g.drawImage(Assets.coin, invX + 5, 15, 42, 42, null);
+        if (inventoryItems.containsKey(Item.coinItem.getId())) {
+            g.drawString(String.valueOf(inventoryItems.get(Item.coinItem.getId())), invX + 50, 50);
+        } else {
+            g.drawString("0", invX + 50, 50);
+        }
 
         //wood item
-        g.drawImage(Assets.cutDownTree, invX + 55,20, 42,42,null);
-        g.drawString("1", invX+100, 50);
+        g.drawImage(Assets.cutDownTree, invX + 55, 20, 42, 42, null);
+        if(inventoryItems.containsKey(Item.woodItem.getId())){
+            g.drawString(String.valueOf(inventoryItems.get(Item.woodItem.getId())), invX+100, 50);
+        } else {
+            g.drawString("0", invX + 100, 50);
+        }
 
     }
 

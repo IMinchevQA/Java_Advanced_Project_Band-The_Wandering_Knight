@@ -21,14 +21,13 @@ public class Item {
 
     protected Rectangle bounds;
 
-    protected int x, y, count;
+    protected int x, y;
     protected boolean pickedUp = false;
 
     private Item(BufferedImage texture, String name, int id) {
         this.texture = texture;
         this.name = name;
         this.id = id;
-        count = 1;
 
         bounds = new Rectangle(x, y, ITEMWIDTH, ITEMHEIGHT);
 
@@ -108,14 +107,6 @@ public class Item {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public boolean isPickedUp() {
