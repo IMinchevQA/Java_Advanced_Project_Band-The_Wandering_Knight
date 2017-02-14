@@ -1,6 +1,3 @@
-
-//TODO : update the count of each item
-
 package inventory;
 
 import game.Handler;
@@ -47,6 +44,14 @@ public class Inventory {
         }
     }
 
+    public String itemCountToString(int id){
+        if(inventoryItems.containsKey(id)){
+            return String.valueOf(inventoryItems.get(id));
+        } else {
+            return "0";
+        }
+    }
+
 
     public void drawInventory(Graphics g) {
 
@@ -61,19 +66,14 @@ public class Inventory {
 
         //coin item
         g.drawImage(Assets.coin, invX + 5, 15, 42, 42, null);
-        if (inventoryItems.containsKey(Item.coinItem.getId())) {
-            g.drawString(String.valueOf(inventoryItems.get(Item.coinItem.getId())), invX + 50, 50);
-        } else {
-            g.drawString("0", invX + 50, 50);
-        }
+        String coinCountString = itemCountToString(Item.coinItem.getId());
+        g.drawString(coinCountString, invX + 50, 50);
 
         //wood item
         g.drawImage(Assets.cutDownTree, invX + 55, 20, 42, 42, null);
-        if(inventoryItems.containsKey(Item.woodItem.getId())){
-            g.drawString(String.valueOf(inventoryItems.get(Item.woodItem.getId())), invX+100, 50);
-        } else {
-            g.drawString("0", invX + 100, 50);
-        }
+        String woodCountString = itemCountToString(Item.woodItem.getId());
+        g.drawString(woodCountString, invX + 100, 50);
+
 
     }
 
