@@ -16,6 +16,7 @@ public class Assets {
     public static final String START_BUTTON_ANIM = "./res/Buttons/Start-icon.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
+    public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -30,6 +31,8 @@ public class Assets {
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
+    //hero health image
+    public static BufferedImage playerHealth;
 
     public static void init() {
         SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
@@ -39,6 +42,7 @@ public class Assets {
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
         SpriteSheet villains = new SpriteSheet(ImageLoader.loadImage(VILLAIN_PATH));
         SpriteSheet end = new SpriteSheet(ImageLoader.loadImage(END_GAME));
+        SpriteSheet playerHealthSheet = new SpriteSheet(ImageLoader.loadImage(PlAYER_HEALTH));
 
 //        player = hero.crop(0,0, 50, 50);
         btn_start = new BufferedImage[2];
@@ -60,6 +64,9 @@ public class Assets {
         player_UpStill = playerSheet.crop(324, 350, 53, 50);
         player_RightStill = playerSheet.crop(330, 250, 50, 50);
         player_LeftStill = playerSheet.crop(315, 150, 50, 50);
+
+        //player health icon
+        playerHealth = playerHealthSheet.crop(0,0,24,24);
 
         villain_Left = new BufferedImage[2];
         villain_Right = new BufferedImage[2];

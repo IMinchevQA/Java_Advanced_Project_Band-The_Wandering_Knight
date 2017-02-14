@@ -24,12 +24,15 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
     private Inventory inventory;
     private String lastMovedDirection = "Down";
+    private final int totalHealth;
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
         //Player MUST TAKE THE game OBJECT.
         //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
+        health = 100;
+        totalHealth = health;
 
         bounds.x = 32;
         bounds.y = 24;
@@ -139,6 +142,7 @@ public class Player extends Creature {
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
 //                    (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
 //                bounds.width, bounds.height);
+        drawHealth(g);
     }
 
     private BufferedImage getCurrentAnimationFrame() {
@@ -166,6 +170,7 @@ public class Player extends Creature {
                     return Assets.player_UpStill;
             }
         }
+
     }
 
     public Inventory getInventory() {
@@ -174,5 +179,14 @@ public class Player extends Creature {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    //health bar
+    public void drawHealth(Graphics g){
+        g.drawImage(Assets.playerHealth, 0, 0, 24,24,null);
+        g.setColor(Color.red);
+        g.fillRect(30,10,totalHealth, 10);
+        g.setColor(Color.green);
+        g.fillRect(30,10,this.getHealth(), 10);
     }
 }
