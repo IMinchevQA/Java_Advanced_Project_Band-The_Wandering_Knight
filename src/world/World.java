@@ -4,6 +4,7 @@ import entities.EntityManager;
 import entities.creature.Player;
 import entities.creature.villains.ChaserVillan;
 import entities.creature.villains.Villain;
+import entities.statics.Rock;
 import entities.statics.Tree;
 import game.Handler;
 import items.ItemManager;
@@ -36,6 +37,8 @@ public class World {
         entityManager.addEntity(new Tree(handler, 300, 400));
         entityManager.addEntity(new Tree(handler, 600, 300));
         entityManager.addEntity(new Tree(handler, 360, 231));
+
+        entityManager.addEntity(new Rock(handler, 200, 200));
 
         entityManager.addEntity(new Villain(handler, 75, 100));
 

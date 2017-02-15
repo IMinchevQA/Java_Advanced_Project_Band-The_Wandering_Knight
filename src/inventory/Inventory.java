@@ -44,7 +44,7 @@ public class Inventory {
         }
     }
 
-    public String itemCountToString(int id){
+    private String itemCountToString(int id){
         if(inventoryItems.containsKey(id)){
             return String.valueOf(inventoryItems.get(id));
         } else {
@@ -53,7 +53,7 @@ public class Inventory {
     }
 
 
-    public void drawInventory(Graphics g) {
+    private  void drawInventory(Graphics g) {
 
         int invX = handler.getWorld().getEntityManager().getPlayer().getTotalHealth() + 40;
 
@@ -74,6 +74,10 @@ public class Inventory {
         String woodCountString = itemCountToString(Item.woodItem.getId());
         g.drawString(woodCountString, invX + 100, 50);
 
+        //rock item
+        g.drawImage(Assets.rockItem, invX + 110, 20,42,42,null);
+        String rockCountString = itemCountToString(Item.rockItem.getId());
+        g.drawString(rockCountString, invX + 150, 50);
 
     }
 

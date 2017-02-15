@@ -19,6 +19,8 @@ public class Assets {
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
     public static final String INVENTORY = "./res/GameField/inventory.png";
     public static final String COIN = "./res/GameField/coin.png";
+    public static final String STONE1 = "./res/GameField/stone1.png";
+    public static final String ROCKITEM = "./res/GameField/rockItem.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -33,7 +35,7 @@ public class Assets {
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
-    public static BufferedImage playerHealth, inventory, coin;
+    public static BufferedImage playerHealth, inventory, coin, rock1,rockItem;
 
     public static void init() {
         SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
@@ -46,6 +48,8 @@ public class Assets {
         SpriteSheet playerHealthSheet = new SpriteSheet(ImageLoader.loadImage(PlAYER_HEALTH));
         SpriteSheet inventorySheet = new SpriteSheet(ImageLoader.loadImage(INVENTORY));
         SpriteSheet coinSheet = new SpriteSheet(ImageLoader.loadImage(COIN));
+        SpriteSheet stone1Sheet = new SpriteSheet(ImageLoader.loadImage(STONE1));
+        SpriteSheet rockItemSheet = new SpriteSheet(ImageLoader.loadImage(ROCKITEM));
 
 //        player = hero.crop(0,0, 50, 50);
         btn_start = new BufferedImage[2];
@@ -121,6 +125,8 @@ public class Assets {
         forest = trees.crop(385, 290, 120, 220);
         cutDownTree = trees.crop(69, 385, 57, 56);
         coin = coinSheet.crop(0,0,30, 30);
+        rock1 = stone1Sheet.crop(0,0,30, 60);
+        rockItem = rockItemSheet.crop(0,0,30,30);
 
         inventory = inventorySheet.crop(0,0, 600,50);
 
