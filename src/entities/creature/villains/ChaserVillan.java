@@ -97,7 +97,7 @@ public class ChaserVillan extends Creature {
         yMove = 0;
         Player player = handler.getWorld().getEntityManager().getPlayer();
 
-        if (Math.abs(x - player.getX()) < 150 || Math.abs(y - player.getY()) < 150) {
+        if (Math.abs(x - player.getX()) < 150 && Math.abs(y - player.getY()) < 150) {
             if (x < player.getX()) {
                 xMove++;
             }
