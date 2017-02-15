@@ -1,5 +1,6 @@
 package game;
 
+import gfx.AboutManager;
 import gfx.UI.UIManager;
 
 import java.awt.event.MouseEvent;
@@ -13,7 +14,11 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
     private boolean leftPressed, rightPressed;
     private  int mouseX, mouseY;
+
+    //ADD A VARIABLE TO RELATE EVENTS mouseRelease and mouseMoved with UIManager's events onMouseMove and onMouseRelease!!!
     private UIManager uiManager;
+    private AboutManager aboutManager;
+
 
     public MouseManager(){
 
@@ -21,6 +26,14 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
     public void setUIManager(UIManager uiManager){
         this.uiManager = uiManager;
+    }
+
+    public void setAboutManager(AboutManager aboutManager) {
+        this.aboutManager = aboutManager;
+    }
+
+    public UIManager getUiManager() {
+        return uiManager;
     }
 
     // Getters
@@ -64,6 +77,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
         if(uiManager != null){
             uiManager.onMouseRelease(e);
         }
+
+        if(aboutManager != null) {
+            aboutManager.onMouseRelease(e);
+        }
     }
 
     @Override
@@ -88,6 +105,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
         if(uiManager != null){
             uiManager.onMouseMove(e);
+        }
+
+        if(aboutManager != null) {
+            aboutManager.onMouseMove(e);
         }
     }
 }

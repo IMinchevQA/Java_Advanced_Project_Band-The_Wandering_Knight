@@ -1,5 +1,6 @@
 package game;
 
+import game.states.AboutState;
 import game.states.GameState;
 import game.states.MenuState;
 import game.states.State;
@@ -28,6 +29,7 @@ public class Game implements Runnable {
     //States
     public State gameState;
     public State menuState;
+    public State aboutState;
 
     //Input
     private InputManager keyManager;
@@ -68,6 +70,7 @@ public class Game implements Runnable {
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
+        aboutState = new AboutState(handler);
         State.setState(menuState);
     }
 

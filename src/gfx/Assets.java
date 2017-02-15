@@ -12,8 +12,15 @@ public class Assets {
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
     public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/Trees.png";
+    public static final String START_SCREEN = "./res/Buttons/StartScreen.png";
     public static final String START_BUTTON = "./res/Buttons/Start-2-icon.png";
-    public static final String START_BUTTON_ANIM = "./res/Buttons/Start-icon.png";
+    public static final String START_BUTTON_HOVERED = "./res/Buttons/Start-icon.png";
+    public static final String ABOUT_BUTTON = "./res/Buttons/About-Unhovered_Cropped.png";
+    public static final String ABOUT_BUTTON_HOVERED = "./res/Buttons/About-Hovered_Cropped.png";
+    public static final String QUIT_BUTTON = "./res/Buttons/QUIT-Unhovered_Cropped.png";
+    public static final String QUIT_BUTTON_HOVERED = "./res/Buttons/QUIT-Hovered_Cropped.png";
+    public static final String BACK_BUTTON = "./res/Buttons/BACK_Unhovered.png";
+    public static final String BACK_BUTTON_HOVERED = "./res/Buttons/BACK_Hovered.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
@@ -30,16 +37,28 @@ public class Assets {
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
             stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree, endGame;
     public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
-    public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
+    public static BufferedImage[] startScreen;
     public static BufferedImage[] btn_start;
+    public static BufferedImage[] btn_about;
+    public static BufferedImage[] btn_quit;
+    public static BufferedImage[] btn_back;
+
+    public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
     public static BufferedImage playerHealth, inventory, coin, rock1,rockItem;
 
     public static void init() {
-        SpriteSheet button1 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
-        SpriteSheet button2 = new SpriteSheet(ImageLoader.loadImage(START_BUTTON_ANIM));
+        SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
+        SpriteSheet buttonNormal = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
+        SpriteSheet buttonHovered = new SpriteSheet(ImageLoader.loadImage(START_BUTTON_HOVERED));
+        SpriteSheet buttonAboutNormal = new SpriteSheet(ImageLoader.loadImage(ABOUT_BUTTON));
+        SpriteSheet buttonAboutHovered = new SpriteSheet(ImageLoader.loadImage(ABOUT_BUTTON_HOVERED));
+        SpriteSheet buttonQuitNormal = new SpriteSheet(ImageLoader.loadImage(QUIT_BUTTON));
+        SpriteSheet buttonQuitHovered = new SpriteSheet(ImageLoader.loadImage(QUIT_BUTTON_HOVERED));
+        SpriteSheet buttonBackNormal = new SpriteSheet(ImageLoader.loadImage(BACK_BUTTON));
+        SpriteSheet buttonBackHovered = new SpriteSheet(ImageLoader.loadImage(BACK_BUTTON_HOVERED));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(PATH));
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
@@ -52,9 +71,20 @@ public class Assets {
         SpriteSheet rockItemSheet = new SpriteSheet(ImageLoader.loadImage(ROCKITEM));
 
 //        player = hero.crop(0,0, 50, 50);
-        btn_start = new BufferedImage[2];
-        btn_start[0] = button1.crop(0, 0, 256, 256);
-        btn_start[1] = button2.crop(0, 0, 256, 256);
+        startScreen = new BufferedImage[1];
+        startScreen[0] = screen.crop(0, 0, 999, 556);
+        btn_start = new BufferedImage[3];
+        btn_start[0] = buttonNormal.crop(0, 0, 256, 256);
+        btn_start[1] = buttonHovered.crop(0, 0, 256, 256);
+        btn_about = new BufferedImage[2];
+        btn_about[0] = buttonAboutNormal.crop(0, 0, 256, 118);
+        btn_about[1] = buttonAboutHovered.crop(0, 0, 256, 118);
+        btn_quit = new BufferedImage[2];
+        btn_quit[0] = buttonQuitNormal.crop(0, 0, 256, 118);
+        btn_quit[1] = buttonQuitHovered.crop(0, 0, 256, 118);
+        btn_back = new BufferedImage[2];
+        btn_back[0] = buttonBackNormal.crop(0, 0, 256, 256);
+        btn_back[1] = buttonBackHovered.crop(0, 0, 256, 256);
         player_Left = new BufferedImage[2];
         player_Right = new BufferedImage[2];
         player_Up = new BufferedImage[2];
