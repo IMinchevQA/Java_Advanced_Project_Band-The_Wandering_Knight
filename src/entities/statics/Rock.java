@@ -14,10 +14,10 @@ public class Rock extends StaticEntity{
         super(handler, x,y, STONE_WIDTH, STONE_HEIGHT);
 
         //bounding box
-        bounds.x = 10;
-        bounds.y = (int) (height/1.5f);
-        bounds.width = width-20;
-        bounds.height = (int) (height - height/1.5f);
+        bounds.x = 0;
+        bounds.y = 30;
+        bounds.width = 25;
+        bounds.height = 15;
 
     }
 

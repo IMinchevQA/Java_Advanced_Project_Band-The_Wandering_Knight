@@ -29,6 +29,7 @@ public class Assets {
     public static final String COIN = "./res/GameField/coin.png";
     public static final String STONE1 = "./res/GameField/stone1.png";
     public static final String ROCKITEM = "./res/GameField/rockItem.png";
+    public static final String MEAT = "./res/GameField/meat.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -49,7 +50,7 @@ public class Assets {
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
-    public static BufferedImage playerHealth, inventory, coin, rock1,rockItem;
+    public static BufferedImage playerHealth, inventory, coin, rock1,rockItem, meat;
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -72,6 +73,7 @@ public class Assets {
         SpriteSheet coinSheet = new SpriteSheet(ImageLoader.loadImage(COIN));
         SpriteSheet stone1Sheet = new SpriteSheet(ImageLoader.loadImage(STONE1));
         SpriteSheet rockItemSheet = new SpriteSheet(ImageLoader.loadImage(ROCKITEM));
+        SpriteSheet meatSheet = new SpriteSheet(ImageLoader.loadImage(MEAT));
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -161,7 +163,8 @@ public class Assets {
         cutDownTree = trees.crop(69, 385, 57, 56);
         coin = coinSheet.crop(0,0,30, 30);
         rock1 = stone1Sheet.crop(0,0,30, 60);
-        rockItem = rockItemSheet.crop(0,0,30,30);
+        rockItem = rockItemSheet.crop(0,0,30, 30);
+        meat = meatSheet.crop(0,0,42,42);
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

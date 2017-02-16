@@ -12,6 +12,7 @@ public class Item {
     public static  Item coinItem = new Item(Assets.coin, "coin", 0);
     public static Item woodItem = new Item(Assets.cutDownTree, "Wood", 1);
     public static Item rockItem = new Item(Assets.rockItem, "rock", 2);
+    public static Item meatItem = new Item(Assets.meat, "meat", 3);
 
     public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 
@@ -39,6 +40,15 @@ public class Item {
         if (handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
             if (handler.getKeyManager().pickUp) {
                 pickedUp = true;
+                if(this.getId() == 3){
+                    if(handler.getWorld().getEntityManager().getPlayer().getHealth() > 90){
+                        handler.getWorld().getEntityManager().getPlayer().setHealth(100);
+                    } else {
+                        handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + 10);
+                    }
+                } else {
+
+                }
                 handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
             }
         }

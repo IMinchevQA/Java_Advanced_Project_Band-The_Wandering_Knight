@@ -54,7 +54,7 @@ public class Villain extends Creature {
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(Item.meatItem.createNew((int) x, (int) y));
     }
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
