@@ -21,7 +21,7 @@ public class Player extends Creature {
     // Animations
     private Animation animLeft, animRight, animUp, animDown;
     // Attack timer
-    private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
+    private long lastAttackTimer, attackCooldown = 700, attackTimer = attackCooldown;
     private Inventory inventory;
     private String lastMovedDirection = "Down";
     public final int totalHealth;

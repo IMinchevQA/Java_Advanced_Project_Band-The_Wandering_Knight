@@ -32,17 +32,34 @@ public class World {
         loadWorld(path);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
+        entityManager.addEntity(new Tree(handler, 500, 100));
         entityManager.addEntity(new Tree(handler, 150, 250));
         entityManager.addEntity(new Tree(handler, 1000, 59));
         entityManager.addEntity(new Tree(handler, 300, 400));
         entityManager.addEntity(new Tree(handler, 600, 300));
+        entityManager.addEntity(new Tree(handler, 600, 600));
+        entityManager.addEntity(new Tree(handler, 800, 700));
+        entityManager.addEntity(new Tree(handler, 600, 450));
+        entityManager.addEntity(new Tree(handler, 100, 350));
+        entityManager.addEntity(new Tree(handler, 700, 400));
+//        entityManager.addEntity(new Tree(handler, 600, 400));
         entityManager.addEntity(new Tree(handler, 360, 231));
 
         entityManager.addEntity(new Rock(handler, 200, 200));
+        entityManager.addEntity(new Rock(handler, 250, 250));
+        entityManager.addEntity(new Rock(handler, 720, 600));
+        entityManager.addEntity(new Rock(handler, 300, 500));
+        entityManager.addEntity(new Rock(handler, 100, 50));
+        entityManager.addEntity(new Rock(handler, 320, 50));
+        entityManager.addEntity(new Rock(handler, 50, 450));
 
         entityManager.addEntity(new Villain(handler, 75, 100));
+        entityManager.addEntity(new Villain(handler, 400, 800));
+        entityManager.addEntity(new Villain(handler, 500, 100));
 
         entityManager.addEntity(new ChaserVillan(handler, 300, 300));
+        entityManager.addEntity(new ChaserVillan(handler, 500, 300));
+        entityManager.addEntity(new ChaserVillan(handler, 700, 500));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
