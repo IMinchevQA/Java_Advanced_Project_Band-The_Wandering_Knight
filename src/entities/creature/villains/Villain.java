@@ -1,12 +1,10 @@
 package entities.creature.villains;
 
-import entities.Entity;
 import entities.creature.Creature;
 import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
 import items.Item;
-import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,8 +16,6 @@ public class Villain extends Creature {
     private Animation animLeft, animRight, animUp, animDown;
     private String lastMovedDirection = "Down";
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
-
-
 
     public Villain(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -52,14 +48,12 @@ public class Villain extends Creature {
 
     @Override
     public void render(Graphics g) {
-//        TODO: temporally render until movement is implemented
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
 
     @Override
     public void die() {
-
         handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
     }
     private void checkAttacks() {
@@ -101,7 +95,7 @@ public class Villain extends Creature {
         }
 
     }
-    private BufferedImage getCurrentAnimationFrame() {
+    public BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();

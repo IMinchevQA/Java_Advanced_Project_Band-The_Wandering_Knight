@@ -13,7 +13,6 @@ public abstract class Creature extends Entity {
     public static final int DEFAULT_CREATURE_WIDTH = 64,
             DEFAULT_CREATURE_HEIGHT = 64;
 
-
     protected float speed;
     protected float xMove, yMove;
 

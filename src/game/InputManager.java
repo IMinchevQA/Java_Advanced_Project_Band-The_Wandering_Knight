@@ -10,6 +10,7 @@ public class InputManager implements KeyListener {
     private boolean[] keys, justPressed, cantPress;
     public boolean up, down, right, left;
     public boolean aUp, aDown, aLeft, aRight;
+    public boolean pickUp;
 
     public InputManager () {
         keys = new boolean[256];
@@ -39,6 +40,8 @@ public class InputManager implements KeyListener {
         aDown = keys[KeyEvent.VK_S];
         aLeft = keys[KeyEvent.VK_A];
         aRight = keys[KeyEvent.VK_D];
+
+        pickUp = keys[KeyEvent.VK_Q];
 
     }
 

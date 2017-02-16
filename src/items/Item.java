@@ -13,7 +13,7 @@ public class Item {
     public static Item woodItem = new Item(Assets.cutDownTree, "Wood", 1);
     public static Item rockItem = new Item(Assets.rockItem, "rock", 2);
 
-    public static final int ITEMWIDTH = 42, ITEMHEIGHT = 42;
+    public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 
     protected Handler handler;
     protected BufferedImage texture;
@@ -37,8 +37,10 @@ public class Item {
 
     public void tick(){
         if (handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
-            pickedUp = true;
-            handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+            if (handler.getKeyManager().pickUp) {
+                pickedUp = true;
+                handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+            }
         }
     }
 

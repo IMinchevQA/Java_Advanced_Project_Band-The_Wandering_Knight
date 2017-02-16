@@ -11,9 +11,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-/**
- * Created by Home on 2/14/2017.
- */
 public class ChaserVillan extends Creature {
 
     //public static int villainSpeed = 2;
@@ -53,7 +50,6 @@ public class ChaserVillan extends Creature {
 
     @Override
     public void render(Graphics g) {
-//        TODO: temporally render until movement is implemented
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
@@ -82,7 +78,7 @@ public class ChaserVillan extends Creature {
         attackTimer = 0;
 
         if (handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0).intersects(at)) {
-            handler.getWorld().getEntityManager().getPlayer().hurt(1);
+            handler.getWorld().getEntityManager().getPlayer().hurt(3);
         }
     }
 
@@ -114,14 +110,10 @@ public class ChaserVillan extends Creature {
             Random rand = new Random();
             xMove = rand.nextInt(3) - 1;
             yMove = rand.nextInt(3) - 1;
-
-
         }
-
-
     }
 
-    private BufferedImage getCurrentAnimationFrame() {
+    public BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();

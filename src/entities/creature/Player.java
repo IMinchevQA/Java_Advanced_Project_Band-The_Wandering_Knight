@@ -1,10 +1,8 @@
 package entities.creature;
 
 import entities.Entity;
-import game.Game;
 import game.Handler;
 import game.states.EndGame;
-import game.states.MenuState;
 import game.states.State;
 import gfx.Animation;
 import gfx.Assets;
@@ -109,7 +107,6 @@ public class Player extends Creature {
     public void die() {
         System.out.println("Dead");
         State.setState(new EndGame(handler));
-
     }
 
     public void getInput() {
@@ -145,7 +142,7 @@ public class Player extends Creature {
         drawHealth(g);
     }
 
-    private BufferedImage getCurrentAnimationFrame() {
+    public BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();
@@ -191,8 +188,4 @@ public class Player extends Creature {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
-
-
-
-
 }
