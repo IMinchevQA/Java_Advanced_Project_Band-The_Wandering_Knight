@@ -2,8 +2,8 @@ package world;
 
 import entities.EntityManager;
 import entities.creature.Player;
-import entities.creature.villains.ChaserVillan;
-import entities.creature.villains.Villain;
+import entities.creature.villains.ChaserVillain;
+import entities.creature.villains.RandomVillain;
 import entities.statics.Rock;
 import entities.statics.Tree;
 import game.Handler;
@@ -117,16 +117,16 @@ public class World {
         entityManager.addEntity(new Rock(handler, 320, 50));
         entityManager.addEntity(new Rock(handler, 1150, 450));
 
-        entityManager.addEntity(new Villain(handler, 75, 100));
-        entityManager.addEntity(new Villain(handler, 400, 800));
-        entityManager.addEntity(new Villain(handler, 500, 100));
-        entityManager.addEntity(new Villain(handler, 1175, 2100));
-        entityManager.addEntity(new Villain(handler, 2400, 800));
-        entityManager.addEntity(new Villain(handler, 2500, 100));
+        entityManager.addEntity(new RandomVillain(handler, 75, 100));
+        entityManager.addEntity(new RandomVillain(handler, 400, 800));
+        entityManager.addEntity(new RandomVillain(handler, 500, 100));
+        entityManager.addEntity(new RandomVillain(handler, 1175, 2100));
+        entityManager.addEntity(new RandomVillain(handler, 2400, 800));
+        entityManager.addEntity(new RandomVillain(handler, 2500, 100));
 
-        entityManager.addEntity(new ChaserVillan(handler, 300, 300));
-        entityManager.addEntity(new ChaserVillan(handler, 500, 300));
-        entityManager.addEntity(new ChaserVillan(handler, 700, 500));
+        entityManager.addEntity(new ChaserVillain(handler, 300, 300));
+        entityManager.addEntity(new ChaserVillain(handler, 500, 300));
+        entityManager.addEntity(new ChaserVillain(handler, 700, 500));
     }
 
     public Handler getHandler() {

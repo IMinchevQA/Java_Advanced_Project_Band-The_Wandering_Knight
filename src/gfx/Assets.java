@@ -23,6 +23,7 @@ public class Assets {
     public static final String BACK_BUTTON = "./res/Buttons/blackBack.png";
     public static final String BACK_BUTTON_HOVERED = "./res/Buttons/backRed.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
+    public static final String CHASER_VILLAIN_PATH = "./res/Monster/Monster_uncut_Chaser.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
     public static final String INVENTORY = "./res/GameField/inventory.png";
@@ -48,8 +49,10 @@ public class Assets {
 
     public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
     public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
+    public static BufferedImage[] chaserVillain_Left, chaserVillain_Right, chaserVillain_Up, chaserVillain_Down;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
+    public static BufferedImage chaserVillains_DownStill, chaserVillains_UpStill, chaserVillains_RightStill, chaserVillains_LeftStill;
     public static BufferedImage playerHealth, inventory, coin, rock1,rockItem, meat;
 
     public static void init() {
@@ -67,6 +70,7 @@ public class Assets {
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
         SpriteSheet villains = new SpriteSheet(ImageLoader.loadImage(VILLAIN_PATH));
+        SpriteSheet chaserVillains = new SpriteSheet(ImageLoader.loadImage(CHASER_VILLAIN_PATH));
         SpriteSheet end = new SpriteSheet(ImageLoader.loadImage(END_GAME));
         SpriteSheet playerHealthSheet = new SpriteSheet(ImageLoader.loadImage(PlAYER_HEALTH));
         SpriteSheet inventorySheet = new SpriteSheet(ImageLoader.loadImage(INVENTORY));
@@ -111,6 +115,23 @@ public class Assets {
 
         //player health icon
         playerHealth = playerHealthSheet.crop(0,0,24,24);
+
+        chaserVillain_Left = new BufferedImage[2];
+        chaserVillain_Right = new BufferedImage[2];
+        chaserVillain_Up = new BufferedImage[2];
+        chaserVillain_Down = new BufferedImage[2];
+        chaserVillain_Left[0] = chaserVillains.crop(7, 64, 59, 64);
+        chaserVillain_Left[1] = chaserVillains.crop(134, 64, 59, 64);
+        chaserVillain_Right[0] = chaserVillains.crop(7, 128, 59, 64);
+        chaserVillain_Right[1] = chaserVillains.crop(134, 128, 59, 64);
+        chaserVillain_Up[0] = chaserVillains.crop(4, 193, 59, 64);
+        chaserVillain_Up[1] = chaserVillains.crop(132, 193, 59, 64);
+        chaserVillain_Down[0] = chaserVillains.crop(4, 0, 59, 64);
+        chaserVillain_Down[1] = chaserVillains.crop(132, 0, 59, 64);
+        chaserVillains_DownStill = chaserVillains.crop(4, 0, 59, 64);
+        chaserVillains_UpStill = chaserVillains.crop(4, 193, 59, 64);
+        chaserVillains_LeftStill = chaserVillains.crop(7, 64, 59, 64);
+        chaserVillains_RightStill = chaserVillains.crop(7, 128, 59, 64);
 
         villain_Left = new BufferedImage[2];
         villain_Right = new BufferedImage[2];
