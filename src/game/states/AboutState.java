@@ -33,7 +33,17 @@ public class AboutState extends State {
             }
         }));
 
-        aboutManager.addObject(new UIImageButton(300, 20, 256, 256, Assets.btn_back, new ClickListener() {
+
+
+        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.infoTeam, new ClickListener() {
+            @Override
+            public void onClick() {
+
+            }
+        }));
+
+
+        aboutManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.btn_back, new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().menuState);
@@ -41,6 +51,7 @@ public class AboutState extends State {
             }
         }));
     }
+
 
     @Override
     public void tick() {
