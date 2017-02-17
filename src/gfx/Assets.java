@@ -23,7 +23,7 @@ public class Assets {
     public static final String BACK_BUTTON = "./res/Buttons/blackBack.png";
     public static final String BACK_BUTTON_HOVERED = "./res/Buttons/backRed.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
-    public static final String CHASER_VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
+    public static final String CHASER_VILLAIN_PATH = "./res/Monster/Monster_uncut_Chaser.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
     public static final String INVENTORY = "./res/GameField/inventory.png";
