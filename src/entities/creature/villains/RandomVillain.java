@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class RandomVillain extends Villain{
 
-    //public static int villainSpeed = 2;
     private Animation animLeft, animRight, animUp, animDown;
     private long lastAttackTimer, attackCooldown = 600, attackTimer = attackCooldown;
 
@@ -39,7 +38,7 @@ public class RandomVillain extends Villain{
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(Item.meatItem.createNew((int) x, (int) y));
     }
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
@@ -63,14 +62,14 @@ public class RandomVillain extends Villain{
         }
     }
 
-    private void timeChecker(){
+    public void timeChecker(){
         Random random = new Random();
         if(System.nanoTime() % (random.nextInt(50) + 30 )== 0){
             moveVillain();
         }
     }
 
-    private void moveVillain(){
+    public void moveVillain(){
         Random rand = new Random();
         xMove = rand.nextInt(3) - 1;
         yMove = rand.nextInt(3) - 1;
