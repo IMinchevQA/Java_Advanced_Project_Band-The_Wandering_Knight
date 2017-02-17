@@ -23,7 +23,7 @@ public class Assets {
     public static final String BACK_BUTTON = "./res/Buttons/blackBack.png";
     public static final String BACK_BUTTON_HOVERED = "./res/Buttons/backRed.png";
     public static final String VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
-    public static final String CHASER_VILLAIN_PATH = "./res/Monster/Monster_uncut_Chaser.png";
+    public static final String CHASER_VILLAIN_PATH = "./res/Monster/Monster_uncut.png";
     public static final String END_GAME = "./res/game-over-png-20.png";
     public static final String PlAYER_HEALTH = "./res/Hero/heart.png";
     public static final String INVENTORY = "./res/GameField/inventory.png";
@@ -31,6 +31,7 @@ public class Assets {
     public static final String STONE1 = "./res/GameField/stone1.png";
     public static final String ROCKITEM = "./res/GameField/rockItem.png";
     public static final String MEAT = "./res/GameField/meat.png";
+    public static final String SHEEP = "./res/Sheep/sheep_walk.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -54,6 +55,8 @@ public class Assets {
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
     public static BufferedImage chaserVillains_DownStill, chaserVillains_UpStill, chaserVillains_RightStill, chaserVillains_LeftStill;
     public static BufferedImage playerHealth, inventory, coin, rock1,rockItem, meat;
+    public static BufferedImage[] sheep_Left, sheep_Right, sheep_Up, sheep_Down;
+    public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -78,6 +81,7 @@ public class Assets {
         SpriteSheet stone1Sheet = new SpriteSheet(ImageLoader.loadImage(STONE1));
         SpriteSheet rockItemSheet = new SpriteSheet(ImageLoader.loadImage(ROCKITEM));
         SpriteSheet meatSheet = new SpriteSheet(ImageLoader.loadImage(MEAT));
+        SpriteSheet sheep = new SpriteSheet(ImageLoader.loadImage(SHEEP));
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -153,6 +157,23 @@ public class Assets {
         villains_UpStill = villains.crop(4, 193, 59, 64);
         villains_LeftStill = villains.crop(7, 64, 59, 64);
         villains_RightStill = villains.crop(7, 128, 59, 64);
+
+        sheep_Down = new BufferedImage[2];
+        sheep_Up = new BufferedImage[2];
+        sheep_Left = new BufferedImage[2];
+        sheep_Right = new BufferedImage[2];
+        sheep_Down[0] = sheep.crop(0, 114, 60, 57);
+        sheep_Down[1] = sheep.crop(120, 114, 60, 57);
+        sheep_DownStill = sheep.crop(60, 114, 60, 57);
+        sheep_Up[0] = sheep.crop(0,0,60, 57);
+        sheep_Up[1] = sheep.crop(120,0,60, 57);
+        sheep_UpStill = sheep.crop(60,0,60, 57);
+        sheep_Left[0] = sheep.crop(0, 57, 60, 57);
+        sheep_Left[1] = sheep.crop(120, 57, 60, 57);
+        sheep_LeftStiil = sheep.crop(60, 57, 60, 57);
+        sheep_Right[0] = sheep.crop(0, 171, 60, 57);
+        sheep_Right[1] = sheep.crop(120, 171, 60, 57);
+        sheep_RightStill = sheep.crop(60, 171, 60, 57);
 
         water = sheet.crop(0, 0, TILE_WIDTH, TILE_HEIGHT);
         grass = sheet.crop(3 * TILE_WIDTH, 2* TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);

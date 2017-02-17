@@ -39,7 +39,7 @@ public class RandomVillain extends Villain{
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.meatItem.createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int) x, (int) y));
     }
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
@@ -63,14 +63,14 @@ public class RandomVillain extends Villain{
         }
     }
 
-    public void timeChecker(){
+    private void timeChecker(){
         Random random = new Random();
         if(System.nanoTime() % (random.nextInt(50) + 30 )== 0){
             moveVillain();
         }
     }
 
-    public void moveVillain(){
+    private void moveVillain(){
         Random rand = new Random();
         xMove = rand.nextInt(3) - 1;
         yMove = rand.nextInt(3) - 1;

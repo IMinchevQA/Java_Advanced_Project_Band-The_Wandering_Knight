@@ -1,9 +1,11 @@
 package world;
 
 import entities.EntityManager;
+import entities.creature.Animal;
 import entities.creature.Player;
 import entities.creature.villains.ChaserVillain;
 import entities.creature.villains.RandomVillain;
+
 import entities.statics.Rock;
 import entities.statics.Tree;
 import game.Handler;
@@ -12,6 +14,7 @@ import tiles.Tile;
 import utils.Utils;
 
 import java.awt.*;
+import java.util.Random;
 
 //SEE RES/WORLD/WORLD.TXT FOR MORE INFO
 public class World {
@@ -23,6 +26,7 @@ public class World {
     private int[][] tilesWorldMatrix;
     private EntityManager entityManager;
     private ItemManager itemManager;
+    private long time = 0;
 
     public World(Handler handler, String path) {
         this.handler = handler;
@@ -38,8 +42,20 @@ public class World {
     }
 
     public void tick() {
+        time++;
         itemManager.tick();
         entityManager.tick();
+        if(time % 3600 == 0){
+            Random rd = new Random();
+            entityManager.addEntity(new Animal(handler, rd.nextInt(100) + 1000, rd.nextInt(40) + 100 ));
+            entityManager.addEntity(new Animal(handler, rd.nextInt(100) + 1000, rd.nextInt(40) + 100 ));
+        }
+        if(time % 5400 == 0){
+            Random random = new Random();
+            entityManager.addEntity(new ChaserVillain(handler, random.nextInt(40) + 80, random.nextInt(60) + 750));
+            time = 0;
+        }
+
     }
 
     public void render(Graphics g) {
@@ -96,6 +112,7 @@ public class World {
     }
 
     private void createEntities(Handler handler) {
+
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Tree(handler, 500, 100));
         entityManager.addEntity(new Tree(handler, 150, 250));
@@ -117,6 +134,8 @@ public class World {
         entityManager.addEntity(new Rock(handler, 320, 50));
         entityManager.addEntity(new Rock(handler, 1150, 450));
 
+
+        entityManager.addEntity(new Animal(handler, 150, 350));
         entityManager.addEntity(new RandomVillain(handler, 75, 100));
         entityManager.addEntity(new RandomVillain(handler, 400, 800));
         entityManager.addEntity(new RandomVillain(handler, 500, 100));
@@ -127,6 +146,9 @@ public class World {
         entityManager.addEntity(new ChaserVillain(handler, 300, 300));
         entityManager.addEntity(new ChaserVillain(handler, 500, 300));
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
+
+
+
     }
 
     public Handler getHandler() {
