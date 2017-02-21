@@ -74,16 +74,16 @@ public class Player extends Creature {
         at.width = arSize;
         at.height = arSize;
 
-        if (handler.getKeyManager().aUp) {
+        if (handler.getKeyManager().up && handler.getKeyManager().attack) {
             at.x = cb.x + cb.width / 2 - arSize / 2;
             at.y = cb.y - arSize;
-        } else if (handler.getKeyManager().aDown) {
+        } else if (handler.getKeyManager().down && handler.getKeyManager().attack) {
             at.x = cb.x + cb.width / 2 - arSize / 2;
             at.y = cb.y + cb.height;
-        } else if (handler.getKeyManager().aLeft) {
+        } else if (handler.getKeyManager().left && handler.getKeyManager().attack) {
             at.x = cb.x - arSize;
             at.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if (handler.getKeyManager().aRight) {
+        } else if (handler.getKeyManager().right && handler.getKeyManager().attack) {
             at.x = cb.x + cb.width;
             at.y = cb.y + cb.height / 2 - arSize / 2;
         } else {

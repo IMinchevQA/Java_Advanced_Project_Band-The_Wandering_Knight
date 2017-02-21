@@ -24,7 +24,7 @@ public class Utils {
         return builder.toString();
     }
 
-    public static int parseInt(String number) {
+    public static int parseWorldFile(String number) {
         try{
             return Integer.parseInt(number);
         } catch(NumberFormatException e) {

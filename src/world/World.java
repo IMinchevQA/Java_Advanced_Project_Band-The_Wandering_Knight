@@ -95,10 +95,10 @@ public class World {
         String worldFile = Utils.loadFileAsString(path);
         //ONE DIMENSIONAL ARRAY WITH OUR FILE INFO
         String[] tokens = worldFile.split("\\s+");
-        width = Utils.parseInt(tokens[0]);
-        height = Utils.parseInt(tokens[1]);
-        spawnX = Utils.parseInt(tokens[2]);
-        spawnY = Utils.parseInt(tokens[3]);
+        width = Utils.parseWorldFile(tokens[0]);
+        height = Utils.parseWorldFile(tokens[1]);
+        spawnX = Utils.parseWorldFile(tokens[2]);
+        spawnY = Utils.parseWorldFile(tokens[3]);
 
         tilesWorldMatrix = new int[width][height];
         for (int x = 0; x < width; x++) {
@@ -106,7 +106,7 @@ public class World {
 
                 //ASSIGNING EVERY INDEX TO THE ARRAY
                 //NUMBER 4 IS ADDED BECAUSE FIRST 4 ELEMENTS VALUES ARE ASSIGNED TO - width, height, spawnX, spawnY
-                tilesWorldMatrix[x][y] = Utils.parseInt(tokens[(x+y*width) + 4]);
+                tilesWorldMatrix[x][y] = Utils.parseWorldFile(tokens[(x+y*width) + 4]);
             }
         }
     }
