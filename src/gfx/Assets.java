@@ -40,7 +40,7 @@ public class Assets {
             bush1,bush2,bush3,flower1,well_full,flower2,
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
             stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree, endGame;
-    public static BufferedImage[] player_Left, player_Right, player_Up, player_Down;
+    public static BufferedImage[] player_Left, player_Right, player_Up, player_Down, player_LeftAttack, player_RightAttack, player_UpAttack, player_DownAttack;
     public static BufferedImage[] startScreen;
     public static BufferedImage[] infoTeam;
     public static BufferedImage[] btn_start;
@@ -112,6 +112,22 @@ public class Assets {
         player_Up[1] = playerSheet.crop(116, 348, 50, 49);
         player_Down[0] = playerSheet.crop(120, 50, 45, 50);
         player_Down[1] = playerSheet.crop(211, 50, 50, 50);
+        player_LeftAttack = new BufferedImage[3];
+        player_LeftAttack[0] = playerSheet.crop(28, 144, 45, 55);;
+        player_LeftAttack[1] = playerSheet.crop(222, 150, 45, 50);
+        player_LeftAttack[2] = playerSheet.crop(320, 150, 45, 50);
+        player_RightAttack = new BufferedImage[3];
+        player_RightAttack[0] = playerSheet.crop(20, 245, 45, 55);
+        player_RightAttack[1] = playerSheet.crop(229, 252, 45, 50);
+        player_RightAttack[2] = playerSheet.crop(335, 252, 45, 50);
+        player_UpAttack = new BufferedImage[3];
+        player_UpAttack[0] = playerSheet.crop(315, 350, 65, 50);
+        player_UpAttack[1] = playerSheet.crop(225, 350, 65, 50);
+        player_UpAttack[2] = playerSheet.crop(115, 348, 70, 50);
+        player_DownAttack = new BufferedImage[3];
+        player_DownAttack[0] = playerSheet.crop(211, 50, 50, 50);
+        player_DownAttack[1] = playerSheet.crop(120, 50, 45, 50);
+        player_DownAttack[2] = playerSheet.crop(20, 50, 45, 50);
         player_DownStill = playerSheet.crop(20, 50, 45, 50);
         player_UpStill = playerSheet.crop(324, 350, 53, 50);
         player_RightStill = playerSheet.crop(330, 250, 50, 50);

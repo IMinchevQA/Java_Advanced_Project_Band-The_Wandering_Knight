@@ -17,7 +17,7 @@ public class Player extends Creature {
     public static int playerSpeed = 2;
 
     // Animations
-    private Animation animLeft, animRight, animUp, animDown;
+    private Animation animLeft, animRight, animUp, animDown, animLeftAttack, animRightAttack, animUpAttack, animDownAttack;
     // Attack timer
     private long lastAttackTimer, attackCooldown = 700, attackTimer = attackCooldown;
     private Inventory inventory;
@@ -38,10 +38,14 @@ public class Player extends Creature {
         bounds.height = 32;
 
         //Animations
-        animLeft = new Animation(500, Assets.player_Left);
-        animRight = new Animation(500, Assets.player_Right);
-        animUp = new Animation(500, Assets.player_Up);
-        animDown = new Animation(500, Assets.player_Down);
+        animLeft = new Animation(400, Assets.player_Left);
+        animRight = new Animation(400, Assets.player_Right);
+        animUp = new Animation(400, Assets.player_Up);
+        animDown = new Animation(400, Assets.player_Down);
+        animLeftAttack = new Animation(100, Assets.player_LeftAttack);
+        animRightAttack = new Animation(100,Assets.player_RightAttack);
+        animDownAttack = new Animation(100, Assets.player_DownAttack);
+        animUpAttack = new Animation(100, Assets.player_UpAttack);
 
         inventory = new Inventory(handler);
     }
@@ -53,6 +57,10 @@ public class Player extends Creature {
         animRight.tick();
         animUp.tick();
         animDown.tick();
+        animDownAttack.tick();
+        animUpAttack.tick();
+        animLeftAttack.tick();
+        animRightAttack.tick();
 
         getInput();
         move();
@@ -143,6 +151,19 @@ public class Player extends Creature {
     }
 
     public BufferedImage getCurrentAnimationFrame() {
+        if(handler.getKeyManager().attack) {
+            switch(lastMovedDirection) {
+                case "Up" :
+                    return animUpAttack.getCurrentFrame();
+                case "Down":
+                    return animDownAttack.getCurrentFrame();
+                case "Left":
+                    return animLeftAttack.getCurrentFrame();
+                case "Right":
+                    return animRightAttack.getCurrentFrame();
+
+            }
+        }
         if (xMove < 0) {
             lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();
