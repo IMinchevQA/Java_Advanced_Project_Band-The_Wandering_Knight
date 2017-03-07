@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 //PLAYER CLASS, PLAYER LOGIC GOES HERE
 public class Player extends Creature {
 
-    public static int playerSpeed = 2;
+    public static float playerSpeed = 1;
 
     // Animations
     private Animation animLeft, animRight, animUp, animDown, animLeftAttack, animRightAttack, animUpAttack, animDownAttack;
@@ -120,6 +120,12 @@ public class Player extends Creature {
     public void getInput() {
         xMove = 0;
         yMove = 0;
+
+        if(handler.getKeyManager().run) {
+            playerSpeed = 2.0f;
+        } else {
+            playerSpeed = 1.0f;
+        }
 
         if (handler.getKeyManager().up) {
             yMove -= playerSpeed;
