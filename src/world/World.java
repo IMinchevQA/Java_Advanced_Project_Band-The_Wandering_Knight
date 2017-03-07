@@ -6,10 +6,7 @@ import entities.creature.Player;
 import entities.creature.villains.ChaserVillain;
 import entities.creature.villains.RandomVillain;
 
-import entities.statics.Gate;//AY
-import entities.statics.Tent;//AY
-import entities.statics.Rock;
-import entities.statics.Tree;
+import entities.statics.*;
 import game.Handler;
 import items.ItemManager;
 import tiles.Tile;
@@ -121,12 +118,13 @@ public class World {
         entityManager.addEntity(new Tree(handler, 1000, 59));
         entityManager.addEntity(new Tree(handler, 300, 400));
         entityManager.addEntity(new Tree(handler, 600, 300));
-        entityManager.addEntity(new Tree(handler, 600, 600));
-        entityManager.addEntity(new Tree(handler, 1800, 700));
         entityManager.addEntity(new Tree(handler, 1600, 450));
-        entityManager.addEntity(new Tree(handler, 1100, 1350));
         entityManager.addEntity(new Tree(handler, 700, 400));
         entityManager.addEntity(new Tree(handler, 1360, 231));
+
+        entityManager.addEntity(new SnowyTree(handler, 600, 600));
+        entityManager.addEntity(new  SnowyTree(handler, 1800, 700));
+        entityManager.addEntity(new  SnowyTree(handler, 1100, 1350));
 
         entityManager.addEntity(new Rock(handler, 200, 200));
         entityManager.addEntity(new Rock(handler, 250, 250));
@@ -149,7 +147,7 @@ public class World {
         entityManager.addEntity(new ChaserVillain(handler, 500, 300));
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
 
-        entityManager.addEntity(new Tent(handler, 100, 550));//AY
+        entityManager.addEntity(new Tent(handler, 600, 400));//AY
         entityManager.addEntity(new Gate(handler, 200, 550));//AY
     }
 

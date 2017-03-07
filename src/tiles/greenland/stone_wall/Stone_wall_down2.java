@@ -1,4 +1,4 @@
-package tiles.stone_wall;
+package tiles.greenland.stone_wall;
 
 import gfx.Assets;
 import tiles.Tile;

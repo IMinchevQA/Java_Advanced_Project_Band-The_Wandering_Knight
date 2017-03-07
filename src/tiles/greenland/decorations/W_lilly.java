@@ -1,4 +1,4 @@
-package tiles.decorations;
+package tiles.greenland.decorations;
 
 import gfx.Assets;
 import tiles.Tile;

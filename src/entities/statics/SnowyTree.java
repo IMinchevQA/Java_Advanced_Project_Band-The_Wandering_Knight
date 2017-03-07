@@ -6,11 +6,11 @@ import items.Item;
 
 import java.awt.*;
 
-public class Tree extends StaticEntity {
+public class SnowyTree extends StaticEntity {
 
     private static final int TREE_WIDTH = 60, TREE_HEIGHT = 120;
 
-    public Tree(Handler handler, float x, float y) {
+    public SnowyTree(Handler handler, float x, float y) {
         super(handler, x, y, TREE_WIDTH, TREE_HEIGHT);
 
         bounds.x = 20;
@@ -31,7 +31,7 @@ public class Tree extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.tree3, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+        g.drawImage(Assets.snowyTree, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
 }

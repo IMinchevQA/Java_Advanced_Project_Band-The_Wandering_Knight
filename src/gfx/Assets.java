@@ -37,6 +37,10 @@ public class Assets {
     public static final String KEY = "./res/GameField/key.png";//AY
     public static final String GATE_CLOSED = "./res/GameField/gate/gateClosed.png";//AY
     public static final String GATE_OPENED = "./res/GameField/gate/gateOpened.png";//AY
+    //iceland
+    public static final String SNOW = "./res/GameField/iceland/snow.png";//AY
+    public static final String SNOWY_TREE = "./res/GameField/iceland/SnowyTree.png";//AY
+    public static final String SNOWY_BUSH = "./res/GameField/iceland/SnowyBush.png";//AY
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -63,6 +67,7 @@ public class Assets {
     public static BufferedImage[] sheep_Left, sheep_Right, sheep_Up, sheep_Down;
     public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
     public static BufferedImage tent,key, gateClosed, gateOpened;//AY
+    public static BufferedImage snow,snowyTree, snowyBush;//AY
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -93,6 +98,10 @@ public class Assets {
         SpriteSheet keySheet = new SpriteSheet(ImageLoader.loadImage(KEY));//AY
         SpriteSheet gateClosedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_CLOSED));//AY
         SpriteSheet gateOpenedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_OPENED));//AY
+//iceland
+        SpriteSheet snowSheet = new SpriteSheet(ImageLoader.loadImage(SNOW));//AY
+        SpriteSheet snowyTreeSheet = new SpriteSheet(ImageLoader.loadImage(SNOWY_TREE));//AY
+        SpriteSheet snowyBushSheet = new SpriteSheet(ImageLoader.loadImage(SNOWY_BUSH));//AY
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -270,6 +279,10 @@ public class Assets {
         key = keySheet.crop(0,0,30, 30);//AY
         gateClosed = gateClosedSheet.crop(0,0,60, 60);//AY
         //gateOpened = gateOpenedSheet.crop(0,0,60, 60);//AY
+        //iceland
+        snow = snowSheet.crop(0,0,59, 59);//AY
+        snowyTree = snowyTreeSheet.crop(0,0,38, 60);//AY
+        snowyBush = snowyBushSheet.crop(0,0,59, 59);//AY
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

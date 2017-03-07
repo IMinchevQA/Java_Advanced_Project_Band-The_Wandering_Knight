@@ -1,7 +1,12 @@
 package tiles;
 
-import tiles.decorations.*;
-import tiles.stone_wall.*;
+import tiles.greenland.GrassTile;
+import tiles.greenland.StoneTile;
+import tiles.greenland.WaterTile;
+import tiles.greenland.decorations.*;
+import tiles.greenland.stone_wall.*;
+import tiles.iceland.SnowTile;
+import tiles.iceland.SnowyBush;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,6 +34,9 @@ public class Tile {
     private static final int STONE_WALL_DOWN2_ID = 23;
     private static final int STONE_WALL_LEFT_ID = 24;
     private static final int STONE_WALL_RIGHT_ID = 25;
+    //iceland
+    private static final int SNOW_ID = 30;
+    private static final int SNOW_BUSH_ID = 31;
     //END TILES IDS
 
     //ARRAY WITH THE UNIQUE IDS OF ALL TYPE OF TILES WE WILL HAVE , 256 SHOULD BE MORE THAN ENOUGH
@@ -55,6 +63,10 @@ public class Tile {
     public static Tile stone_wall_down2 = new Stone_wall_down2(STONE_WALL_DOWN2_ID);
     public static Tile stone_wall_left = new Stone_wall_left(STONE_WALL_LEFT_ID);
     public static Tile stone_wall_right = new Stone_wall_right(STONE_WALL_RIGHT_ID);
+
+    //iceland
+    public static Tile snowTile = new SnowTile(SNOW_ID);
+    public static Tile snowyBushTile = new SnowyBush(SNOW_BUSH_ID);
 
     //END INITIALIZE TILES
 

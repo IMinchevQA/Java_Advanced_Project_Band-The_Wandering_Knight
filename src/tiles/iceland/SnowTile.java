@@ -1,13 +1,12 @@
-package tiles.greenland;
+package tiles.iceland;
 
 import gfx.Assets;
 import tiles.Tile;
 
-//GRASS TILE
-public class GrassTile extends Tile {
+public class SnowTile extends Tile {
 
-    public GrassTile(int id) {
-        super(Assets.grass, id);
+    public SnowTile(int id) {
+        super(Assets.snow, id);
     }
 
 }
