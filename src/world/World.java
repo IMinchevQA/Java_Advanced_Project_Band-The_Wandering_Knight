@@ -147,8 +147,8 @@ public class World {
         entityManager.addEntity(new ChaserVillain(handler, 500, 300));
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
 
-        entityManager.addEntity(new Tent(handler, 600, 400));//AY
-        entityManager.addEntity(new Gate(handler, 200, 550));//AY
+        entityManager.addEntity(new Tent(handler, 352,320));//AY
+        entityManager.addEntity(new Gate(handler, 185,550));//AY
     }
 
     public Handler getHandler() {
