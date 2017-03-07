@@ -123,8 +123,10 @@ public class World {
         entityManager.addEntity(new Tree(handler, 1360, 231));
 
         entityManager.addEntity(new SnowyTree(handler, 600, 600));
-        entityManager.addEntity(new  SnowyTree(handler, 1800, 700));
-        entityManager.addEntity(new  SnowyTree(handler, 1100, 1350));
+        entityManager.addEntity(new SnowyTree(handler, 1800, 700));
+
+        entityManager.addEntity(new PalmTree(handler, 200, 1250));
+        entityManager.addEntity(new PalmTree(handler, 1100, 1350));
 
         entityManager.addEntity(new Rock(handler, 200, 200));
         entityManager.addEntity(new Rock(handler, 250, 250));
@@ -133,7 +135,8 @@ public class World {
         entityManager.addEntity(new Rock(handler, 100, 50));
         entityManager.addEntity(new Rock(handler, 320, 50));
         entityManager.addEntity(new Rock(handler, 1150, 450));
-
+        entityManager.addEntity(new Rock(handler, 1500, 1450));
+        entityManager.addEntity(new Rock(handler, 200, 1650));
 
         entityManager.addEntity(new Animal(handler, 150, 350));
         entityManager.addEntity(new RandomVillain(handler, 75, 100));
@@ -148,7 +151,10 @@ public class World {
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
 
         entityManager.addEntity(new Tent(handler, 352,320));//AY
+        entityManager.addEntity(new Tent(handler, 416,832));//AY
+
         entityManager.addEntity(new Gate(handler, 185,550));//AY
+        entityManager.addEntity(new Gate(handler, 1145,1090));//AY
     }
 
     public Handler getHandler() {

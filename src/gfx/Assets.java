@@ -41,6 +41,11 @@ public class Assets {
     public static final String SNOW = "./res/GameField/iceland/snow.png";//AY
     public static final String SNOWY_TREE = "./res/GameField/iceland/SnowyTree.png";//AY
     public static final String SNOWY_BUSH = "./res/GameField/iceland/SnowyBush.png";//AY
+    //desert
+    public static final String SAND = "./res/GameField/desert/sand.png";//AY
+    public static final String CACTUS1 = "./res/GameField/desert/cactus1.png";//AY
+    public static final String CACTUS2 = "./res/GameField/desert/cactus2.png";//AY
+    public static final String PALMTREE = "./res/GameField/desert/palmtree.png";//AY
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -68,6 +73,7 @@ public class Assets {
     public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
     public static BufferedImage tent,key, gateClosed, gateOpened;//AY
     public static BufferedImage snow,snowyTree, snowyBush;//AY
+    public static BufferedImage sand,cactus1, cactus2,palmtree;//AY
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -98,10 +104,15 @@ public class Assets {
         SpriteSheet keySheet = new SpriteSheet(ImageLoader.loadImage(KEY));//AY
         SpriteSheet gateClosedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_CLOSED));//AY
         SpriteSheet gateOpenedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_OPENED));//AY
-//iceland
+        //iceland
         SpriteSheet snowSheet = new SpriteSheet(ImageLoader.loadImage(SNOW));//AY
         SpriteSheet snowyTreeSheet = new SpriteSheet(ImageLoader.loadImage(SNOWY_TREE));//AY
         SpriteSheet snowyBushSheet = new SpriteSheet(ImageLoader.loadImage(SNOWY_BUSH));//AY
+        //desert
+        SpriteSheet sandSheet = new SpriteSheet(ImageLoader.loadImage(SAND));//AY
+        SpriteSheet cactus1Sheet = new SpriteSheet(ImageLoader.loadImage(CACTUS1));//AY
+        SpriteSheet cactus2Sheet = new SpriteSheet(ImageLoader.loadImage(CACTUS2));//AY
+        SpriteSheet palmtreeSheet = new SpriteSheet(ImageLoader.loadImage(PALMTREE));//AY
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -279,10 +290,16 @@ public class Assets {
         key = keySheet.crop(0,0,30, 30);//AY
         gateClosed = gateClosedSheet.crop(0,0,60, 60);//AY
         //gateOpened = gateOpenedSheet.crop(0,0,60, 60);//AY
+
         //iceland
         snow = snowSheet.crop(0,0,59, 59);//AY
         snowyTree = snowyTreeSheet.crop(0,0,38, 60);//AY
         snowyBush = snowyBushSheet.crop(0,0,59, 59);//AY
+        //desert
+        sand = sandSheet.crop(0,0,59, 59);//AY
+        cactus1 = cactus1Sheet.crop(0,0,59, 59);//AY
+        cactus2 = cactus2Sheet.crop(0,0,59, 59);//AY
+        palmtree = palmtreeSheet.crop(0,0,120,151);//AY
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

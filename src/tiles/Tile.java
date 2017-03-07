@@ -1,5 +1,8 @@
 package tiles;
 
+import tiles.desert.Cactus1;
+import tiles.desert.Cactus2;
+import tiles.desert.Sand;
 import tiles.greenland.GrassTile;
 import tiles.greenland.StoneTile;
 import tiles.greenland.WaterTile;
@@ -37,6 +40,10 @@ public class Tile {
     //iceland
     private static final int SNOW_ID = 30;
     private static final int SNOW_BUSH_ID = 31;
+    //desert
+    private static final int SAND_ID = 40;
+    private static final int CACTUS1_ID = 41;
+    private static final int CACTUS2_ID = 42;
     //END TILES IDS
 
     //ARRAY WITH THE UNIQUE IDS OF ALL TYPE OF TILES WE WILL HAVE , 256 SHOULD BE MORE THAN ENOUGH
@@ -67,7 +74,10 @@ public class Tile {
     //iceland
     public static Tile snowTile = new SnowTile(SNOW_ID);
     public static Tile snowyBushTile = new SnowyBush(SNOW_BUSH_ID);
-
+    //desart
+    public static Tile sandTile = new Sand(SAND_ID);
+    public static Tile cactus1Tile = new Cactus1(CACTUS1_ID);
+    public static Tile cactus2Tile = new Cactus2(CACTUS2_ID);
     //END INITIALIZE TILES
 
     public static final int TILE_WIDTH = 32, TILE_HEIGHT = 32;

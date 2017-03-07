@@ -2,38 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e83fda-63fc-4d38-986d-8479952419ba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/entities/statics/Gate.class" afterPath="$PROJECT_DIR$/out/production/NorbertaGame/entities/statics/Gate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/gfx/Assets.class" afterPath="$PROJECT_DIR$/out/production/NorbertaGame/gfx/Assets.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/inventory/Inventory.class" afterPath="$PROJECT_DIR$/out/production/NorbertaGame/inventory/Inventory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/Tile.class" afterPath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/Tile.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/statics/PalmTree.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tiles/desert/Cactus1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tiles/desert/Cactus2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tiles/desert/Sand.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/GrassTile.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/StoneTile.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/WaterTile.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Bush1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Bush2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Bush3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Flower1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Flower2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Mushroom1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Mushroom2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/W_lilly.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/W_stone.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/decorations/Well_full.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_down1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_down2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_left.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_right.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_up1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/tiles/stone_wall/Stone_wall_up2.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/NorbertaGame/world/World.class" afterPath="$PROJECT_DIR$/out/production/NorbertaGame/world/World.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/Map.xlsx" afterPath="$PROJECT_DIR$/res/Map.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/World/world.txt" afterPath="$PROJECT_DIR$/res/World/world.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/statics/SnowyTree.java" afterPath="$PROJECT_DIR$/src/entities/statics/SnowyTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gfx/Assets.java" afterPath="$PROJECT_DIR$/src/gfx/Assets.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/Tile.java" afterPath="$PROJECT_DIR$/src/tiles/Tile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/GrassTile.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/GrassTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/StoneTile.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/StoneTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/WaterTile.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/WaterTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush1.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush2.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush3.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Bush3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Flower1.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Flower1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Flower2.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Flower2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Mushroom1.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Mushroom1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Mushroom2.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Mushroom2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/W_lilly.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/W_lilly.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/W_stone.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/W_stone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/decorations/Well_full.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/decorations/Well_full.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_down1.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_down1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_down2.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_down2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_left.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_left.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_right.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_right.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_up1.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_up1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_up2.java" afterPath="$PROJECT_DIR$/src/tiles/greenland/stone_wall/Stone_wall_up2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/iceland/SnowTile.java" afterPath="$PROJECT_DIR$/src/tiles/iceland/SnowTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tiles/iceland/SnowyBush.java" afterPath="$PROJECT_DIR$/src/tiles/iceland/SnowyBush.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/world/World.java" afterPath="$PROJECT_DIR$/src/world/World.java" />
     </list>
     <ignored path="NorbertaGame.iws" />
@@ -56,11 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="World.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/world/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="126" column="69" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
+            <state relative-caret-position="290">
+              <caret line="156" column="59" selection-start-line="156" selection-start-column="59" selection-end-line="156" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,46 +70,50 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
               <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#523#524#0" expanded="false" />
+                <element signature="e#625#626#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrassTile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tiles/greenland/GrassTile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Assets.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Assets.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gfx/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="284" column="56" selection-start-line="284" selection-start-column="56" selection-end-line="284" selection-end-column="56" />
+            <state relative-caret-position="341">
+              <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnowTile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tiles/iceland/SnowTile.java">
+      <file leaf-file-name="Sand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tiles/desert/Sand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cactus1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tiles/desert/Cactus1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cactus2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tiles/desert/Cactus2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -131,9 +132,25 @@
       <file leaf-file-name="Tile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tiles/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+            <state relative-caret-position="154">
+              <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PalmTree.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entities/statics/PalmTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+              <folding>
+                <element signature="e#531#566#0" expanded="true" />
+                <element signature="e#714#762#0" expanded="true" />
+                <element signature="e#714#762#0" expanded="true" />
+                <element signature="e#764#829#0" expanded="true" />
+                <element signature="e#764#829#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,18 +158,8 @@
       <file leaf-file-name="world.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/World/world.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SnowyBush.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tiles/iceland/SnowyBush.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+            <state relative-caret-position="442">
+              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -213,10 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/entity/Player.java" />
-        <option value="$PROJECT_DIR$/src/game/GameState.java" />
-        <option value="$PROJECT_DIR$/src/entities/statics/StaticEntity.java" />
-        <option value="$PROJECT_DIR$/src/game/states/GameState.java" />
         <option value="$PROJECT_DIR$/src/game/states/State.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/gfx/UIManager.java" />
@@ -259,11 +262,15 @@
         <option value="$PROJECT_DIR$/src/tiles/iceland/SnowTile.java" />
         <option value="$PROJECT_DIR$/src/tiles/iceland/Bush1.java" />
         <option value="$PROJECT_DIR$/src/tiles/iceland/SnowyBush.java" />
-        <option value="$PROJECT_DIR$/src/tiles/Tile.java" />
-        <option value="$PROJECT_DIR$/res/World/world.txt" />
         <option value="$PROJECT_DIR$/src/entities/statics/SnowyTree.java" />
-        <option value="$PROJECT_DIR$/src/world/World.java" />
+        <option value="$PROJECT_DIR$/res/World/world.txt" />
         <option value="$PROJECT_DIR$/src/gfx/Assets.java" />
+        <option value="$PROJECT_DIR$/src/tiles/desert/Sand.java" />
+        <option value="$PROJECT_DIR$/src/tiles/desert/Cactus1.java" />
+        <option value="$PROJECT_DIR$/src/tiles/desert/Cactus2.java" />
+        <option value="$PROJECT_DIR$/src/tiles/Tile.java" />
+        <option value="$PROJECT_DIR$/src/entities/statics/PalmTree.java" />
+        <option value="$PROJECT_DIR$/src/world/World.java" />
       </list>
     </option>
   </component>
@@ -306,6 +313,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -396,55 +405,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="iceland" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="greenland" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="greenland" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="decorations" />
+              <option name="myItemId" value="desert" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -584,64 +545,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="World" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hero" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hero" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WithArmor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java_Advanced_Project_Band-The_Wandering_Knight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="GameField" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -664,14 +567,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="iceland" />
+              <option name="myItemId" value="desert" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -689,10 +590,10 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="entities.statics" />
+      <recent name="tiles.desert" />
       <recent name="tiles.iceland" />
       <recent name="entities.creature" />
       <recent name="tiles.stone_wall" />
-      <recent name="tiles.decorations" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\SoftUni\Java OOP Basic\RPG\Java_Advanced_Project_Band-The_Wandering_Knight\res" />
@@ -1237,6 +1138,7 @@
       <workItem from="1488905952374" duration="6323000" />
       <workItem from="1488919659074" duration="2778000" />
       <workItem from="1488922549108" duration="32000" />
+      <workItem from="1488924223225" duration="1589000" />
     </task>
     <task id="LOCAL-00001" summary="Item Drops and Inventory">
       <created>1486742501945</created>
@@ -1256,7 +1158,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86527000" />
+    <option name="totallyTimeSpent" value="88116000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1269,7 +1171,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1612" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1279,12 +1181,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31015453" sideWeight="0.50329876" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Fluid" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3067885" sideWeight="0.4967012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3067885" sideWeight="0.4967012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23809524" sideWeight="0.49570552" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23809524" sideWeight="0.49570552" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1372,26 +1274,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/GameField/meat.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/GameField/rockItem.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/GameField/stone1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/GameField/stone2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/GameField/stones.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1560,17 +1442,17 @@
         <state relative-caret-position="352">
           <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5187#5223#0" expanded="true" />
-            <element signature="e#5187#5223#0" expanded="true" />
-            <element signature="e#8021#8042#0" expanded="true" />
-            <element signature="e#8021#8042#0" expanded="true" />
-            <element signature="e#8095#8118#0" expanded="true" />
-            <element signature="e#8095#8118#0" expanded="true" />
-            <element signature="e#8283#8284#0" expanded="true" />
-            <element signature="e#8315#8316#0" expanded="true" />
-            <element signature="e#8368#8369#0" expanded="true" />
-            <element signature="e#8410#8411#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5187#5223#0" expanded="false" />
+            <element signature="e#5187#5223#0" expanded="false" />
+            <element signature="e#8021#8042#0" expanded="false" />
+            <element signature="e#8021#8042#0" expanded="false" />
+            <element signature="e#8095#8118#0" expanded="false" />
+            <element signature="e#8095#8118#0" expanded="false" />
+            <element signature="e#8283#8284#0" expanded="false" />
+            <element signature="e#8315#8316#0" expanded="false" />
+            <element signature="e#8368#8369#0" expanded="false" />
+            <element signature="e#8410#8411#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1596,10 +1478,10 @@
         <state relative-caret-position="68">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#779#780#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="false" />
+            <element signature="e#748#749#0" expanded="false" />
+            <element signature="e#779#780#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1637,7 +1519,7 @@
         <state relative-caret-position="68">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1696,7 +1578,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1683">
           <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4173#4174#0" expanded="false" />
+            <element signature="e#4206#4207#0" expanded="false" />
+            <element signature="e#4251#4252#0" expanded="false" />
+            <element signature="e#4286#4287#0" expanded="false" />
+            <element signature="e#4327#4328#0" expanded="false" />
+            <element signature="e#4360#4361#0" expanded="false" />
+            <element signature="e#4389#4390#0" expanded="false" />
+            <element signature="e#4417#4418#0" expanded="false" />
+            <element signature="e#4447#4448#0" expanded="false" />
+            <element signature="e#4476#4477#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1708,45 +1602,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tiles/Tile.java">
+    <entry file="file://$PROJECT_DIR$/src/entities/statics/SnowyTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="459">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#523#524#0" expanded="false" />
+            <element signature="e#625#626#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/World/world.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="442">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/statics/SnowyTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/world/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="126" column="69" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gfx/Assets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="284" column="56" selection-start-line="284" selection-start-column="56" selection-end-line="284" selection-end-column="56" />
+        <state relative-caret-position="341">
+          <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tiles/desert/Sand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tiles/desert/Cactus1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tiles/desert/Cactus2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tiles/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/statics/PalmTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+          <folding>
+            <element signature="e#531#566#0" expanded="true" />
+            <element signature="e#714#762#0" expanded="true" />
+            <element signature="e#714#762#0" expanded="true" />
+            <element signature="e#764#829#0" expanded="true" />
+            <element signature="e#764#829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/world/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="156" column="59" selection-start-line="156" selection-start-column="59" selection-end-line="156" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
