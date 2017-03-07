@@ -79,6 +79,11 @@ public class Inventory {
         String rockCountString = itemCountToString(Item.rockItem.getId());
         g.drawString(rockCountString, invX + 150, 50);
 
+        //key item
+        g.drawImage(Assets.key, invX  + 165, 20, 25,25,null);//AY
+        String keyCountString = itemCountToString(Item.key.getId());//AY
+        g.drawString(keyCountString, invX + 200, 50);//AY
+
     }
 
     public Handler getHandler() {

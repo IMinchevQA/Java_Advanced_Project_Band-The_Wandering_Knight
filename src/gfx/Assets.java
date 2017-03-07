@@ -32,7 +32,8 @@ public class Assets {
     public static final String ROCKITEM = "./res/GameField/rockItem.png";
     public static final String MEAT = "./res/GameField/meat.png";
     public static final String SHEEP = "./res/Sheep/sheep_walk.png";
-
+    public static final String TENT = "./res/GameField/tent.png";//AY
+    public static final String KEY = "./res/GameField/key.png";//AY
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
     public static BufferedImage player, grass, water, stone,
@@ -57,6 +58,7 @@ public class Assets {
     public static BufferedImage playerHealth, inventory, coin, rock1,rockItem, meat;
     public static BufferedImage[] sheep_Left, sheep_Right, sheep_Up, sheep_Down;
     public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
+    public static BufferedImage tent,key;//AY
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -82,6 +84,8 @@ public class Assets {
         SpriteSheet rockItemSheet = new SpriteSheet(ImageLoader.loadImage(ROCKITEM));
         SpriteSheet meatSheet = new SpriteSheet(ImageLoader.loadImage(MEAT));
         SpriteSheet sheep = new SpriteSheet(ImageLoader.loadImage(SHEEP));
+        SpriteSheet tentSheet = new SpriteSheet(ImageLoader.loadImage(TENT));//AY
+        SpriteSheet keySheet = new SpriteSheet(ImageLoader.loadImage(KEY));//AY
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -223,6 +227,8 @@ public class Assets {
         rock1 = stone1Sheet.crop(0,0,30, 60);
         rockItem = rockItemSheet.crop(0,0,30, 30);
         meat = meatSheet.crop(0,0,42,42);
+        tent = tentSheet.crop(0,0,60, 60);//AY
+        key = keySheet.crop(0,0,30, 30);//AY
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

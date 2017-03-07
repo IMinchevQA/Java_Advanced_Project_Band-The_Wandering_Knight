@@ -13,6 +13,7 @@ public class Item {
     public static Item woodItem = new Item(Assets.cutDownTree, "Wood", 1);
     public static Item rockItem = new Item(Assets.rockItem, "rock", 2);
     public static Item meatItem = new Item(Assets.meat, "meat", 3);
+    public static Item key = new Item(Assets.key, "key", 4);//AY
 
     public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 

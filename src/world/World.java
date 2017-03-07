@@ -6,6 +6,7 @@ import entities.creature.Player;
 import entities.creature.villains.ChaserVillain;
 import entities.creature.villains.RandomVillain;
 
+import entities.statics.Tent;//AY
 import entities.statics.Rock;
 import entities.statics.Tree;
 import game.Handler;
@@ -147,7 +148,7 @@ public class World {
         entityManager.addEntity(new ChaserVillain(handler, 500, 300));
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
 
-
+        entityManager.addEntity(new Tent(handler, 100, 550));//AY
 
     }
 
