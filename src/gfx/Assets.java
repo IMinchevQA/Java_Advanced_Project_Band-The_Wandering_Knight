@@ -11,6 +11,7 @@ public class Assets {
     //IMAGE PATHS
     public static final String PATH = "./res/GameField/TileSamples-Uncut/sprite.png";
     public static final String HERO_PATH = "./res/Hero/heroechico_swd_AllPositions.png";
+    public static final String HERO_ARMOR_PATH = "./res/Hero/WithArmor/ArmoredHero.png";
     public static final String TREES_PATH = "./res/GameField/TileSamples-Uncut/Trees.png";
     public static final String START_SCREEN = "./res/Buttons/StartScreen.png";
     public static final String INFO_TEAM = "./res/Buttons/aboutINFO.png";
@@ -34,6 +35,7 @@ public class Assets {
     public static final String SHEEP = "./res/Sheep/sheep_walk.png";
     public static final String TENT = "./res/GameField/tent.png";//AY
     public static final String KEY = "./res/GameField/key.png";//AY
+
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
     public static BufferedImage player, grass, water, stone,
@@ -41,7 +43,7 @@ public class Assets {
             bush1,bush2,bush3,flower1,well_full,flower2,
             stone_wall_up1,stone_wall_up2,stone_wall_down1,stone_wall_down2,
             stone_wall_left,stone_wall_right, tree1, tree2, tree3, forest, cutDownTree, endGame;
-    public static BufferedImage[] player_Left, player_Right, player_Up, player_Down, player_LeftAttack, player_RightAttack, player_UpAttack, player_DownAttack;
+    public static BufferedImage[] player_Left, player_Right, player_Up, player_Down, player_LeftAttack, player_RightAttack, player_UpAttack, player_DownAttack, playerArmored_Left, playerArmored_Right, playerArmored_Up, playerArmored_Down, playerArmored_LeftAttack, playerArmored_RightAttack, playerArmored_UpAttack, playerArmored_DownAttack;
     public static BufferedImage[] startScreen;
     public static BufferedImage[] infoTeam;
     public static BufferedImage[] btn_start;
@@ -50,7 +52,7 @@ public class Assets {
     public static BufferedImage[] btn_back;
 
     public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
-    public static BufferedImage player_DownStill, player_UpStill, player_RightStill, player_LeftStill;
+    public static BufferedImage player_LeftStill, player_RightStill, player_UpStill, player_DownStill, playerArmored_LeftStill, playerArmored_RightStill, playerArmored_UpStill, playerArmored_DownStill;
     public static BufferedImage[] chaserVillain_Left, chaserVillain_Right, chaserVillain_Up, chaserVillain_Down;
     public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
     public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
@@ -73,6 +75,7 @@ public class Assets {
         SpriteSheet buttonBackHovered = new SpriteSheet(ImageLoader.loadImage(BACK_BUTTON_HOVERED));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(PATH));
         SpriteSheet playerSheet =  new SpriteSheet(ImageLoader.loadImage(HERO_PATH));
+        SpriteSheet playerArmoredSheet = new SpriteSheet(ImageLoader.loadImage(HERO_ARMOR_PATH));
         SpriteSheet trees = new SpriteSheet(ImageLoader.loadImage(TREES_PATH));
         SpriteSheet villains = new SpriteSheet(ImageLoader.loadImage(VILLAIN_PATH));
         SpriteSheet chaserVillains = new SpriteSheet(ImageLoader.loadImage(CHASER_VILLAIN_PATH));
@@ -105,15 +108,15 @@ public class Assets {
         btn_back[0] = buttonBackNormal.crop(0, 0, 198, 91);
         btn_back[1] = buttonBackHovered.crop(0, 0, 198, 91);
         player_Left = new BufferedImage[2];
-        player_Right = new BufferedImage[2];
-        player_Up = new BufferedImage[2];
-        player_Down = new BufferedImage[2];
         player_Left[0] = playerSheet.crop(28, 144, 45, 55);
         player_Left[1] = playerSheet.crop(222, 150, 45, 50);
+        player_Right = new BufferedImage[2];
         player_Right[0] = playerSheet.crop(20, 245, 45, 55);
         player_Right[1] = playerSheet.crop(229, 252, 45, 50);
+        player_Up = new BufferedImage[2];
         player_Up[0] = playerSheet.crop(26, 350, 45, 49);
         player_Up[1] = playerSheet.crop(116, 348, 50, 49);
+        player_Down = new BufferedImage[2];
         player_Down[0] = playerSheet.crop(120, 50, 45, 50);
         player_Down[1] = playerSheet.crop(211, 50, 50, 50);
         player_LeftAttack = new BufferedImage[3];
@@ -132,10 +135,42 @@ public class Assets {
         player_DownAttack[0] = playerSheet.crop(211, 50, 50, 50);
         player_DownAttack[1] = playerSheet.crop(120, 50, 45, 50);
         player_DownAttack[2] = playerSheet.crop(20, 50, 45, 50);
-        player_DownStill = playerSheet.crop(20, 50, 45, 50);
-        player_UpStill = playerSheet.crop(324, 350, 53, 50);
-        player_RightStill = playerSheet.crop(330, 250, 50, 50);
         player_LeftStill = playerSheet.crop(315, 150, 50, 50);
+        player_RightStill = playerSheet.crop(330, 250, 50, 50);
+        player_UpStill = playerSheet.crop(324, 350, 53, 50);
+        player_DownStill = playerSheet.crop(20, 50, 45, 50);
+        playerArmored_Left = new BufferedImage[2];
+        playerArmored_Left[0] = playerArmoredSheet.crop(7, 98, 35, 35);
+        playerArmored_Left[1] = playerArmoredSheet.crop(104, 98, 35, 35);
+        playerArmored_Right = new BufferedImage[2];
+        playerArmored_Right[0] = playerArmoredSheet.crop(4, 147, 35, 35);
+        playerArmored_Right[1] = playerArmoredSheet.crop(100, 147, 35, 35);
+        playerArmored_Up = new BufferedImage[2];
+        playerArmored_Up[0] = playerArmoredSheet.crop(7, 52, 35, 35);
+        playerArmored_Up[1] = playerArmoredSheet.crop(102,52, 35, 35);
+        playerArmored_Down = new BufferedImage[2];
+        playerArmored_Down[0] = playerArmoredSheet.crop(7, 4, 35, 35);
+        playerArmored_Down[1] = playerArmoredSheet.crop(102,4, 35, 35);
+        playerArmored_LeftAttack = new BufferedImage[3];
+        playerArmored_LeftAttack[0] = playerArmoredSheet.crop(291, 98, 35, 35);;
+        playerArmored_LeftAttack[1] = playerArmoredSheet.crop(237, 98, 38, 35);
+        playerArmored_LeftAttack[2] = playerArmoredSheet.crop(196, 98, 35, 35);
+        playerArmored_RightAttack = new BufferedImage[3];
+        playerArmored_RightAttack[0] = playerArmoredSheet.crop(297, 148, 35, 35);
+        playerArmored_RightAttack[1] = playerArmoredSheet.crop(254, 148, 35, 35);
+        playerArmored_RightAttack[2] = playerArmoredSheet.crop(200, 148, 35, 35);
+        playerArmored_UpAttack = new BufferedImage[3];
+        playerArmored_UpAttack[0] = playerArmoredSheet.crop(295, 46, 35, 40);
+        playerArmored_UpAttack[1] = playerArmoredSheet.crop(246, 46, 35, 40);
+        playerArmored_UpAttack[2] = playerArmoredSheet.crop(195, 46, 35, 40);
+        playerArmored_DownAttack = new BufferedImage[3];
+        playerArmored_DownAttack[0] = playerArmoredSheet.crop(336, 0, 35, 40);
+        playerArmored_DownAttack[1] = playerArmoredSheet.crop(287, 0, 35, 40);
+        playerArmored_DownAttack[2] = playerArmoredSheet.crop(248, 0, 35, 40);
+        playerArmored_LeftStill = playerArmoredSheet.crop(52, 98, 40, 35);
+        playerArmored_RightStill = playerArmoredSheet.crop(52, 146, 40, 35);
+        playerArmored_UpStill = playerArmoredSheet.crop(52, 52, 40, 35);
+        playerArmored_DownStill = playerArmoredSheet.crop(52, 4, 40, 35);
 
         //player health icon
         playerHealth = playerHealthSheet.crop(0,0,24,24);

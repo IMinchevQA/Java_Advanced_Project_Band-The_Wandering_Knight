@@ -18,6 +18,10 @@ public class Player extends Creature {
 
     // Animations
     private Animation animLeft, animRight, animUp, animDown, animLeftAttack, animRightAttack, animUpAttack, animDownAttack;
+
+    //Still positions
+    private static BufferedImage player_LeftStill, player_RightStill, player_UpStill, player_DownStill;
+
     // Attack timer
     private long lastAttackTimer, attackCooldown = 700, attackTimer = attackCooldown;
     private Inventory inventory;
@@ -37,6 +41,13 @@ public class Player extends Creature {
         bounds.width = 24;
         bounds.height = 32;
 
+        //Still positions
+        player_LeftStill = Assets.player_LeftStill;
+        player_RightStill = Assets.player_RightStill;
+        player_UpStill = Assets.player_UpStill;
+        player_DownStill = Assets.player_DownStill;
+
+
         //Animations
         animLeft = new Animation(400, Assets.player_Left);
         animRight = new Animation(400, Assets.player_Right);
@@ -46,8 +57,24 @@ public class Player extends Creature {
         animRightAttack = new Animation(100,Assets.player_RightAttack);
         animDownAttack = new Animation(100, Assets.player_DownAttack);
         animUpAttack = new Animation(100, Assets.player_UpAttack);
-
         inventory = new Inventory(handler);
+    }
+
+    public void changeAnimations_Images() {
+//        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+//        System.out.println("CALLED ME");
+        animLeft = new Animation(400, Assets.playerArmored_Left);
+        animRight = new Animation(400, Assets.playerArmored_Right);
+        animUp = new Animation(400, Assets.playerArmored_Up);
+        animDown = new Animation(400, Assets.playerArmored_Down);
+        animLeftAttack = new Animation(100, Assets.playerArmored_LeftAttack);
+        animRightAttack = new Animation(100, Assets.playerArmored_RightAttack);
+        animUpAttack = new Animation(100, Assets.playerArmored_UpAttack);
+        animDownAttack = new Animation(100, Assets.playerArmored_DownAttack);
+        player_LeftStill = Assets.playerArmored_LeftStill;
+        player_RightStill = Assets.playerArmored_RightStill;
+        player_UpStill = Assets.playerArmored_UpStill;
+        player_DownStill = Assets.playerArmored_DownStill;
     }
 
     @Override
@@ -185,13 +212,13 @@ public class Player extends Creature {
         } else {
             switch (lastMovedDirection) {
                 case "Down":
-                    return Assets.player_DownStill;
+                    return player_DownStill;
                 case "Left":
-                    return Assets.player_LeftStill;
+                    return player_LeftStill;
                 case "Right":
-                    return Assets.player_RightStill;
+                    return player_RightStill;
                 default:
-                    return Assets.player_UpStill;
+                    return player_UpStill;
             }
         }
 

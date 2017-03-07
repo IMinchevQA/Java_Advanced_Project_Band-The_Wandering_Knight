@@ -47,10 +47,16 @@ public class Item {
                     } else {
                         handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + 10);
                     }
+                } else if (this.getId() == 0) {
+                    handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+                    int currentCoins = handler.getWorld().getEntityManager().getPlayer().getInventory().getCoins();
+                    if(currentCoins >= 1) {
+                        System.out.println("Armor activated by: Class Item, row 54!!!");
+                        handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
+                    }
                 } else {
-
+                    handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                 }
-                handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
             }
         }
     }

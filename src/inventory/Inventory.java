@@ -44,6 +44,12 @@ public class Inventory {
         }
     }
 
+    public int getCoins() {
+        //test
+        this.inventoryItems.putIfAbsent(0, 1);
+        return this.inventoryItems.get(0);
+    }
+
     private String itemCountToString(int id){
         if(inventoryItems.containsKey(id)){
             return String.valueOf(inventoryItems.get(id));
