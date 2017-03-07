@@ -15,6 +15,7 @@ public class Item {
     public static Item meatItem = new Item(Assets.meat, "meat", 3);
     public static Item key = new Item(Assets.key, "key", 4);//AY
 
+
     public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 
     protected Handler handler;

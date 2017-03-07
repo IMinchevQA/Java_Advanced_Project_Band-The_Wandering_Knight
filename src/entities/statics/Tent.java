@@ -13,10 +13,10 @@ public class Tent extends StaticEntity {
     public Tent(Handler handler, float x, float y) {
         super(handler, x, y, TENT_WIDTH, TENT_HEIGHT);
 
-        bounds.x = 20;
-        bounds.y = 92;
-        bounds.width = 22;
-        bounds.height = 1;
+        bounds.x = 0;
+        bounds.y = 30;
+        bounds.width = 25;
+        bounds.height = 15;
     }
 
     @Override

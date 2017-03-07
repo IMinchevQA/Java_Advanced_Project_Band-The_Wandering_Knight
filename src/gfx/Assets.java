@@ -35,6 +35,8 @@ public class Assets {
     public static final String SHEEP = "./res/Sheep/sheep_walk.png";
     public static final String TENT = "./res/GameField/tent.png";//AY
     public static final String KEY = "./res/GameField/key.png";//AY
+    public static final String GATE_CLOSED = "./res/GameField/gate/gateClosed.png";//AY
+    public static final String GATE_OPENED = "./res/GameField/gate/gateOpened.png";//AY
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -60,7 +62,7 @@ public class Assets {
     public static BufferedImage playerHealth, inventory, coin, rock1,rockItem, meat;
     public static BufferedImage[] sheep_Left, sheep_Right, sheep_Up, sheep_Down;
     public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
-    public static BufferedImage tent,key;//AY
+    public static BufferedImage tent,key, gateClosed, gateOpened;//AY
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -89,6 +91,8 @@ public class Assets {
         SpriteSheet sheep = new SpriteSheet(ImageLoader.loadImage(SHEEP));
         SpriteSheet tentSheet = new SpriteSheet(ImageLoader.loadImage(TENT));//AY
         SpriteSheet keySheet = new SpriteSheet(ImageLoader.loadImage(KEY));//AY
+        SpriteSheet gateClosedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_CLOSED));//AY
+        SpriteSheet gateOpenedSheet = new SpriteSheet(ImageLoader.loadImage(GATE_OPENED));//AY
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -264,6 +268,8 @@ public class Assets {
         meat = meatSheet.crop(0,0,42,42);
         tent = tentSheet.crop(0,0,60, 60);//AY
         key = keySheet.crop(0,0,30, 30);//AY
+        gateClosed = gateClosedSheet.crop(0,0,60, 60);//AY
+        //gateOpened = gateOpenedSheet.crop(0,0,60, 60);//AY
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

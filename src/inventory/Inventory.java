@@ -44,6 +44,7 @@ public class Inventory {
         }
     }
 
+
     public int getCoins() {
         //test
         this.inventoryItems.putIfAbsent(0, 1);
