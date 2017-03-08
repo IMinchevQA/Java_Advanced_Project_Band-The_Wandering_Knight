@@ -52,10 +52,29 @@ public class MouseManager implements MouseListener, MouseMotionListener{
         return mouseY;
     }
 
+    public int[] registerMouse(){
+        int[] xy = new int[2];
+        if(this.leftPressed){
+
+            xy[0] = mouseX;
+            xy[1] = mouseY;
+        }
+        return xy;
+    }
+
+    public boolean isPressed(){
+        if(this.leftPressed){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
+
+
 
     @Override
     public void mousePressed(MouseEvent e) {

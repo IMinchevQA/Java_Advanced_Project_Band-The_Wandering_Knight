@@ -46,6 +46,7 @@ public class Assets {
     public static final String CACTUS1 = "./res/GameField/desert/cactus1.png";//AY
     public static final String CACTUS2 = "./res/GameField/desert/cactus2.png";//AY
     public static final String PALMTREE = "./res/GameField/desert/palmtree.png";//AY
+    public static final String MAGIC = "./res/magic.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -74,6 +75,7 @@ public class Assets {
     public static BufferedImage tent,key, gateClosed, gateOpened;//AY
     public static BufferedImage snow,snowyTree, snowyBush;//AY
     public static BufferedImage sand,cactus1, cactus2,palmtree;//AY
+    public static BufferedImage magic;
 
     public static void init() {
         SpriteSheet screen = new SpriteSheet(ImageLoader.loadImage(START_SCREEN));
@@ -113,6 +115,7 @@ public class Assets {
         SpriteSheet cactus1Sheet = new SpriteSheet(ImageLoader.loadImage(CACTUS1));//AY
         SpriteSheet cactus2Sheet = new SpriteSheet(ImageLoader.loadImage(CACTUS2));//AY
         SpriteSheet palmtreeSheet = new SpriteSheet(ImageLoader.loadImage(PALMTREE));//AY
+        SpriteSheet magicSheet = new SpriteSheet(ImageLoader.loadImage(MAGIC));
 
 //        player = hero.crop(0,0, 50, 50);
         startScreen = new BufferedImage[1];
@@ -300,6 +303,8 @@ public class Assets {
         cactus1 = cactus1Sheet.crop(0,0,59, 59);//AY
         cactus2 = cactus2Sheet.crop(0,0,59, 59);//AY
         palmtree = palmtreeSheet.crop(0,0,120,151);//AY
+
+        magic = magicSheet.crop(0, 0, 26, 24);
 
         inventory = inventorySheet.crop(0,0, 600,50);
 

@@ -43,18 +43,18 @@ public class Item {
             if (handler.getKeyManager().pickUp) {
                 pickedUp = true;
                 if(this.getId() == 3){
-                    if(handler.getWorld().getEntityManager().getPlayer().getHealth() > 90){
-                        handler.getWorld().getEntityManager().getPlayer().setHealth(100);
+                    if(handler.getWorld().getEntityManager().getPlayer().getHealth() > handler.getWorld().getEntityManager().getPlayer().getTotalHealth() - 10){
+                        handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getTotalHealth());
                     } else {
                         handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + 10);
                     }
                 } else if (this.getId() == 0) {
                     handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
-                    int currentCoins = handler.getWorld().getEntityManager().getPlayer().getInventory().getCoins();
-                    if(currentCoins >= 1) {
-                        System.out.println("Armor activated by: Class Item, row 54!!!");
-                        handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
-                    }
+                    //int currentCoins = handler.getWorld().getEntityManager().getPlayer().getInventory().getCoins();
+                    //if(currentCoins >= 1) {
+                     //   System.out.println("Armor activated by: Class Item, row 54!!!");
+                     //   handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
+                    //}
                 } else {
                     handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                 }

@@ -47,8 +47,14 @@ public class Inventory {
 
     public int getCoins() {
         //test
-        this.inventoryItems.putIfAbsent(0, 1);
+        this.inventoryItems.putIfAbsent(0, 0);
         return this.inventoryItems.get(0);
+    }
+
+    public void useCoin(){
+        if(inventoryItems.containsKey(0)){
+            inventoryItems.put(0, inventoryItems.get(0) - 1);
+        }
     }
 
     private String itemCountToString(int id){

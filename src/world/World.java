@@ -3,6 +3,7 @@ package world;
 import entities.EntityManager;
 import entities.creature.Animal;
 import entities.creature.Player;
+import entities.creature.projectile.Projectile;
 import entities.creature.villains.ChaserVillain;
 import entities.creature.villains.RandomVillain;
 
@@ -53,6 +54,14 @@ public class World {
             Random random = new Random();
             entityManager.addEntity(new ChaserVillain(handler, random.nextInt(40) + 80, random.nextInt(60) + 750));
             time = 0;
+        }
+        if(entityManager.getPlayer().isShooting() && time % 10 ==0
+                && entityManager.getPlayer().getMana() > 5){
+            entityManager.addEntity(new Projectile(handler,
+                    entityManager.getPlayer().getX(),
+                    entityManager.getPlayer().getY(),
+                    entityManager.getPlayer().getDir()));
+            entityManager.getPlayer().takeMana();
         }
 
     }

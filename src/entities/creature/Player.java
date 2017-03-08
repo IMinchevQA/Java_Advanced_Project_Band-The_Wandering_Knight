@@ -1,12 +1,15 @@
 package entities.creature;
 
 import entities.Entity;
+import entities.creature.projectile.Projectile;
 import game.Handler;
+import game.MouseManager;
 import game.states.EndGame;
 import game.states.State;
 import gfx.Animation;
 import gfx.Assets;
 import inventory.Inventory;
+import world.World;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -26,7 +29,15 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 700, attackTimer = attackCooldown;
     private Inventory inventory;
     private String lastMovedDirection = "Down";
-    public final int totalHealth;
+    private int totalHealth;
+    private int mana;
+    private int totalMana;
+    private int time;
+    private boolean shoot = false;
+    private double dir;
+    private boolean hasArmor = false;
+
+    private MouseManager mouseManager = handler.getMouseManager();
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -35,6 +46,8 @@ public class Player extends Creature {
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
         health = 100;
         totalHealth = health;
+        totalMana = 100;
+        mana = 100;
 
         bounds.x = 32;
         bounds.y = 24;
@@ -47,7 +60,6 @@ public class Player extends Creature {
         player_UpStill = Assets.player_UpStill;
         player_DownStill = Assets.player_DownStill;
 
-
         //Animations
         animLeft = new Animation(400, Assets.player_Left);
         animRight = new Animation(400, Assets.player_Right);
@@ -59,6 +71,29 @@ public class Player extends Creature {
         animUpAttack = new Animation(100, Assets.player_UpAttack);
         inventory = new Inventory(handler);
     }
+
+    public void classic_Images(){
+        //Still positions
+        player_LeftStill = Assets.player_LeftStill;
+        player_RightStill = Assets.player_RightStill;
+        player_UpStill = Assets.player_UpStill;
+        player_DownStill = Assets.player_DownStill;
+
+        //Animations
+        animLeft = new Animation(400, Assets.player_Left);
+        animRight = new Animation(400, Assets.player_Right);
+        animUp = new Animation(400, Assets.player_Up);
+        animDown = new Animation(400, Assets.player_Down);
+        animLeftAttack = new Animation(100, Assets.player_LeftAttack);
+        animRightAttack = new Animation(100,Assets.player_RightAttack);
+        animDownAttack = new Animation(100, Assets.player_DownAttack);
+        animUpAttack = new Animation(100, Assets.player_UpAttack);
+        inventory = new Inventory(handler);
+
+        totalHealth = 100;
+        hasArmor = false;
+    }
+
 
     public void changeAnimations_Images() {
 //        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
@@ -75,6 +110,11 @@ public class Player extends Creature {
         player_RightStill = Assets.playerArmored_RightStill;
         player_UpStill = Assets.playerArmored_UpStill;
         player_DownStill = Assets.playerArmored_DownStill;
+
+        totalHealth += 100;
+        health += 100;
+        hasArmor = true;
+        inventory.useCoin();
     }
 
     @Override
@@ -95,6 +135,63 @@ public class Player extends Creature {
 
         checkAttacks();
         inventory.tick();
+
+        updateShoot();
+        time++;
+        if(time % 60 == 0){
+            if(mana < 100){
+                this.mana += 2;
+            }
+            time = 0;
+        }
+        if(this.inventory.getCoins() >= 1 && !hasArmor){
+            changeAnimations_Images();
+        }
+        if(health < 100 && hasArmor){
+            classic_Images();
+        }
+
+    }
+
+
+
+    public boolean isShooting() {
+        return shoot;
+    }
+
+    private void setShoot(boolean shoot) {
+        this.shoot = shoot;
+    }
+
+    public double getDir() {
+        return dir;
+    }
+
+    private void setDir(double dir) {
+        this.dir = dir;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void takeMana() {
+        this.mana = this.getMana() - 5;
+    }
+
+
+
+    private void updateShoot(){
+        double dx = this.mouseManager.getMouseX() - (((int)this.x + 20)- handler.getGameCamera().getxOffset());
+        double dy = this.mouseManager.getMouseY() - (((int)this.y + 20)- handler.getGameCamera().getyOffset());
+        double direction = Math.atan2(dy, dx);
+        this.dir = direction;
+        if(mouseManager.isPressed()){
+            this.shoot = true;
+        }else {
+            this.shoot = false;
+        }
+
     }
 
     private void checkAttacks() {
@@ -181,6 +278,7 @@ public class Player extends Creature {
 //                    (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
 //                bounds.width, bounds.height);
         drawHealth(g);
+        drawMana(g);
     }
 
     public BufferedImage getCurrentAnimationFrame() {
@@ -224,7 +322,7 @@ public class Player extends Creature {
 
     }
     //health bar
-    public void drawHealth(Graphics g){
+    private void drawHealth(Graphics g){
         g.drawImage(Assets.playerHealth, 0, 0, 24,24,null);
         g.setColor(Color.red);
         g.fillRect(30,10,totalHealth, 10);
@@ -232,8 +330,19 @@ public class Player extends Creature {
         g.fillRect(30,10,this.getHealth(), 10);
     }
 
+    private void drawMana(Graphics g){
+
+        g.setColor(Color.white);
+        g.fillRect(30,25, totalMana, 10);
+        g.setColor(Color.blue);
+        g.fillRect(30,25,this.getMana(), 10);
+    }
+
     public int getTotalHealth(){
         return this.totalHealth;
+    }
+    public void updateTotalHealth(){
+        this.totalHealth += 100;
     }
     public Inventory getInventory() {
         return inventory;
