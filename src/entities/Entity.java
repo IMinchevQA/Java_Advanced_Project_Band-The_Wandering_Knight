@@ -21,8 +21,8 @@ public abstract class Entity {
         this.y = y;
         this.width = width;
         this.height = height;
-        health = DEFAULT_HEALTH;
-        bounds = new Rectangle(0, 0, width, height);
+        this.health = DEFAULT_HEALTH;
+        this.bounds = new Rectangle(0, 0, width, height);
 
     }
 
@@ -33,19 +33,19 @@ public abstract class Entity {
     public abstract void die();
 
     public void hurt(int amt){
-        health -= amt;
-        if(health <= 0){
-            active = false;
+        this.health -= amt;
+        if(this.health <= 0){
+            this.active = false;
             die();
         }
     }
 
     public boolean checkEntityCollisions(float xOffset, float yOffset) {
-        for (Entity entity : handler.getWorld().getEntityManager().getEntities()) {
+        for (Entity entity : this.handler.getWorld().getEntityManager().getEntities()) {
             if (entity.equals(this)) {
                 continue;
             }
-            if (entity.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
+            if (entity.getCollisionBounds(0f, 0f).intersects(this.getCollisionBounds(xOffset, yOffset))) {
                 return true;
             }
 
@@ -54,16 +54,15 @@ public abstract class Entity {
     }
 
     public Rectangle getCollisionBounds(float xOffset, float yOffset) {
-        return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds
-                .height);
+        return new Rectangle((int) (this.x + this.bounds.x + xOffset), (int) (this.y + this.bounds.y + yOffset), this.bounds.width, this.bounds.height);
     }
     public void removeBounds(){
-        bounds.width = -15;
-        bounds.height = -15;
+        this.bounds.width = -15;
+        this.bounds.height = -15;
     }
 
     public float getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(float x) {
@@ -71,7 +70,7 @@ public abstract class Entity {
     }
 
     public float getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(float y) {
@@ -79,7 +78,7 @@ public abstract class Entity {
     }
 
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     public void setWidth(int width) {
@@ -87,7 +86,7 @@ public abstract class Entity {
     }
 
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     public void setHeight(int height) {
@@ -95,7 +94,7 @@ public abstract class Entity {
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     public void setHealth(int health) {
@@ -103,7 +102,7 @@ public abstract class Entity {
     }
 
     public boolean isActive() {
-        return active;
+        return this.active;
     }
 
     public void setActive(boolean active) {

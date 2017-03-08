@@ -44,15 +44,15 @@ public class Player extends Creature {
         //Player MUST TAKE THE game OBJECT.
         //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
-        health = 100;
-        totalHealth = health;
-        totalMana = 100;
-        mana = 100;
+        this.health = 100;
+        this.totalHealth = health;
+        this.totalMana = 100;
+        this.mana = 100;
 
-        bounds.x = 32;
-        bounds.y = 24;
-        bounds.width = 24;
-        bounds.height = 32;
+        this.bounds.x = 32;
+        this.bounds.y = 24;
+        this.bounds.width = 24;
+        this.bounds.height = 32;
 
         //Still positions
         player_LeftStill = Assets.player_LeftStill;
@@ -61,15 +61,15 @@ public class Player extends Creature {
         player_DownStill = Assets.player_DownStill;
 
         //Animations
-        animLeft = new Animation(400, Assets.player_Left);
-        animRight = new Animation(400, Assets.player_Right);
-        animUp = new Animation(400, Assets.player_Up);
-        animDown = new Animation(400, Assets.player_Down);
-        animLeftAttack = new Animation(100, Assets.player_LeftAttack);
-        animRightAttack = new Animation(100,Assets.player_RightAttack);
-        animDownAttack = new Animation(100, Assets.player_DownAttack);
-        animUpAttack = new Animation(100, Assets.player_UpAttack);
-        inventory = new Inventory(handler);
+        this.animLeft = new Animation(400, Assets.player_Left);
+        this.animRight = new Animation(400, Assets.player_Right);
+        this.animUp = new Animation(400, Assets.player_Up);
+        this.animDown = new Animation(400, Assets.player_Down);
+        this.animLeftAttack = new Animation(100, Assets.player_LeftAttack);
+        this.animRightAttack = new Animation(100,Assets.player_RightAttack);
+        this.animDownAttack = new Animation(100, Assets.player_DownAttack);
+        this.animUpAttack = new Animation(100, Assets.player_UpAttack);
+        this.inventory = new Inventory(handler);
     }
 
     public void classic_Images(){
@@ -80,15 +80,15 @@ public class Player extends Creature {
         player_DownStill = Assets.player_DownStill;
 
         //Animations
-        animLeft = new Animation(400, Assets.player_Left);
-        animRight = new Animation(400, Assets.player_Right);
-        animUp = new Animation(400, Assets.player_Up);
-        animDown = new Animation(400, Assets.player_Down);
-        animLeftAttack = new Animation(100, Assets.player_LeftAttack);
-        animRightAttack = new Animation(100,Assets.player_RightAttack);
-        animDownAttack = new Animation(100, Assets.player_DownAttack);
-        animUpAttack = new Animation(100, Assets.player_UpAttack);
-        inventory = new Inventory(handler);
+        this.animLeft = new Animation(400, Assets.player_Left);
+        this.animRight = new Animation(400, Assets.player_Right);
+        this.animUp = new Animation(400, Assets.player_Up);
+        this.animDown = new Animation(400, Assets.player_Down);
+        this.animLeftAttack = new Animation(100, Assets.player_LeftAttack);
+        this.animRightAttack = new Animation(100,Assets.player_RightAttack);
+        this.animDownAttack = new Animation(100, Assets.player_DownAttack);
+        this.animUpAttack = new Animation(100, Assets.player_UpAttack);
+        this.inventory = new Inventory(handler);
 
         totalHealth = 100;
         hasArmor = false;
@@ -186,11 +186,7 @@ public class Player extends Creature {
         double dy = this.mouseManager.getMouseY() - (((int)this.y + 20)- handler.getGameCamera().getyOffset());
         double direction = Math.atan2(dy, dx);
         this.dir = direction;
-        if(mouseManager.isPressed()){
-            this.shoot = true;
-        }else {
-            this.shoot = false;
-        }
+        this.shoot = mouseManager.isPressed();
 
     }
 
