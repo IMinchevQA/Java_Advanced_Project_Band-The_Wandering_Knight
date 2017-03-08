@@ -25,6 +25,8 @@ public class Gate extends StaticEntity {
 
     }
 
+
+
    @Override
    public void die(){
 

@@ -64,6 +64,7 @@ public class World {
             entityManager.getPlayer().takeMana();
         }
 
+
     }
 
     public void render(Graphics g) {

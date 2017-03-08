@@ -57,6 +57,10 @@ public abstract class Entity {
         return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds
                 .height);
     }
+    public void removeBounds(){
+        bounds.width = -15;
+        bounds.height = -15;
+    }
 
     public float getX() {
         return x;
