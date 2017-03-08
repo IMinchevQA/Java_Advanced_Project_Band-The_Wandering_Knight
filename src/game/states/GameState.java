@@ -3,6 +3,13 @@ package game.states;
 import entities.creature.Player;
 import entities.statics.Tree;
 import game.Handler;
+
+import gfx.Assets;
+import gfx.ClickListener;
+import gfx.UI.PauseManager;
+import gfx.UI.UIImageButton;
+import gfx.UI.UIManager;
+import music.Sound;
 import world.World;
 
 import java.awt.*;
@@ -13,6 +20,7 @@ public class GameState extends State {
     private Player player;
     private World world;
     private Tree tree;
+
 
     public GameState(Handler handler) {
         super(handler);
@@ -26,10 +34,16 @@ public class GameState extends State {
     public void tick() {
         world.tick();
         handler.getGameCamera().move(1, 1);
+        if(handler.getGame().getKeyManager().pause){
+            State.setState(handler.getGame().pauseState);
+        }
+
     }
 
     @Override
     public void render(Graphics g) {
         world.render(g);
+
     }
+
 }

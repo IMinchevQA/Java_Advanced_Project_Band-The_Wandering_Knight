@@ -1,6 +1,7 @@
 package game;
 
 import gfx.AboutManager;
+import gfx.UI.PauseManager;
 import gfx.UI.UIManager;
 
 import java.awt.event.MouseEvent;
@@ -18,10 +19,19 @@ public class MouseManager implements MouseListener, MouseMotionListener{
     //ADD A VARIABLE TO RELATE EVENTS mouseRelease and mouseMoved with UIManager's events onMouseMove and onMouseRelease!!!
     private UIManager uiManager;
     private AboutManager aboutManager;
+    private PauseManager pauseManager;
 
 
     public MouseManager(){
 
+    }
+
+    public PauseManager getPauseManager() {
+        return pauseManager;
+    }
+
+    public void setPauseManager(PauseManager pauseManager) {
+        this.pauseManager = pauseManager;
     }
 
     public void setUIManager(UIManager uiManager){
@@ -100,6 +110,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
         if(aboutManager != null) {
             aboutManager.onMouseRelease(e);
         }
+
+        if(pauseManager != null){
+            pauseManager.onMouseRelease(e);
+        }
     }
 
     @Override
@@ -128,6 +142,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
         if(aboutManager != null) {
             aboutManager.onMouseMove(e);
+        }
+
+        if(pauseManager != null){
+            pauseManager.onMouseMove(e);
         }
     }
 }

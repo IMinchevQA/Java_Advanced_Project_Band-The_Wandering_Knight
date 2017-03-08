@@ -47,6 +47,8 @@ public class Assets {
     public static final String CACTUS2 = "./res/GameField/desert/cactus2.png";//AY
     public static final String PALMTREE = "./res/GameField/desert/palmtree.png";//AY
     public static final String MAGIC = "./res/Magic/magic.png";
+    public static final String SOUND = "./res/SoundButtons/sound.png";
+    public static final String SOUND_MUTE = "./res/SoundButtons/sound_mute.png";
 
     //Path path = new Path("../res/Hero/hero_AllPositions.png");
     //LIST ALL OBJECTS
@@ -62,6 +64,8 @@ public class Assets {
     public static BufferedImage[] btn_about;
     public static BufferedImage[] btn_quit;
     public static BufferedImage[] btn_back;
+    public static BufferedImage[] sound;
+    public static BufferedImage[] soundAlt;
 
     public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
     public static BufferedImage player_LeftStill, player_RightStill, player_UpStill, player_DownStill, playerArmored_LeftStill, playerArmored_RightStill, playerArmored_UpStill, playerArmored_DownStill;
@@ -116,8 +120,15 @@ public class Assets {
         SpriteSheet cactus2Sheet = new SpriteSheet(ImageLoader.loadImage(CACTUS2));//AY
         SpriteSheet palmtreeSheet = new SpriteSheet(ImageLoader.loadImage(PALMTREE));//AY
         SpriteSheet magicSheet = new SpriteSheet(ImageLoader.loadImage(MAGIC));
-
+        SpriteSheet soundSheet = new SpriteSheet(ImageLoader.loadImage(SOUND));
+        SpriteSheet soundMuteSheet = new SpriteSheet(ImageLoader.loadImage(SOUND_MUTE));
 //        player = hero.crop(0,0, 50, 50);
+        sound = new BufferedImage[2];
+        sound[0] = soundSheet.crop(0,0, 26, 26);
+        sound[1] = soundMuteSheet.crop(0, 0, 26,26);
+        soundAlt = new BufferedImage[2];
+        soundAlt[1] = soundSheet.crop(0,0, 26, 26);
+        soundAlt[0] = soundMuteSheet.crop(0, 0, 26,26);
         startScreen = new BufferedImage[1];
         startScreen[0] = screen.crop(0, 0, 999, 556);
         infoTeam = new BufferedImage[1];

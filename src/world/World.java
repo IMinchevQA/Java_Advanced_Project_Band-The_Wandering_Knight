@@ -11,7 +11,7 @@ import entities.statics.*;
 import game.Handler;
 import items.ItemManager;
 import tiles.Tile;
-import utils.Utils;
+import utils.Loader;
 
 import java.awt.*;
 import java.util.Random;
@@ -101,13 +101,13 @@ public class World {
     }
 
     private void loadWorld(String path) {
-        String worldFile = Utils.loadFileAsString(path);
+        String worldFile = Loader.loadFileAsString(path);
         //ONE DIMENSIONAL ARRAY WITH OUR FILE INFO
         String[] tokens = worldFile.split("\\s+");
-        width = Utils.parseWorldFile(tokens[0]);
-        height = Utils.parseWorldFile(tokens[1]);
-        spawnX = Utils.parseWorldFile(tokens[2]);
-        spawnY = Utils.parseWorldFile(tokens[3]);
+        width = Loader.parseWorldFile(tokens[0]);
+        height = Loader.parseWorldFile(tokens[1]);
+        spawnX = Loader.parseWorldFile(tokens[2]);
+        spawnY = Loader.parseWorldFile(tokens[3]);
 
         tilesWorldMatrix = new int[width][height];
         for (int x = 0; x < width; x++) {
@@ -115,7 +115,7 @@ public class World {
 
                 //ASSIGNING EVERY INDEX TO THE ARRAY
                 //NUMBER 4 IS ADDED BECAUSE FIRST 4 ELEMENTS VALUES ARE ASSIGNED TO - width, height, spawnX, spawnY
-                tilesWorldMatrix[x][y] = Utils.parseWorldFile(tokens[(x+y*width) + 4]);
+                tilesWorldMatrix[x][y] = Loader.parseWorldFile(tokens[(x+y*width) + 4]);
             }
         }
     }

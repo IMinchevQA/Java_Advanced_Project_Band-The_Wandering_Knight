@@ -9,6 +9,10 @@ public abstract class State {
 
     private static State currentState = null;
 
+    private boolean isMuted;
+
+
+
     public static void setState(State state) {
         currentState = state;
     }

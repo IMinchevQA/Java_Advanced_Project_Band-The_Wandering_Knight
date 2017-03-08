@@ -1,11 +1,10 @@
 package game;
 
-import game.states.AboutState;
-import game.states.GameState;
-import game.states.MenuState;
-import game.states.State;
+import game.states.*;
 import gfx.Assets;
 import gfx.GameCamera;
+import music.Sound;
+
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -19,6 +18,8 @@ public class Game implements Runnable {
     private Display display;
     private boolean running = false;
     private Thread thread;
+    private Sound sound;
+    private boolean isMuted;
 
     //BufferStrategy - Could be considered as a way for the computer to draw things to the screen.
     //Figuratively it is a kind of a "Hidden" screen within the computer drawn before to be displayed on the monitor.
@@ -30,6 +31,7 @@ public class Game implements Runnable {
     public State gameState;
     public State menuState;
     public State aboutState;
+    public State pauseState;
 
     //Input
     private InputManager keyManager;
@@ -41,13 +43,16 @@ public class Game implements Runnable {
     //Handler
     private Handler handler;
 
+
+
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
         keyManager = new InputManager();
         mouseManager = new MouseManager();
-
+        this.setMuted(false);
+        this.sound = new Sound();
     }
 
     private void init() {
@@ -71,7 +76,9 @@ public class Game implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         aboutState = new AboutState(handler);
+        pauseState = new PauseMenu(handler);
         State.setState(menuState);
+
     }
 
     private void tick() {
@@ -79,7 +86,11 @@ public class Game implements Runnable {
         if(State.getState() != null) {
             State.getState().tick();
         }
-
+        if(!isMuted()){
+            this.sound.startMusic();
+        }else{
+            this.sound.stopMusic();
+        }
     }
 
     private void render() {
@@ -184,5 +195,13 @@ public class Game implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isMuted() {
+        return isMuted;
+    }
+
+    public void setMuted(boolean muted) {
+        isMuted = muted;
     }
 }

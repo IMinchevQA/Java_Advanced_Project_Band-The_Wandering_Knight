@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Utils {
+public class Loader {
 
     //METHOD THAT LOADS OUR LEVEL FILE
     //THE path PARAMETER IS PASSED BY World.java, METHOD loadWorld(), VARIABLE String file  LINE Nr. -44!!!

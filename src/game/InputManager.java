@@ -10,6 +10,7 @@ public class InputManager implements KeyListener {
     private boolean[] keys, justPressed, cantPress;
     public boolean up, down, right, left;
     public boolean attack, run, pickUp;
+    public boolean pause;
 
     public InputManager () {
         keys = new boolean[256];
@@ -34,6 +35,8 @@ public class InputManager implements KeyListener {
         down = keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
+
+        pause = keys[KeyEvent.VK_ESCAPE];
 
         //Adding a single one attack button.
         attack = keys[KeyEvent.VK_SPACE];
