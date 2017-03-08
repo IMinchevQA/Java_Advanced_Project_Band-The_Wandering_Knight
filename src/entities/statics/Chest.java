@@ -6,17 +6,17 @@ import items.Item;
 
 import java.awt.*;
 //AY
-public class Tent extends StaticEntity {
+public class Chest extends StaticEntity {
 
     private static final int TENT_WIDTH = 60, TENT_HEIGHT = 60;
 
-    public Tent(Handler handler, float x, float y) {
+    public Chest(Handler handler, float x, float y) {
         super(handler, x, y, TENT_WIDTH, TENT_HEIGHT);
 
         bounds.x = 0;
-        bounds.y = 30;
-        bounds.width = 25;
-        bounds.height = 15;
+        bounds.y = 25;
+        bounds.width = 60;
+        bounds.height = 60;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Tent extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.tent, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+        g.drawImage(Assets.chest, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
 }

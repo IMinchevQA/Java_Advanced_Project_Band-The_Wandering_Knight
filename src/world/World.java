@@ -156,12 +156,12 @@ public class World {
         entityManager.addEntity(new RandomVillain(handler, 2400, 800));
         entityManager.addEntity(new RandomVillain(handler, 2500, 100));
 
-        entityManager.addEntity(new ChaserVillain(handler, 300, 300));
+        entityManager.addEntity(new ChaserVillain(handler, 300, 270));
         entityManager.addEntity(new ChaserVillain(handler, 500, 300));
         entityManager.addEntity(new ChaserVillain(handler, 700, 500));
 
-        entityManager.addEntity(new Tent(handler, 352,320));//AY
-        entityManager.addEntity(new Tent(handler, 416,832));//AY
+        entityManager.addEntity(new Chest(handler, 352,320));//AY
+        entityManager.addEntity(new Chest(handler, 416,832));//AY
 
         entityManager.addEntity(new Gate(handler, 175,550));//AY
         entityManager.addEntity(new Gate(handler, 1140,1090));//AY
