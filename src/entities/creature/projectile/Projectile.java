@@ -20,11 +20,11 @@ public class Projectile extends Entity{
     protected double nx, ny;
 
     public Projectile(Handler handler, float x, float y, double dir){
-        super(handler, x + 20, y + 20 , 26, 24);
+        super(handler, x + 20, y + 20, 26, 24);
         this.health = DEFAULT_HEALTH;
         this.angle = dir;
         this.range = 300;
-        this.damage = 20;
+        this.damage = 50;
         this.rate = 15;
         this.speed = 4;
         this.originX = x;

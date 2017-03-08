@@ -292,7 +292,7 @@ public class Assets {
         tent = tentSheet.crop(0,0,60, 60);//AY
         key = keySheet.crop(0,0,30, 30);//AY
         gateClosed = gateClosedSheet.crop(0,0,60, 60);//AY
-        //gateOpened = gateOpenedSheet.crop(0,0,60, 60);//AY
+        gateOpened = gateOpenedSheet.crop(0,0,58, 60);//AY
 
         //iceland
         snow = snowSheet.crop(0,0,59, 59);//AY

@@ -163,8 +163,8 @@ public class World {
         entityManager.addEntity(new Tent(handler, 352,320));//AY
         entityManager.addEntity(new Tent(handler, 416,832));//AY
 
-        entityManager.addEntity(new Gate(handler, 185,550));//AY
-        entityManager.addEntity(new Gate(handler, 1145,1090));//AY
+        entityManager.addEntity(new Gate(handler, 175,550));//AY
+        entityManager.addEntity(new Gate(handler, 1140,1090));//AY
     }
 
     public Handler getHandler() {

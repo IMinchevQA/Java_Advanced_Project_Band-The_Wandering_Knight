@@ -57,11 +57,11 @@ public class Item {
                      //   handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
                     //}
                 } else if(this.getId() == 4){
-                    handler.getWorld().getEntityManager()
+                    /*handler.getWorld().getEntityManager()
                             .getEntities().stream()
                             .filter(x-> (x.getX() == 185 && x.getY() == 550)
                                     || (x.getX() == 1145 && x.getY() == 1090))
-                            .forEach(y -> y.removeBounds());
+                            .forEach(y -> y.removeBounds());*/
                     handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                 }else{
                     handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);

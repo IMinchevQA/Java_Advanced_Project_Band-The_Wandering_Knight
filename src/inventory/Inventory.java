@@ -65,6 +65,11 @@ public class Inventory {
         }
     }
 
+    public int getKey(){
+        this.inventoryItems.putIfAbsent(4, 0);
+        return this.inventoryItems.get(4);
+    }
+
 
     private  void drawInventory(Graphics g) {
 

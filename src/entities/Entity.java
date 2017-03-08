@@ -56,10 +56,10 @@ public abstract class Entity {
     public Rectangle getCollisionBounds(float xOffset, float yOffset) {
         return new Rectangle((int) (this.x + this.bounds.x + xOffset), (int) (this.y + this.bounds.y + yOffset), this.bounds.width, this.bounds.height);
     }
-    public void removeBounds(){
+    /*public void removeBounds(){
         this.bounds.width = -15;
         this.bounds.height = -15;
-    }
+    }*/
 
     public float getX() {
         return this.x;
