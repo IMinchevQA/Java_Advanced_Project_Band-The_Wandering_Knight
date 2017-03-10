@@ -1,6 +1,6 @@
 package game;
 
-import gfx.AboutManager;
+import gfx.UI.AboutManager;
 import gfx.UI.PauseManager;
 import gfx.UI.UIManager;
 
@@ -20,7 +20,6 @@ public class MouseManager implements MouseListener, MouseMotionListener{
     private UIManager uiManager;
     private AboutManager aboutManager;
     private PauseManager pauseManager;
-
 
     public MouseManager(){
 

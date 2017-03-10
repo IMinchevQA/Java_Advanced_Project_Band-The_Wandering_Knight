@@ -3,6 +3,7 @@ package game.states;
 import game.Handler;
 import gfx.Assets;
 import gfx.ClickListener;
+import gfx.UI.PauseManager;
 import gfx.UI.UIImageButton;
 import gfx.UI.UIManager;
 
@@ -11,12 +12,13 @@ import java.awt.*;
 public class MenuState extends State {
 
     private UIManager uiManager;
+    private PauseManager pauseManager;
 
     public MenuState(Handler handler){
         super(handler);
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUIManager(uiManager);
-
+        handler.getMouseManager().setPauseManager(null);
         uiManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.startScreen, new ClickListener() {
             @Override
             public void onClick() {

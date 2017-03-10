@@ -4,12 +4,7 @@ import entities.creature.Player;
 import entities.statics.Tree;
 import game.Handler;
 
-import gfx.Assets;
-import gfx.ClickListener;
 import gfx.UI.PauseManager;
-import gfx.UI.UIImageButton;
-import gfx.UI.UIManager;
-import music.Sound;
 import world.World;
 
 import java.awt.*;
@@ -20,6 +15,7 @@ public class GameState extends State {
     private Player player;
     private World world;
     private Tree tree;
+    private PauseManager pauseManager;
 
 
     public GameState(Handler handler) {
@@ -28,6 +24,7 @@ public class GameState extends State {
         world = new World(handler, "./res/World/world.txt");
         handler.setWorld(world);
         handler.getGameCamera().move(0, 0);
+        this.pauseManager = handler.getMouseManager().getPauseManager();
     }
 
     @Override
@@ -36,6 +33,7 @@ public class GameState extends State {
         handler.getGameCamera().move(1, 1);
         if(handler.getGame().getKeyManager().pause){
             State.setState(handler.getGame().pauseState);
+            handler.getMouseManager().setPauseManager(pauseManager);
         }
 
     }

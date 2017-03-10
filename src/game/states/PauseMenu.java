@@ -5,8 +5,6 @@ import gfx.Assets;
 import gfx.ClickListener;
 import gfx.UI.PauseManager;
 import gfx.UI.UIImageButton;
-import gfx.UI.UIManager;
-import music.Sound;
 
 import java.awt.*;
 
@@ -43,6 +41,7 @@ public class PauseMenu extends State {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().gameState);
+                handler.getMouseManager().setPauseManager(null);
 
             }
         }));

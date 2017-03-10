@@ -1,4 +1,4 @@
-package gfx;
+package gfx.UI;
 
 import game.Handler;
 import gfx.UI.UIObject;

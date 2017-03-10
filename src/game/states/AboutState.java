@@ -5,7 +5,7 @@ import game.Handler;
 import game.Launcher;
 import game.MouseManager;
 import gfx.*;
-import gfx.AboutManager;
+import gfx.UI.AboutManager;
 import gfx.UI.UIImageButton;
 import gfx.UI.UIManager;
 

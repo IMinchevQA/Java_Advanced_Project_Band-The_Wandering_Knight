@@ -72,11 +72,12 @@ public class Game implements Runnable {
         gameCamera = new GameCamera(handler, 0, 0);
 
 
-
+        pauseState = new PauseMenu(handler);
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         aboutState = new AboutState(handler);
-        pauseState = new PauseMenu(handler);
+
+
         State.setState(menuState);
 
     }
@@ -91,6 +92,7 @@ public class Game implements Runnable {
         }else{
             this.sound.stopMusic();
         }
+
     }
 
     private void render() {
@@ -149,7 +151,7 @@ public class Game implements Runnable {
 
             //OPTIONAL CODE
             if(timer >= 1000000000) {
-//                System.out.println("FPS: " + ticks);
+//               System.out.println("FPS: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
