@@ -6,7 +6,7 @@ import tiles.Tile;
 public class SnowTile extends Tile {
 
     public SnowTile(int id) {
-        super(Assets.snow, id);
+        super(Assets.getFieldElement("snow"), id);
     }
 
 }

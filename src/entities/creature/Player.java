@@ -55,39 +55,39 @@ public class Player extends Creature {
         this.bounds.height = 32;
 
         //Still positions
-        player_LeftStill = Assets.player_LeftStill;
-        player_RightStill = Assets.player_RightStill;
-        player_UpStill = Assets.player_UpStill;
-        player_DownStill = Assets.player_DownStill;
+        player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
+        player_RightStill = Assets.getPlayerStillPositions("player_RightStill");
+        player_UpStill = Assets.getPlayerStillPositions("player_UpStill");
+        player_DownStill = Assets.getPlayerStillPositions("player_DownStill");
 
         //Animations
-        this.animLeft = new Animation(400, Assets.player_Left);
-        this.animRight = new Animation(400, Assets.player_Right);
-        this.animUp = new Animation(400, Assets.player_Up);
-        this.animDown = new Animation(400, Assets.player_Down);
-        this.animLeftAttack = new Animation(100, Assets.player_LeftAttack);
-        this.animRightAttack = new Animation(100,Assets.player_RightAttack);
-        this.animDownAttack = new Animation(100, Assets.player_DownAttack);
-        this.animUpAttack = new Animation(100, Assets.player_UpAttack);
+        this.animLeft = new Animation(400, Assets.getPlayerMotionPositions("player_Left"));
+        this.animRight = new Animation(400, Assets.getPlayerMotionPositions("player_Right"));
+        this.animUp = new Animation(400, Assets.getPlayerMotionPositions("player_Up"));
+        this.animDown = new Animation(400, Assets.getPlayerMotionPositions("player_Down"));
+        this.animLeftAttack = new Animation(100, Assets.getPlayerMotionPositions("player_LeftAttack"));
+        this.animRightAttack = new Animation(100,Assets.getPlayerMotionPositions("player_RightAttack"));
+        this.animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("player_DownAttack"));
+        this.animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("player_UpAttack"));
         this.inventory = new Inventory(handler);
     }
 
     public void classic_Images(){
         //Still positions
-        player_LeftStill = Assets.player_LeftStill;
-        player_RightStill = Assets.player_RightStill;
-        player_UpStill = Assets.player_UpStill;
-        player_DownStill = Assets.player_DownStill;
+        player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
+        player_RightStill = Assets.getPlayerStillPositions("player_RightStill");
+        player_UpStill = Assets.getPlayerStillPositions("player_UpStill");
+        player_DownStill = Assets.getPlayerStillPositions("player_DownStill");
 
         //Animations
-        this.animLeft = new Animation(400, Assets.player_Left);
-        this.animRight = new Animation(400, Assets.player_Right);
-        this.animUp = new Animation(400, Assets.player_Up);
-        this.animDown = new Animation(400, Assets.player_Down);
-        this.animLeftAttack = new Animation(100, Assets.player_LeftAttack);
-        this.animRightAttack = new Animation(100,Assets.player_RightAttack);
-        this.animDownAttack = new Animation(100, Assets.player_DownAttack);
-        this.animUpAttack = new Animation(100, Assets.player_UpAttack);
+        this.animLeft = new Animation(400, Assets.getPlayerMotionPositions("player_Left"));
+        this.animRight = new Animation(400, Assets.getPlayerMotionPositions("player_Right"));
+        this.animUp = new Animation(400, Assets.getPlayerMotionPositions("player_Up"));
+        this.animDown = new Animation(400, Assets.getPlayerMotionPositions("player_Down"));
+        this.animLeftAttack = new Animation(100, Assets.getPlayerMotionPositions("player_LeftAttack"));
+        this.animRightAttack = new Animation(100,Assets.getPlayerMotionPositions("player_RightAttack"));
+        this.animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("player_DownAttack"));
+        this.animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("player_UpAttack"));
         this.inventory = new Inventory(handler);
 
         totalHealth = 100;
@@ -98,18 +98,18 @@ public class Player extends Creature {
     public void changeAnimations_Images() {
 //        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 //        System.out.println("CALLED ME");
-        animLeft = new Animation(400, Assets.playerArmored_Left);
-        animRight = new Animation(400, Assets.playerArmored_Right);
-        animUp = new Animation(400, Assets.playerArmored_Up);
-        animDown = new Animation(400, Assets.playerArmored_Down);
-        animLeftAttack = new Animation(100, Assets.playerArmored_LeftAttack);
-        animRightAttack = new Animation(100, Assets.playerArmored_RightAttack);
-        animUpAttack = new Animation(100, Assets.playerArmored_UpAttack);
-        animDownAttack = new Animation(100, Assets.playerArmored_DownAttack);
-        player_LeftStill = Assets.playerArmored_LeftStill;
-        player_RightStill = Assets.playerArmored_RightStill;
-        player_UpStill = Assets.playerArmored_UpStill;
-        player_DownStill = Assets.playerArmored_DownStill;
+        animLeft = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Left"));
+        animRight = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Right"));
+        animUp = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Up"));
+        animDown = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Down"));
+        animLeftAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_LeftAttack"));
+        animRightAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_RightAttack"));
+        animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_UpAttack"));
+        animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_DownAttack"));
+        player_LeftStill = Assets.getPlayerStillPositions("playerArmored_LeftStill");
+        player_RightStill = Assets.getPlayerStillPositions("playerArmored_RightStill");
+        player_UpStill = Assets.getPlayerStillPositions("playerArmored_UpStill");
+        player_DownStill = Assets.getPlayerStillPositions("playerArmored_DownStill");
 
         totalHealth += 100;
         health += 100;
@@ -187,7 +187,6 @@ public class Player extends Creature {
         double direction = Math.atan2(dy, dx);
         this.dir = direction;
         this.shoot = mouseManager.isPressed();
-
     }
 
     private void checkAttacks() {
@@ -319,7 +318,7 @@ public class Player extends Creature {
     }
     //health bar
     private void drawHealth(Graphics g){
-        g.drawImage(Assets.playerHealth, 0, 0, 24,24,null);
+        g.drawImage(Assets.getFieldElement("playerHealth"), 0, 0, 24,24,null);
         g.setColor(Color.red);
         g.fillRect(30,10,totalHealth, 10);
         g.setColor(Color.green);

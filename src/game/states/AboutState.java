@@ -43,7 +43,7 @@ public class AboutState extends State {
         }));
 
 
-        aboutManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.btn_back, new ClickListener() {
+        aboutManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().menuState);

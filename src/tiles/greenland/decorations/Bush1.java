@@ -7,7 +7,7 @@ import tiles.Tile;
 public class Bush1 extends Tile {
 
     public Bush1(int id) {
-        super(Assets.bush1, id);
+        super(Assets.getFieldElement("bush1"), id);
     }
 
     @Override

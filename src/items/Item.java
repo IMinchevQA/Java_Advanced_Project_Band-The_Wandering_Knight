@@ -1,6 +1,5 @@
 package items;
 
-import entities.statics.Gate;
 import game.Handler;
 import gfx.Assets;
 
@@ -8,13 +7,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Item {
-
+    //TODO - to be refractored to collections...
     public static Item[] items = new Item[256];
-    public static  Item coinItem = new Item(Assets.coin, "coin", 0);
-    public static Item woodItem = new Item(Assets.cutDownTree, "Wood", 1);
-    public static Item rockItem = new Item(Assets.rockItem, "rock", 2);
-    public static Item meatItem = new Item(Assets.meat, "meat", 3);
-    public static Item key = new Item(Assets.key, "key", 4);//AY
+    public static  Item coinItem = new Item(Assets.getFieldElement("coin"), "coin", 0);
+    public static Item woodItem = new Item(Assets.getFieldElement("cutDownTree"), "Wood", 1);
+    public static Item rockItem = new Item(Assets.getFieldElement("rockItem"), "rock", 2);
+    public static Item meatItem = new Item(Assets.getFieldElement("meat"), "meat", 3);
+    public static Item key = new Item(Assets.getFieldElement("key"), "key", 4);//AY
 
 
     public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
@@ -53,8 +52,8 @@ public class Item {
                     handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                     //int currentCoins = handler.getWorld().getEntityManager().getPlayer().getInventory().getCoins();
                     //if(currentCoins >= 1) {
-                     //   System.out.println("Armor activated by: Class Item, row 54!!!");
-                     //   handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
+                    //   System.out.println("Armor activated by: Class Item, row 54!!!");
+                    //   handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
                     //}
                 } else if(this.getId() == 4){
                     /*handler.getWorld().getEntityManager()

@@ -7,7 +7,7 @@ import tiles.Tile;
 public class WaterTile extends Tile {
 
     public WaterTile(int id) {
-        super(Assets.water, id);
+        super(Assets.getFieldElement("water"), id);
     }
 
 }

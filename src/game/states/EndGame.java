@@ -23,6 +23,6 @@ public class EndGame extends State {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.endGame, 200, 200, 178, 178, null );
+        g.drawImage(Assets.getFieldElement("endGame"), 200, 200, 178, 178, null );
     }
 }

@@ -16,7 +16,6 @@ public class GameState extends State {
     private World world;
     private Tree tree;
     private PauseManager pauseManager;
-    //SomeChange
 
 
     public GameState(Handler handler) {

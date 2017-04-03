@@ -7,7 +7,7 @@ import tiles.Tile;
 public class Mushroom1 extends Tile {
 
     public Mushroom1(int id) {
-        super(Assets.mushroom1, id);
+        super(Assets.getFieldElement("mushroom1"), id);
     }
 
 }

@@ -76,29 +76,29 @@ public class Inventory {
         int invX = handler.getWorld().getEntityManager().getPlayer().getTotalHealth() + 40;
 
         //inventory background
-        g.drawImage(Assets.inventory, invX, 10, 600, 50, null);
+        g.drawImage(Assets.getFieldElement("inventory"), invX, 10, 600, 50, null);
 
         g.setColor(Color.white);
         Font f = new Font("Dialog", Font.BOLD, 12);
         g.setFont(f);
 
         //coin item
-        g.drawImage(Assets.coin, invX + 5, 15, 42, 42, null);
+        g.drawImage(Assets.getFieldElement("coin"), invX + 5, 15, 42, 42, null);
         String coinCountString = itemCountToString(Item.coinItem.getId());
         g.drawString(coinCountString, invX + 50, 50);
 
         //wood item
-        g.drawImage(Assets.cutDownTree, invX + 55, 20, 42, 42, null);
+        g.drawImage(Assets.getFieldElement("cutDownTree"), invX + 55, 20, 42, 42, null);
         String woodCountString = itemCountToString(Item.woodItem.getId());
         g.drawString(woodCountString, invX + 100, 50);
 
         //rock item
-        g.drawImage(Assets.rockItem, invX + 110, 20,42,42,null);
+        g.drawImage(Assets.getFieldElement("rockItem"), invX + 110, 20,42,42,null);
         String rockCountString = itemCountToString(Item.rockItem.getId());
         g.drawString(rockCountString, invX + 150, 50);
 
         //key item
-        g.drawImage(Assets.key, invX  + 165, 20, 25,25,null);//AY
+        g.drawImage(Assets.getFieldElement("key"), invX  + 165, 20, 25,25,null);//AY
         String keyCountString = itemCountToString(Item.key.getId());//AY
         g.drawString(keyCountString, invX + 200, 50);//AY
 

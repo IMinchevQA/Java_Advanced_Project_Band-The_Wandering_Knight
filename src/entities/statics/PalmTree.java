@@ -31,7 +31,7 @@ public class PalmTree extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.palmtree, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+        g.drawImage(Assets.getFieldElement("palmTree"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
 }

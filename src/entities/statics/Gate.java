@@ -47,10 +47,10 @@ public class Gate extends StaticEntity {
     @Override
     public void render(Graphics g) {
        if(isGateOpened){
-           g.drawImage(Assets.gateOpened, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+           g.drawImage(Assets.getFieldElement("gateOpened"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                    ().getyOffset()), width, height, null);
        }else{
-           g.drawImage(Assets.gateClosed, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+           g.drawImage(Assets.getFieldElement("gateClosed"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                    ().getyOffset()), width, height, null);
        }
     }

@@ -7,7 +7,7 @@ import tiles.Tile;
 public class W_stone extends Tile {
 
     public W_stone(int id) {
-        super(Assets.w_stone, id);
+        super(Assets.getFieldElement("w_stone"), id);
     }
 
     @Override

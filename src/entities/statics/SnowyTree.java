@@ -31,7 +31,7 @@ public class SnowyTree extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.snowyTree, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
+        g.drawImage(Assets.getFieldElement("snowyTree"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
                 ().getyOffset()), width, height, null);
     }
 }

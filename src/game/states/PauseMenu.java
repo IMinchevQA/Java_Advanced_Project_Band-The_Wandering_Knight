@@ -37,7 +37,7 @@ public class PauseMenu extends State {
                 Assets.soundAlt[0]= Assets.sound[1];
             }
         }));
-        pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.btn_back, new ClickListener() {
+        pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().gameState);
@@ -45,7 +45,7 @@ public class PauseMenu extends State {
 
             }
         }));
-        pauseManager.addObject(new UIImageButton(800, 50, 159, 107, Assets.btn_quit, new ClickListener() {
+        pauseManager.addObject(new UIImageButton(800, 50, 159, 107, Assets.getMenuElement("btn_quit"), new ClickListener() {
             @Override
             public void onClick() {
                 System.exit(0);

@@ -7,7 +7,7 @@ import tiles.Tile;
 public class Flower1 extends Tile {
 
     public Flower1(int id) {
-        super(Assets.flower1, id);
+        super(Assets.getFieldElement("flower1"), id);
     }
 
 }

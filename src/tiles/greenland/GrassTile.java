@@ -7,7 +7,7 @@ import tiles.Tile;
 public class GrassTile extends Tile {
 
     public GrassTile(int id) {
-        super(Assets.grass, id);
+        super(Assets.getFieldElement("grass"), id);
     }
 
 }
