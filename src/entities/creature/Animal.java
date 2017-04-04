@@ -19,10 +19,10 @@ public class Animal extends Creature{
 
     public Animal(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        animLeft = new Animation(500, Assets.sheep_Left);
-        animRight = new Animation(500, Assets.sheep_Right);
-        animUp = new Animation(500, Assets.sheep_Up);
-        animDown = new Animation(500, Assets.sheep_Down);
+        animLeft = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Left"));
+        animRight = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Right"));
+        animUp = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Up"));
+        animDown = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Down"));
 
        bounds.x = 30;
        bounds.y = 30;
@@ -72,13 +72,13 @@ public class Animal extends Creature{
         } else {
             switch (lastMovedDirection) {
                 case "Down":
-                    return Assets.sheep_DownStill;
+                    return Assets.getEntitiesStillPositions("sheep_DownStill");
                 case "Left":
-                    return Assets.sheep_LeftStiil;
+                    return Assets.getEntitiesStillPositions("sheep_LeftStiil");
                 case "Right":
-                    return Assets.sheep_RightStill;
+                    return Assets.getEntitiesStillPositions( "sheep_RightStill");
                 default:
-                    return Assets.sheep_UpStill;
+                    return Assets.getEntitiesStillPositions("sheep_UpStill");
             }
         }
 

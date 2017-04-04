@@ -26,7 +26,7 @@ public class AboutState extends State {
         this.uiManager = handler.getMouseManager().getUiManager();
         handler.getMouseManager().setAboutManager(aboutManager);
 
-        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.startScreen, new ClickListener() {
+        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("startScreen"), new ClickListener() {
             @Override
             public void onClick() {
 
@@ -35,7 +35,7 @@ public class AboutState extends State {
 
 
 
-        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.infoTeam, new ClickListener() {
+        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("infoTeam"), new ClickListener() {
             @Override
             public void onClick() {
 

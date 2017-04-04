@@ -17,15 +17,15 @@ public abstract class Villain extends Creature {
 
         //Animations
         if (this instanceof ChaserVillain) {
-            animLeft = new Animation(500, Assets.chaserVillain_Left);
-            animRight = new Animation(500, Assets.chaserVillain_Right);
-            animUp = new Animation(500, Assets.chaserVillain_Up);
-            animDown = new Animation(500, Assets.chaserVillain_Down);
+            animLeft = new Animation(500, Assets.getEntitiesMotionPositions("chaserVillain_Left"));
+            animRight = new Animation(500, Assets.getEntitiesMotionPositions("chaserVillain_Right"));
+            animUp = new Animation(500, Assets.getEntitiesMotionPositions("chaserVillain_Up"));
+            animDown = new Animation(500, Assets.getEntitiesMotionPositions("chaserVillain_Down"));
         } else {
-            animLeft = new Animation(500, Assets.villain_Left);
-            animRight = new Animation(500, Assets.villain_Right);
-            animUp = new Animation(500, Assets.villain_Up);
-            animDown = new Animation(500, Assets.villain_Down);
+            animLeft = new Animation(500, Assets.getEntitiesMotionPositions("villain_Left"));
+            animRight = new Animation(500, Assets.getEntitiesMotionPositions("villain_Right"));
+            animUp = new Animation(500, Assets.getEntitiesMotionPositions("villain_Up"));
+            animDown = new Animation(500, Assets.getEntitiesMotionPositions("villain_Down"));
         }
     }
 
@@ -55,24 +55,24 @@ public abstract class Villain extends Creature {
             if (this instanceof RandomVillain) {
                 switch (lastMovedDirection) {
                     case "Down":
-                        return Assets.villains_DownStill;
+                        return Assets.getEntitiesStillPositions("villains_DownStill");
                     case "Left":
-                        return Assets.villains_LeftStill;
+                        return Assets.getEntitiesStillPositions("villains_LeftStill");
                     case "Right":
-                        return Assets.villains_RightStill;
+                        return Assets.getEntitiesStillPositions("villains_RightStill");
                     default:
-                        return Assets.villains_UpStill;
+                        return Assets.getEntitiesStillPositions("villains_UpStill");
                 }
             } else {
                 switch (lastMovedDirection) {
                     case "Down":
-                        return Assets.chaserVillains_DownStill;
+                        return Assets.getEntitiesStillPositions("chaserVillains_DownStill");
                     case "Left":
-                        return Assets.chaserVillains_LeftStill;
+                        return Assets.getEntitiesStillPositions( "chaserVillains_LeftStill");
                     case "Right":
-                        return Assets.chaserVillains_RightStill;
+                        return Assets.getEntitiesStillPositions("chaserVillains_RightStill");
                     default:
-                        return Assets.chaserVillains_UpStill;
+                        return Assets.getEntitiesStillPositions("chaserVillains_UpStill");
                 }
             }
         }

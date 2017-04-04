@@ -21,20 +21,20 @@ public class PauseMenu extends State {
 
         handler.getMouseManager().setPauseManager(pauseManager);
 
-        pauseManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.startScreen, new ClickListener() {
+        pauseManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("startScreen"), new ClickListener() {
             @Override
             public void onClick() {
 
             }
         }));
-        pauseManager.addObject(new UIImageButton(900, 150, 52, 52, Assets.sound, new ClickListener() {
+        pauseManager.addObject(new UIImageButton(900, 150, 52, 52, Assets.getMenuElement("sound"), new ClickListener() {
             @Override
             public void onClick() {
                 handler.getGame().setMuted(!handler.getGame().isMuted());
-                Assets.sound[0] = Assets.soundAlt[0];
-                Assets.sound[1]= Assets.soundAlt[1];
-                Assets.soundAlt[1] = Assets.sound[0];
-                Assets.soundAlt[0]= Assets.sound[1];
+                Assets.getMenuElement("sound")[0] = Assets.getMenuElement("soundAlt")[0];
+                Assets.getMenuElement("sound")[1]= Assets.getMenuElement("soundAlt")[1];
+                Assets.getMenuElement("soundAlt")[1] = Assets.getMenuElement("sound")[0];
+                Assets.getMenuElement("soundAlt")[0]= Assets.getMenuElement("sound")[1];
             }
         }));
         pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {

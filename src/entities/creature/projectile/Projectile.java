@@ -124,7 +124,7 @@ public class Projectile extends Entity{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.magic, (int) (this.x - handler.getGameCamera().getxOffset()), (int) (this.y - handler.getGameCamera
+        g.drawImage(Assets.getFieldElement("magic"), (int) (this.x - handler.getGameCamera().getxOffset()), (int) (this.y - handler.getGameCamera
                 ().getyOffset()), this.width, this.height, null);
     }
 

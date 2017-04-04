@@ -57,26 +57,8 @@ public class Assets {
     private static Map<String, BufferedImage[]> menuElements = new HashMap<>();
     private static Map<String, BufferedImage[]> playerMotionPositions = new HashMap<>();
     private static Map<String, BufferedImage> playerStillPositions = new HashMap<>();
-
-
-
-    //Path path = new Path("../res/Hero/hero_AllPositions.png");
-
-    public static BufferedImage[] startScreen, infoTeam;
-
-
-    public static BufferedImage[] sound, soundAlt;
-
-    public static BufferedImage[] villain_Left, villain_Right, villain_Up, villain_Down;
-    //    public static BufferedImage player_LeftStill, player_RightStill, player_UpStill, player_DownStill, playerArmored_LeftStill, playerArmored_RightStill, playerArmored_UpStill, playerArmored_DownStill;
-    public static BufferedImage[] chaserVillain_Left, chaserVillain_Right, chaserVillain_Up, chaserVillain_Down;
-    public static BufferedImage villains_DownFighting, villains_UpFighting, villains_RightFighting, villains_LeftFighting;
-    public static BufferedImage villains_DownStill, villains_UpStill, villains_RightStill, villains_LeftStill;
-    public static BufferedImage chaserVillains_DownStill, chaserVillains_UpStill, chaserVillains_RightStill, chaserVillains_LeftStill;
-    public static BufferedImage[] sheep_Left, sheep_Right, sheep_Up, sheep_Down;
-    public static BufferedImage sheep_LeftStiil, sheep_RightStill, sheep_UpStill, sheep_DownStill;
-    public static BufferedImage magic;
-
+    private static Map<String, BufferedImage[]> entitiesMotionPositions = new HashMap<>();
+    private static Map<String, BufferedImage> entitiesStillPositions = new HashMap<>();
 
 
     public static void init() {
@@ -120,73 +102,44 @@ public class Assets {
         SpriteSheet magicSheet = new SpriteSheet(ImageLoader.loadImage(MAGIC));
         SpriteSheet soundSheet = new SpriteSheet(ImageLoader.loadImage(SOUND));
         SpriteSheet soundMuteSheet = new SpriteSheet(ImageLoader.loadImage(SOUND_MUTE));
-//        player = hero.crop(0,0, 50, 50);
-        sound = new BufferedImage[2];
-        sound[0] = soundSheet.crop(0, 0, 26, 26);
-        sound[1] = soundMuteSheet.crop(0, 0, 26, 26);
-        soundAlt = new BufferedImage[2];
-        soundAlt[1] = soundSheet.crop(0, 0, 26, 26);
-        soundAlt[0] = soundMuteSheet.crop(0, 0, 26, 26);
-        startScreen = new BufferedImage[1];
-        startScreen[0] = screen.crop(0, 0, 999, 556);
-        infoTeam = new BufferedImage[1];
-        infoTeam[0] = info.crop(0, 0, 864, 540);
 
-        chaserVillain_Left = new BufferedImage[2];
-        chaserVillain_Right = new BufferedImage[2];
-        chaserVillain_Up = new BufferedImage[2];
-        chaserVillain_Down = new BufferedImage[2];
-        chaserVillain_Left[0] = chaserVillains.crop(7, 64, 59, 64);
-        chaserVillain_Left[1] = chaserVillains.crop(134, 64, 59, 64);
-        chaserVillain_Right[0] = chaserVillains.crop(7, 128, 59, 64);
-        chaserVillain_Right[1] = chaserVillains.crop(134, 128, 59, 64);
-        chaserVillain_Up[0] = chaserVillains.crop(4, 193, 59, 64);
-        chaserVillain_Up[1] = chaserVillains.crop(132, 193, 59, 64);
-        chaserVillain_Down[0] = chaserVillains.crop(4, 0, 59, 64);
-        chaserVillain_Down[1] = chaserVillains.crop(132, 0, 59, 64);
-        chaserVillains_DownStill = chaserVillains.crop(4, 0, 59, 64);
-        chaserVillains_UpStill = chaserVillains.crop(4, 193, 59, 64);
-        chaserVillains_LeftStill = chaserVillains.crop(7, 64, 59, 64);
-        chaserVillains_RightStill = chaserVillains.crop(7, 128, 59, 64);
+        //Entities still positions
+        //Villains
+        entitiesStillPositions.put("villains_LeftFighting", villains.crop(70, 64, 59, 64));
+        entitiesStillPositions.put("villains_RightFighting", villains.crop(70, 128, 59, 64));
+        entitiesStillPositions.put("villains_UpFighting", villains.crop(69, 193, 59, 64));
+        entitiesStillPositions.put("villains_DownFighting", villains.crop(69, 0, 59, 64));
+        entitiesStillPositions.put("villains_LeftStill", villains.crop(7, 64, 59, 64));
+        entitiesStillPositions.put("villains_RightStill", villains.crop(7, 128, 59, 64));
+        entitiesStillPositions.put("villains_UpStill", villains.crop(4, 193, 59, 64));
+        entitiesStillPositions.put("villains_DownStill", villains.crop(4, 0, 59, 64));
+        entitiesStillPositions.put("chaserVillains_LeftStill", chaserVillains.crop(7, 64, 59, 64));
+        entitiesStillPositions.put("chaserVillains_RightStill", chaserVillains.crop(7, 128, 59, 64));
+        entitiesStillPositions.put("chaserVillains_UpStill", chaserVillains.crop(4, 193, 59, 64));
+        entitiesStillPositions.put("chaserVillains_DownStill", chaserVillains.crop(4, 0, 59, 64));
+        //Sheeps
+        entitiesStillPositions.put("sheep_LeftStiil", sheep.crop(60, 57, 60, 57));
+        entitiesStillPositions.put("sheep_RightStill", sheep.crop(60, 171, 60, 57));
+        entitiesStillPositions.put("sheep_DownStill", sheep.crop(60, 114, 60, 57));
+        entitiesStillPositions.put("sheep_UpStill", sheep.crop(60, 0, 60, 57));
 
-        villain_Left = new BufferedImage[2];
-        villain_Right = new BufferedImage[2];
-        villain_Up = new BufferedImage[2];
-        villain_Down = new BufferedImage[2];
-        villain_Left[0] = villains.crop(7, 64, 59, 64);
-        villain_Left[1] = villains.crop(134, 64, 59, 64);
-        villains_LeftFighting = villains.crop(70, 64, 59, 64);
-        villain_Right[0] = villains.crop(7, 128, 59, 64);
-        villain_Right[1] = villains.crop(134, 128, 59, 64);
-        villains_RightFighting = villains.crop(70, 128, 59, 64);
-        villain_Up[0] = villains.crop(4, 193, 59, 64);
-        villain_Up[1] = villains.crop(132, 193, 59, 64);
-        villains_UpFighting = villains.crop(69, 193, 59, 64);
-        villain_Down[0] = villains.crop(4, 0, 59, 64);
-        villain_Down[1] = villains.crop(132, 0, 59, 64);
-        villains_DownFighting = villains.crop(69, 0, 59, 64);
-        villains_DownStill = villains.crop(4, 0, 59, 64);
-        villains_UpStill = villains.crop(4, 193, 59, 64);
-        villains_LeftStill = villains.crop(7, 64, 59, 64);
-        villains_RightStill = villains.crop(7, 128, 59, 64);
 
-        sheep_Down = new BufferedImage[2];
-        sheep_Up = new BufferedImage[2];
-        sheep_Left = new BufferedImage[2];
-        sheep_Right = new BufferedImage[2];
-        sheep_Down[0] = sheep.crop(0, 114, 60, 57);
-        sheep_Down[1] = sheep.crop(120, 114, 60, 57);
-        sheep_DownStill = sheep.crop(60, 114, 60, 57);
-        sheep_Up[0] = sheep.crop(0, 0, 60, 57);
-        sheep_Up[1] = sheep.crop(120, 0, 60, 57);
-        sheep_UpStill = sheep.crop(60, 0, 60, 57);
-        sheep_Left[0] = sheep.crop(0, 57, 60, 57);
-        sheep_Left[1] = sheep.crop(120, 57, 60, 57);
-        sheep_LeftStiil = sheep.crop(60, 57, 60, 57);
-        sheep_Right[0] = sheep.crop(0, 171, 60, 57);
-        sheep_Right[1] = sheep.crop(120, 171, 60, 57);
-        sheep_RightStill = sheep.crop(60, 171, 60, 57);
+        //Entities moving positions
+        //Villains
+        entitiesMotionPositions.put("villain_Left", new BufferedImage[]{ villains.crop(7, 64, 59, 64), villains.crop(134, 64, 59, 64) });
+        entitiesMotionPositions.put("villain_Right", new BufferedImage[]{ villains.crop(7, 128, 59, 64), villains.crop(134, 128, 59, 64) });
+        entitiesMotionPositions.put("villain_Up", new BufferedImage[]{ villains.crop(4, 193, 59, 64), villains.crop(132, 193, 59, 64) });
+        entitiesMotionPositions.put("villain_Down", new BufferedImage[]{ villains.crop(4, 0, 59, 64), villains.crop(132, 0, 59, 64) });
+        entitiesMotionPositions.put("chaserVillain_Left", new BufferedImage[]{ chaserVillains.crop(7, 64, 59, 64), chaserVillains.crop(134, 64, 59, 64) });
+        entitiesMotionPositions.put("chaserVillain_Right", new BufferedImage[]{ chaserVillains.crop(7, 128, 59, 64), chaserVillains.crop(134, 128, 59, 64) });
+        entitiesMotionPositions.put("chaserVillain_Up", new BufferedImage[]{ chaserVillains.crop(4, 193, 59, 64), chaserVillains.crop(132, 193, 59, 64) });
+        entitiesMotionPositions.put("chaserVillain_Down", new BufferedImage[]{ chaserVillains.crop(4, 0, 59, 64), chaserVillains.crop(132, 0, 59, 64) });
 
+        //Sheep
+        entitiesMotionPositions.put("sheep_Left", new BufferedImage[]{ sheep.crop(0, 57, 60, 57), sheep.crop(120, 57, 60, 57) });
+        entitiesMotionPositions.put("sheep_Right", new BufferedImage[]{ sheep.crop(0, 171, 60, 57), sheep.crop(120, 171, 60, 57) });
+        entitiesMotionPositions.put("sheep_Up", new BufferedImage[]{ sheep.crop(0, 0, 60, 57), sheep.crop(120, 0, 60, 57) });
+        entitiesMotionPositions.put("sheep_Down", new BufferedImage[]{ sheep.crop(0, 114, 60, 57), sheep.crop(120, 114, 60, 57) });
 
         //Player still positions - no armor
         playerStillPositions.put ("player_LeftStill", playerSheet.crop(315, 150, 50, 50));
@@ -221,16 +174,15 @@ public class Assets {
         playerMotionPositions.put("playerArmored_UpAttack", new BufferedImage[]{ playerArmoredSheet.crop(295, 46, 35, 40), playerArmoredSheet.crop(246, 46, 35, 40), playerArmoredSheet.crop(195, 46, 35, 40) });
         playerMotionPositions.put("playerArmored_DownAttack", new BufferedImage[]{ playerArmoredSheet.crop(336, 0, 35, 40), playerArmoredSheet.crop(287, 0, 35, 40), playerArmoredSheet.crop(248, 0, 35, 40) });
 
-
-
-
-
-
         //Menu elements
         menuElements.put("btn_start", new BufferedImage[]{ buttonNormal.crop(0, 0, 412, 107), buttonHovered.crop(0, 0, 412, 107)});
         menuElements.put("btn_about", new BufferedImage[]{ buttonAboutNormal.crop(0, 0, 231, 91), buttonAboutHovered.crop(0, 0, 231, 91)});
         menuElements.put("btn_quit", new BufferedImage[]{ buttonQuitNormal.crop(0, 0, 159, 107), buttonQuitHovered.crop(0, 0, 159, 107)});
         menuElements.put("btn_back", new BufferedImage[]{ buttonBackNormal.crop(0, 0, 198, 91), buttonBackHovered.crop(0, 0, 198, 91)});
+        menuElements.put("startScreen", new BufferedImage[]{ screen.crop(0, 0, 999, 556) });
+        menuElements.put("infoTeam", new BufferedImage[]{ info.crop(0, 0, 864, 540) });
+        menuElements.put("sound", new BufferedImage[]{ soundSheet.crop(0, 0, 26, 26), soundMuteSheet.crop(0, 0, 26, 26) });
+        menuElements.put("soundAlt", new BufferedImage[]{ soundSheet.crop(0, 0, 26, 26), soundMuteSheet.crop(0, 0, 26, 26) });
 
         //ALL GAME FIELD TILES AND ELEMENTS
         gameFieldElements.put("grass", sheet.crop(3 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT));
@@ -276,9 +228,6 @@ public class Assets {
         gameFieldElements.put("inventory", inventorySheet.crop(0, 0, 600, 50));
         gameFieldElements.put("playerHealth", playerHealthSheet.crop(0, 0, 24, 24));
         gameFieldElements.put("endGame", end.crop(0, 0, 178, 178));
-
-
-
     }
 
     public static BufferedImage getFieldElement(String tileName) {
@@ -298,6 +247,13 @@ public class Assets {
         return playerStillPositions.get(stillPositionName);
     }
 
+    public static BufferedImage[] getEntitiesMotionPositions(String motionPositionName) {
+        return Stream.of(entitiesMotionPositions.get(motionPositionName)).toArray(BufferedImage[]::new);
+    }
+
+    public static BufferedImage getEntitiesStillPositions(String stillPositionName) {
+        return entitiesStillPositions.get(stillPositionName);
+    }
 }
 
 

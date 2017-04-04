@@ -159,9 +159,9 @@ public class Player extends Creature {
         return shoot;
     }
 
-    private void setShoot(boolean shoot) {
-        this.shoot = shoot;
-    }
+//    private void setShoot(boolean shoot) {
+//        this.shoot = shoot;
+//    }
 
     public double getDir() {
         return dir;
@@ -328,7 +328,7 @@ public class Player extends Creature {
     private void drawMana(Graphics g){
 
         g.setColor(Color.white);
-        g.fillRect(30,25, totalMana, 10);
+        g.fillRect(30,25, this.totalMana, 10);
         g.setColor(Color.blue);
         g.fillRect(30,25,this.getMana(), 10);
     }
@@ -336,14 +336,14 @@ public class Player extends Creature {
     public int getTotalHealth(){
         return this.totalHealth;
     }
-    public void updateTotalHealth(){
-        this.totalHealth += 100;
-    }
+//    public void updateTotalHealth(){
+//        this.totalHealth += 100;
+//    }
     public Inventory getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
+//    public void setInventory(Inventory inventory) {
+//        this.inventory = inventory;
+//    }
 }
