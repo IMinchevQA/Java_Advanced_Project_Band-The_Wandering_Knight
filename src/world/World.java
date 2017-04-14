@@ -71,16 +71,16 @@ public class World {
         //xStart AND yStart CONTAIN THE Most-Top-Left Tile THAT THE USER CAN CURRENTLY SEE ON THE SCREEN.
         //xEnd AND yEnd CONTAIN THE Most-Bottom-Right Tile THAT THE USER CAN CURRENTLY SEE ON THE SCREEN.
         //THE PURPOSE IS TO render ONLY TILES VISIBLE ON DISPLAY.
-        int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
-        int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
-        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
-        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILE_HEIGHT + 1);
+        int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.getTileWidth());
+        int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.getTileWidth()+ 1);
+        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.getTileHeight());
+        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.getTileHeight() + 1);
 
         //ITERATE THROUGH THE TILES ARRAY AND RENDER
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
-                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
-                        (int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
+                getTile(x, y).render(g, (int) (x * Tile.getTileWidth()- handler.getGameCamera().getxOffset()),
+                        (int) (y * Tile.getTileHeight() - handler.getGameCamera().getyOffset()));
             }
         }
 
@@ -91,12 +91,12 @@ public class World {
 
     public Tile getTile(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height) {
-            return Tile.grassTile;
+            return Tile.getGrassTile();
         }
-        Tile t = Tile.tiles[tilesWorldMatrix[x][y]];
+        Tile t = Tile.getTiles()[tilesWorldMatrix[x][y]];
         //IF WE CALL WITH EMPTY MATRIX INDEX RETURN GRASSTILE
         if (t == null)
-            return Tile.grassTile;
+            return Tile.getGrassTile();
         return t;
     }
 
