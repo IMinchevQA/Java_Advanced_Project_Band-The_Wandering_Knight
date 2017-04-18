@@ -30,7 +30,7 @@ public class World {
 
     public World(Handler handler, String path) {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 30, 30));
+        entityManager = new EntityManager(new Player(handler, 30, 30));
         itemManager = new ItemManager(handler);
         //THE path PARAMETER IS PASSED BY GameState.java LINE Nr. -19!!!
         loadWorld(path);

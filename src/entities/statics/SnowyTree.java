@@ -12,11 +12,7 @@ public class SnowyTree extends StaticEntity {
 
     public SnowyTree(Handler handler, float x, float y) {
         super(handler, x, y, TREE_WIDTH, TREE_HEIGHT);
-
-        bounds.x = 20;
-        bounds.y = 92;
-        bounds.width = 22;
-        bounds.height = 1;
+        super.getBoundsRect().setBounds(20, 92, 22, 1);
     }
 
     @Override
@@ -26,12 +22,12 @@ public class SnowyTree extends StaticEntity {
 
     @Override
     public void die(){
-        handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int) x, (int) y));
+        super.getHandler().getWorld().getItemManager().addItem(Item.woodItem.createNew((int) super.getX(), (int) super.getY()));
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.getFieldElement("snowyTree"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                ().getyOffset()), width, height, null);
+        g.drawImage(Assets.getFieldElement("snowyTree"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
 }

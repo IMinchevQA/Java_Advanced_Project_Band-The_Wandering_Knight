@@ -12,11 +12,7 @@ public class Chest extends StaticEntity {
 
     public Chest(Handler handler, float x, float y) {
         super(handler, x, y, TENT_WIDTH, TENT_HEIGHT);
-
-        bounds.x = 0;
-        bounds.y = 25;
-        bounds.width = 60;
-        bounds.height = 60;
+        super.getBoundsRect().setBounds(0, 25, 60, 60);
     }
 
     @Override
@@ -26,12 +22,12 @@ public class Chest extends StaticEntity {
 
     @Override
     public void die(){
-        handler.getWorld().getItemManager().addItem(Item.key.createNew((int) x, (int) y));
+        super.getHandler().getWorld().getItemManager().addItem(Item.key.createNew((int) super.getX(), (int) super.getY()));
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.getFieldElement("chest"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                ().getyOffset()), width, height, null);
+        g.drawImage(Assets.getFieldElement("chest"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
 }

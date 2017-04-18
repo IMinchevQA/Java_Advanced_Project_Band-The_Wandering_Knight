@@ -12,12 +12,7 @@ public class Rock extends StaticEntity{
 
     public Rock(Handler handler, float x, float y){
         super(handler, x,y, STONE_WIDTH, STONE_HEIGHT);
-
-        //bounding box
-        bounds.x = 0;
-        bounds.y = 30;
-        bounds.width = 25;
-        bounds.height = 15;
+        super.getBoundsRect().setBounds(0, 30, 25, 15);
 
     }
 
@@ -27,13 +22,13 @@ public class Rock extends StaticEntity{
     }
     @Override
     public void die(){
-        handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int) x, (int) y));
+        super.getHandler().getWorld().getItemManager().addItem(Item.rockItem.createNew((int) super.getX(), (int) super.getY()));
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.getFieldElement("rock1"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                ().getyOffset()), width, height, null);
+        g.drawImage(Assets.getFieldElement("rock1"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
 
 }

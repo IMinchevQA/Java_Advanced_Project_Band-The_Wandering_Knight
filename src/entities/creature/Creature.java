@@ -1,11 +1,11 @@
 package entities.creature;
 
 //ABSTRACT CREATURE IN CASE WE ADD ITEMS AND OTHER NON CREATURE ENTITIES
-import entities.Entity;
+import entities.EntityImpl;
 import game.Handler;
 import tiles.Tile;
 
-public abstract class Creature extends Entity {
+public abstract class Creature extends EntityImpl {
 
     //CREATURE VARIABLES GO HERE HEALTH DAMAGE ARMOR ETC ETC
 
@@ -18,7 +18,6 @@ public abstract class Creature extends Entity {
 
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
@@ -34,84 +33,61 @@ public abstract class Creature extends Entity {
     }
 
     public void moveX(){
-        if(xMove > 0) {//Move right
+        if (this.xMove > 0) {//Move right
             //Tile (Index in the world matrix)WHERE THE HERO/CREATURE IS POSITIONED AT MOMENT
-            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.getTileWidth();
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.getTileHeight()) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.getTileHeight())){
-                x += xMove;
+            int tx = (int) (super.getX() + this.xMove + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth();
+            if (!collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY()) / Tile.getTileHeight()) &&
+                    !collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight())) {
+                super.setX(super.getX() + this.xMove);
             } else {
-                x = tx * Tile.getTileWidth() - bounds.x - bounds.width -1;
+                super.setX((float)(tx * Tile.getTileWidth() - super.getBoundsRect().getX() - super.getBoundsRect().getWidth() -1));
             }
 
-        } else if(xMove < 0) { //Move left
+        } else if (this.xMove < 0) { //Move left
             //Tile (Index in the world matrix)WHERE THE HERO/CREATURE IS POSITIONED AT MOMENT
-            int tx = (int) (x + xMove + bounds.x) / Tile.getTileWidth();
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.getTileHeight()) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.getTileHeight())){
-                x += xMove;
+            int tx = (int) (super.getX() + this.xMove + super.getBoundsRect().getX()) / Tile.getTileWidth();
+            if (!collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY()) / Tile.getTileHeight()) &&
+                    !collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight())) {
+                super.setX(super.getX() + this.xMove);
             } else {
-                x = tx * Tile.getTileWidth() + Tile.getTileWidth() - bounds.x;
+                super.setX((float)(tx * Tile.getTileWidth() + Tile.getTileWidth() - this.getBoundsRect().getX()));
             }
         }
     }
 
     public void moveY(){
-        if(yMove < 0) { //Move up
-            int ty = (int) (y + yMove + bounds.y) / Tile.getTileHeight();
-            if(!collisionWithTile((int)(x + bounds.x) / Tile.getTileWidth(), ty) &&
-                    !collisionWithTile((int)(x + bounds.x + bounds.width) / Tile.getTileWidth(), ty)) {
-                y += yMove;
+        if(this.yMove < 0) { //Move up
+            int ty = (int) (super.getY() + this.yMove + super.getBoundsRect().getY()) / Tile.getTileHeight();
+            if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
+                    !collisionWithTile((int)(super.getX() + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth(), ty)) {
+                super.setY(super.getY() + this.yMove);
             } else {
-                y = ty * Tile.getTileHeight() + Tile.getTileHeight() - bounds.y;
+                super.setY((float)(ty * Tile.getTileHeight() + Tile.getTileHeight() - super.getBoundsRect().getY()));
             }
-        } else if (yMove > 0) { //Move down
-            int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.getTileHeight();
-            if(!collisionWithTile((int)(x + bounds.x) / Tile.getTileWidth(), ty) &&
-                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.getTileWidth(), ty)){
-                y += yMove;
+        } else if (this.yMove > 0) { //Move down
+            int ty = (int) (super.getY() + this.yMove + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight();
+            if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
+                    !collisionWithTile((int) (super.getX() + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth(), ty)){
+                super.setY(super.getY() + this.yMove);
             } else {
-                y = ty * Tile.getTileHeight() - bounds.y - bounds.height - 1;
+                super.setY((float)(ty * Tile.getTileHeight() - super.getBoundsRect().getY() - super.getBoundsRect().getHeight() - 1));
             }
         }
     }
 
+
     protected boolean collisionWithTile(int x, int y) {
-        return handler.getWorld().getTile(x, y).isSolid();
+        return super.getHandler().getWorld().getTile(x, y).isSolid();
     }
 
     //GETTERS & SETTERS
 
-    public float getxMove() {
-        return xMove;
-    }
-
-    public void setxMove(float xMove) {
-        this.xMove = xMove;
-    }
-
-    public float getyMove() {
-        return yMove;
-    }
-
-    public void setyMove(float yMove) {
-        this.yMove = yMove;
-    }
-
     public int getHealth() {
-        return health;
+        return super.getHealth();
     }
 
     public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
+        super.setHealth(health);
     }
 
 }

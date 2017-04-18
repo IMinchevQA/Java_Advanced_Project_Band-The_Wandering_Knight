@@ -10,32 +10,25 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-/**
- * Created by Home on 2/17/2017.
- */
 public class Animal extends Creature{
     private Animation animLeft, animRight, animUp, animDown;
     private String lastMovedDirection = "Down";
 
     public Animal(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        animLeft = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Left"));
-        animRight = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Right"));
-        animUp = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Up"));
-        animDown = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Down"));
-
-       bounds.x = 30;
-       bounds.y = 30;
-       bounds.width = 30;
-       bounds.height = 30;
+        this.animLeft = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Left"));
+        this.animRight = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Right"));
+        this.animUp = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Up"));
+        this.animDown = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Down"));
+        super.getBoundsRect().setBounds(30, 30, 30, 30);
     }
 
     @Override
     public void tick() {
-        animLeft.tick();
-        animRight.tick();
-        animUp.tick();
-        animDown.tick();
+        this.animLeft.tick();
+        this.animRight.tick();
+        this.animUp.tick();
+        this.animDown.tick();
 
         time();
         move();
@@ -49,28 +42,28 @@ public class Animal extends Creature{
 
     private void moveSheep(){
         Random rand = new Random();
-        xMove = rand.nextInt(3) - 1;
-        yMove = rand.nextInt(3) - 1;
+        this.xMove = rand.nextInt(3) - 1;
+        this.yMove = rand.nextInt(3) - 1;
         if(rand.nextInt(3) == 0){
-            xMove = 0;
-            yMove = 0;
+            this.xMove = 0;
+            this.yMove = 0;
         }
     }
-    public BufferedImage getCurrentAnimationFrame() {
-        if (xMove < 0) {
-            lastMovedDirection = "Left";
-            return animLeft.getCurrentFrame();
-        } else if (xMove > 0) {
-            lastMovedDirection = "Right";
-            return animRight.getCurrentFrame();
-        } else if (yMove < 0) {
-            lastMovedDirection = "Up";
-            return animUp.getCurrentFrame();
-        } else if (yMove > 0) {
-            lastMovedDirection = "Down";
-            return animDown.getCurrentFrame();
+    private BufferedImage getCurrentAnimationFrame() {
+        if (this.xMove < 0) {
+            this.lastMovedDirection = "Left";
+            return this.animLeft.getCurrentFrame();
+        } else if (this.xMove > 0) {
+            this.lastMovedDirection = "Right";
+            return this.animRight.getCurrentFrame();
+        } else if (this.yMove < 0) {
+            this.lastMovedDirection = "Up";
+            return this.animUp.getCurrentFrame();
+        } else if (this.yMove > 0) {
+            this.lastMovedDirection = "Down";
+            return this.animDown.getCurrentFrame();
         } else {
-            switch (lastMovedDirection) {
+            switch (this.lastMovedDirection) {
                 case "Down":
                     return Assets.getEntitiesStillPositions("sheep_DownStill");
                 case "Left":
@@ -85,13 +78,13 @@ public class Animal extends Creature{
     }
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                ().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.meatItem.createNew((int) x, (int) y));
+        super.getHandler().getWorld().getItemManager().addItem(Item.meatItem.createNew((int) super.getX(), (int) super.getY()));
 
     }
 

@@ -14,11 +14,7 @@ public class Gate extends StaticEntity {
 
     public Gate(Handler handler, float x, float y) {
         super(handler, x, y, GATE_WIDTH, GATE_HEIGHT);
-
-        bounds.x = 0;
-        bounds.y = 0;
-        bounds.width = 25;
-        bounds.height = 15;
+        super.getBoundsRect().setBounds(0, 0, 25, 15);
     }
 
     @Override
@@ -27,15 +23,17 @@ public class Gate extends StaticEntity {
     }
 
     public void checkIntersect(){
-        Player player = handler.getWorld().getEntityManager().getPlayer();
+        Player player = super.getHandler().getWorld().getEntityManager().getPlayer();
         if (player.getInventory().getKey() >= 1){
             isGateOpened = true;
-            bounds.width = -13;
-            bounds.height = -13;
-        }else{
+//            bounds.width = -13;
+//            bounds.height = -13;
+            super.getBoundsRect().setBounds((int)super.getBoundsRect().getX(), (int)super.getBoundsRect().getY(), -13, -13);
+        } else {
             isGateOpened = false;
-            bounds.width = 25;
-            bounds.height = 15;
+//            bounds.width = 25;
+//            bounds.height = 15;
+            super.getBoundsRect().setBounds((int)super.getBoundsRect().getX(), (int)super.getBoundsRect().getY(), 25, 15);
         }
     }
 
@@ -47,11 +45,11 @@ public class Gate extends StaticEntity {
     @Override
     public void render(Graphics g) {
        if(isGateOpened){
-           g.drawImage(Assets.getFieldElement("gateOpened"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                   ().getyOffset()), width, height, null);
+           g.drawImage(Assets.getFieldElement("gateOpened"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                   ().getyOffset()), super.getWidth(), super.getHeight(), null);
        }else{
-           g.drawImage(Assets.getFieldElement("gateClosed"), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera
-                   ().getyOffset()), width, height, null);
+           g.drawImage(Assets.getFieldElement("gateClosed"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                   ().getyOffset()), super.getWidth(), super.getHeight(), null);
        }
     }
 }

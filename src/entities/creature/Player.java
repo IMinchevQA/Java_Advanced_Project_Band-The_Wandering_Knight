@@ -1,7 +1,6 @@
 package entities.creature;
 
-import entities.Entity;
-import entities.creature.projectile.Projectile;
+import entities.EntityImpl;
 import game.Handler;
 import game.MouseManager;
 import game.states.EndGame;
@@ -9,7 +8,6 @@ import game.states.State;
 import gfx.Animation;
 import gfx.Assets;
 import inventory.Inventory;
-import world.World;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,7 +15,12 @@ import java.awt.image.BufferedImage;
 //PLAYER CLASS, PLAYER LOGIC GOES HERE
 public class Player extends Creature {
 
-    public static float playerSpeed = 1;
+    private static final int MAX_VALUE_OF_MANA = 100;
+    private static final int SECONDS_DIVISOR = 60;
+    private static final int MANA_ADDEND = 2;
+    private static final int MIN_VALUE_OF_HEALTH_TO_BE_ARMORED = 100;
+    private static final int ARMOR_COINS_NECESSARY = 1;
+    private static float playerSpeed = 1;
 
     // Animations
     private Animation animLeft, animRight, animUp, animDown, animLeftAttack, animRightAttack, animUpAttack, animDownAttack;
@@ -30,29 +33,26 @@ public class Player extends Creature {
     private Inventory inventory;
     private String lastMovedDirection = "Down";
     private int totalHealth;
-    private int mana;
     private int totalMana;
+    private int mana;
     private int time;
     private boolean shoot = false;
     private double dir;
     private boolean hasArmor = false;
 
-    private MouseManager mouseManager = handler.getMouseManager();
+    private MouseManager mouseManager = super.getHandler().getMouseManager();
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
         //Player MUST TAKE THE game OBJECT.
         //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
-        this.health = 100;
-        this.totalHealth = health;
+        super.setHealth(100);
+        this.totalHealth = super.getHealth();
         this.totalMana = 100;
         this.mana = 100;
+        super.getBoundsRect().setBounds(32, 24, 24, 32);
 
-        this.bounds.x = 32;
-        this.bounds.y = 24;
-        this.bounds.width = 24;
-        this.bounds.height = 32;
 
         //Still positions
         player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
@@ -88,66 +88,65 @@ public class Player extends Creature {
         this.animRightAttack = new Animation(100,Assets.getPlayerMotionPositions("player_RightAttack"));
         this.animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("player_DownAttack"));
         this.animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("player_UpAttack"));
-        this.inventory = new Inventory(handler);
+        this.inventory = new Inventory(super.getHandler());
 
-        totalHealth = 100;
-        hasArmor = false;
+        this.totalHealth = 100;
+        this.hasArmor = false;
     }
 
 
     public void changeAnimations_Images() {
-//        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-//        System.out.println("CALLED ME");
-        animLeft = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Left"));
-        animRight = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Right"));
-        animUp = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Up"));
-        animDown = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Down"));
-        animLeftAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_LeftAttack"));
-        animRightAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_RightAttack"));
-        animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_UpAttack"));
-        animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_DownAttack"));
+        this.animLeft = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Left"));
+        this.animRight = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Right"));
+        this.animUp = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Up"));
+        this.animDown = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Down"));
+        this.animLeftAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_LeftAttack"));
+        this.animRightAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_RightAttack"));
+        this.animUpAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_UpAttack"));
+        this.animDownAttack = new Animation(100, Assets.getPlayerMotionPositions("playerArmored_DownAttack"));
         player_LeftStill = Assets.getPlayerStillPositions("playerArmored_LeftStill");
         player_RightStill = Assets.getPlayerStillPositions("playerArmored_RightStill");
         player_UpStill = Assets.getPlayerStillPositions("playerArmored_UpStill");
         player_DownStill = Assets.getPlayerStillPositions("playerArmored_DownStill");
 
-        totalHealth += 100;
-        health += 100;
-        hasArmor = true;
-        inventory.useCoin();
+        this.totalHealth += 100;
+        super.setHealth(super.getHealth() + 100);
+        this.hasArmor = true;
+        this.inventory.useCoin();
     }
 
     @Override
     public void tick() {
         //Animations - Movement
-        animLeft.tick();
-        animRight.tick();
-        animUp.tick();
-        animDown.tick();
-        animDownAttack.tick();
-        animUpAttack.tick();
-        animLeftAttack.tick();
-        animRightAttack.tick();
+        this.animLeft.tick();
+        this.animRight.tick();
+        this.animUp.tick();
+        this.animDown.tick();
+        this.animDownAttack.tick();
+        this.animUpAttack.tick();
+        this.animLeftAttack.tick();
+        this.animRightAttack.tick();
 
         getInput();
         move();
-        handler.getGameCamera().centerOnEntity(this);
+        super.getHandler().getGameCamera().centerOnEntity(this);
 
         checkAttacks();
-        inventory.tick();
+        this.inventory.tick();
 
         updateShoot();
-        time++;
-        if(time % 60 == 0){
-            if(mana < 100){
-                this.mana += 2;
+        this.time++;
+        if(this.time % SECONDS_DIVISOR == 0){
+            if(this.mana < MAX_VALUE_OF_MANA){
+                this.mana += MANA_ADDEND;
             }
             time = 0;
         }
-        if(this.inventory.getCoins() >= 1 && !hasArmor){
+        if(this.inventory.getCoins() >= ARMOR_COINS_NECESSARY && !hasArmor){
             changeAnimations_Images();
         }
-        if(health < 100 && hasArmor){
+
+        if(super.getHealth() < MIN_VALUE_OF_HEALTH_TO_BE_ARMORED && this.hasArmor){
             classic_Images();
         }
 
@@ -182,8 +181,8 @@ public class Player extends Creature {
 
 
     private void updateShoot(){
-        double dx = this.mouseManager.getMouseX() - (((int)this.x + 20)- handler.getGameCamera().getxOffset());
-        double dy = this.mouseManager.getMouseY() - (((int)this.y + 20)- handler.getGameCamera().getyOffset());
+        double dx = this.mouseManager.getMouseX() - (((int)super.getX() + 20)- super.getHandler().getGameCamera().getxOffset());
+        double dy = this.mouseManager.getMouseY() - (((int)super.getY() + 20)- super.getHandler().getGameCamera().getyOffset());
         double direction = Math.atan2(dy, dx);
         this.dir = direction;
         this.shoot = mouseManager.isPressed();
@@ -201,16 +200,16 @@ public class Player extends Creature {
         at.width = arSize;
         at.height = arSize;
 
-        if (handler.getKeyManager().up && handler.getKeyManager().attack) {
+        if (super.getHandler().getKeyManager().up && super.getHandler().getKeyManager().attack) {
             at.x = cb.x + cb.width / 2 - arSize / 2;
             at.y = cb.y - arSize;
-        } else if (handler.getKeyManager().down && handler.getKeyManager().attack) {
+        } else if (super.getHandler().getKeyManager().down && super.getHandler().getKeyManager().attack) {
             at.x = cb.x + cb.width / 2 - arSize / 2;
             at.y = cb.y + cb.height;
-        } else if (handler.getKeyManager().left && handler.getKeyManager().attack) {
+        } else if (super.getHandler().getKeyManager().left && super.getHandler().getKeyManager().attack) {
             at.x = cb.x - arSize;
             at.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if (handler.getKeyManager().right && handler.getKeyManager().attack) {
+        } else if (super.getHandler().getKeyManager().right && super.getHandler().getKeyManager().attack) {
             at.x = cb.x + cb.width;
             at.y = cb.y + cb.height / 2 - arSize / 2;
         } else {
@@ -219,7 +218,7 @@ public class Player extends Creature {
 
         attackTimer = 0;
 
-        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+        for (EntityImpl e : super.getHandler().getWorld().getEntityManager().getEntities()) {
             if (e.equals(this)) {
                 continue;
             }
@@ -233,29 +232,29 @@ public class Player extends Creature {
     @Override
     public void die() {
         System.out.println("Dead");
-        State.setState(new EndGame(handler));
+        State.setState(new EndGame(super.getHandler()));
     }
 
     public void getInput() {
         xMove = 0;
         yMove = 0;
 
-        if(handler.getKeyManager().run) {
+        if(super.getHandler().getKeyManager().run) {
             playerSpeed = 2.0f;
         } else {
             playerSpeed = 1.0f;
         }
 
-        if (handler.getKeyManager().up) {
+        if (super.getHandler().getKeyManager().up) {
             yMove -= playerSpeed;
         }
-        if (handler.getKeyManager().down) {
+        if (super.getHandler().getKeyManager().down) {
             yMove += playerSpeed;
         }
-        if (handler.getKeyManager().left) {
+        if (super.getHandler().getKeyManager().left) {
             xMove -= playerSpeed;
         }
-        if (handler.getKeyManager().right) {
+        if (super.getHandler().getKeyManager().right) {
             xMove += playerSpeed;
         }
     }
@@ -264,8 +263,8 @@ public class Player extends Creature {
     public void render(Graphics g) {
         //x AND y ARE CASTED TO (int) - INTEGER
         //WHY? - TO DRAW IMAGE RAPID TAKES IN INTEGERS AND NOT FLOATS
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
-                (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()),
+                (int) (super.getY() - super.getHandler().getGameCamera().getyOffset()), super.getWidth(), super.getHeight(), null);
         inventory.render(g);
         //Code making an red rectangle for collision test purposes.
 //        g.setColor(Color.red);
@@ -277,7 +276,7 @@ public class Player extends Creature {
     }
 
     public BufferedImage getCurrentAnimationFrame() {
-        if(handler.getKeyManager().attack) {
+        if(super.getHandler().getKeyManager().attack) {
             switch(lastMovedDirection) {
                 case "Up" :
                     return animUpAttack.getCurrentFrame();

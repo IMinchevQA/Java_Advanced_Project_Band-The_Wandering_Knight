@@ -1,27 +1,24 @@
 package entities.creature.projectile;
 
-import entities.Entity;
+import entities.EntityImpl;
 import game.Handler;
 import gfx.Assets;
 import tiles.Tile;
 
 import java.awt.*;
 
+public class Projectile extends EntityImpl {
 
-/**
- * Created by Home on 3/7/2017.
- */
-public class Projectile extends Entity{
+    private static final int DEFAULT_HEALTH = 3;
+    private double angle;
+    private float originX, originY;
+    private int speed, rate, range, damage;
 
-    protected double angle;
-    protected float originX, originY;
-    protected int speed, rate, range, damage;
-
-    protected double nx, ny;
+    private double nx, ny;
 
     public Projectile(Handler handler, float x, float y, double dir){
         super(handler, x + 20, y + 20, 26, 24);
-        this.health = DEFAULT_HEALTH;
+        super.setHealth(DEFAULT_HEALTH);
         this.angle = dir;
         this.range = 300;
         this.damage = 50;
@@ -29,13 +26,9 @@ public class Projectile extends Entity{
         this.speed = 4;
         this.originX = x;
         this.originY = y;
-        this.bounds.x = 1;
-        this.bounds.y = 1;
-        this.bounds.width = 1;
-        this.bounds.height = 1;
-
-        nx = speed * Math.cos(angle);
-        ny = speed * Math.sin(angle);
+        super.getBoundsRect().setBounds(1, 1, 1, 1);
+        this.nx = this.speed * Math.cos(this.angle);
+        this.ny = this.speed * Math.sin(this.angle);
 
     }
     @Override
@@ -46,12 +39,12 @@ public class Projectile extends Entity{
 
     private void checkContact() {
         Rectangle cb = getCollisionBounds(0, 0);
-        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+        for (EntityImpl e : super.getHandler().getWorld().getEntityManager().getEntities()) {
             if (e.equals(this)) {
                 continue;
             }
             if (e.getCollisionBounds(0, 0).intersects(cb)) {
-                e.hurt(damage);
+                e.hurt(this.damage);
                 this.setActive(false);
                 return;
             }
@@ -59,74 +52,75 @@ public class Projectile extends Entity{
     }
 
 
-    protected void move(){
-        if(Math.abs(originX - x) > this.range || Math.abs(originY - y) > this.range){
+    private void move(){
+        if(Math.abs(this.originX - super.getX()) > this.range || Math.abs(this.originY - super.getY()) > this.range){
             this.setActive(false);
         }
-        if (!checkEntityCollisions((float) nx, 0f)) {
+        if (!checkEntityCollisions((float) this.nx, 0f)) {
             moveX();
         }
-        if (!checkEntityCollisions(0f, (float) nx)) {
+        if (!checkEntityCollisions(0f, (float) this.nx)) {
             moveY();
         }
     }
 
-    public void moveX(){
-        if(nx > 0) {//Move right
+    private void moveX(){
+        if(this.nx > 0) {//Move right
             //Tile (Index in the world matrix)WHERE THE HERO/CREATURE IS POSITIONED AT MOMENT
-            int tx = (int) (x + nx + bounds.x + bounds.width) / Tile.getTileWidth();
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.getTileHeight()) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.getTileHeight())){
-                x += nx;
+            int tx = (int) (super.getX() + this.nx + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth();
+            if(!collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY()) / Tile.getTileHeight()) &&
+                    !collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight())){
+                super.setX(super.getX() + (float) this.nx);
             } else {
                 setActive(false);
-                x = tx * Tile.getTileWidth() - bounds.x - bounds.width -1;
+                super.setX(tx * Tile.getTileWidth() - (int) (super.getBoundsRect().getX() - super.getBoundsRect().getWidth()) - 1);
             }
 
-        } else if(nx < 0) { //Move left
+        } else if (this.nx < 0) { //Move left
             //Tile (Index in the world matrix)WHERE THE HERO/CREATURE IS POSITIONED AT MOMENT
-            int tx = (int) (x + nx + bounds.x) / Tile.getTileWidth();
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.getTileHeight()) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.getTileHeight())){
-                x += nx;
+            int tx = (int) (super.getX() + this.nx + super.getBoundsRect().getX()) / Tile.getTileWidth();
+            if(!collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY()) / Tile.getTileHeight()) &&
+                    !collisionWithTile(tx, (int) (super.getY() + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight())){
+                super.setX(super.getX() + (float) this.nx);
             } else {
                 setActive(false);
-                x = tx * Tile.getTileWidth() + Tile.getTileWidth() - bounds.x;
+                super.setX(tx * Tile.getTileWidth() + Tile.getTileWidth() - (int) super.getBoundsRect().getX());
             }
         }
     }
 
     public void moveY(){
-        if(ny < 0) { //Move up
-            int ty = (int) (y + ny + bounds.y) / Tile.getTileHeight();
-            if(!collisionWithTile((int)(x + bounds.x) / Tile.getTileWidth(), ty) &&
-                    !collisionWithTile((int)(x + bounds.x + bounds.width) / Tile.getTileWidth(), ty)) {
-                y += ny;
+        if(this.ny < 0) { //Move up
+            int ty = (int) (super.getY() + this.ny + super.getBoundsRect().getY()) / Tile.getTileHeight();
+            if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
+                    !collisionWithTile((int)(super.getX() + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth(), ty)) {
+                super.setY(super.getY() + (float) this.ny);
             } else {
                 setActive(false);
-                y = ty * Tile.getTileHeight() + Tile.getTileHeight() - bounds.y;
+                super.setY(ty * Tile.getTileHeight() + Tile.getTileHeight() - (int) super.getBoundsRect().getY());
             }
-        } else if (ny > 0) { //Move down
-            int ty = (int) (y + ny + bounds.y + bounds.height) / Tile.getTileHeight();
-            if(!collisionWithTile((int)(x + bounds.x) / Tile.getTileWidth(), ty) &&
-                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.getTileWidth(), ty)){
-                y += ny;
+        } else if (this.ny > 0) { //Move down
+            int ty = (int) (super.getY() + this.ny + super.getBoundsRect().getY() + super.getBoundsRect().getHeight()) / Tile.getTileHeight();
+            if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
+                    !collisionWithTile((int) (super.getX() + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth(), ty)){
+                this.setY(this.getY() + (float) this.ny);
             } else {
                 setActive(false);
-                y = ty * Tile.getTileHeight() - bounds.y - bounds.height - 1;
+                super.setY(ty * Tile.getTileHeight() - (int) (super.getBoundsRect().getY() - super.getBoundsRect().getHeight()) - 1);
             }
         }
     }
 
     protected boolean collisionWithTile(int x, int y) {
-        return handler.getWorld().getTile(x, y).isSolid();
+        return super.getHandler().getWorld().getTile(x, y).isSolid();
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.getFieldElement("magic"), (int) (this.x - handler.getGameCamera().getxOffset()), (int) (this.y - handler.getGameCamera
-                ().getyOffset()), this.width, this.height, null);
+        g.drawImage(Assets.getFieldElement("magic"), (int) (super.getX() - super.getHandler().getGameCamera().getxOffset()), (int) (super.getY() - super.getHandler().getGameCamera
+                ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
+
 
     @Override
     public void die() {

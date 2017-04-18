@@ -1,7 +1,6 @@
 package entities;
 
 import entities.creature.Player;
-import game.Handler;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,27 +9,26 @@ import java.util.Iterator;
 
 public class EntityManager {
 
-    private Handler handler;
+
     private Player player;
-    private ArrayList<Entity> entities;
-    private Comparator<Entity> renderSort = (a, b) -> {
+    private ArrayList<EntityImpl> entities;
+    private Comparator<EntityImpl> renderSort = (a, b) -> {
         if (a.getY() + a.getHeight() < b.getY() + b.getHeight()){
             return -1;
         }
         return 1;
     };
 
-    public EntityManager(Handler handler, Player player) {
-        this.handler = handler;
+    public EntityManager(Player player) {
         this.player = player;
         entities = new ArrayList<>();
         addEntity(player);
     }
 
     public void tick(){
-        Iterator<Entity> it = entities.iterator();
+        Iterator<EntityImpl> it = entities.iterator();
         while (it.hasNext()){
-            Entity e = it.next();
+            EntityImpl e = it.next();
             e.tick();
             if(!e.isActive()){
                 it.remove();
@@ -40,36 +38,20 @@ public class EntityManager {
     }
 
     public void render(Graphics g){
-        for (Entity entity : entities) {
-            entity.render(g);
+        for (EntityImpl entityImpl : entities) {
+            entityImpl.render(g);
         }
     }
 
-    public void addEntity(Entity e){
+    public void addEntity(EntityImpl e){
         entities.add(e);
-    }
-
-    private Handler getHandler() {
-        return handler;
-    }
-
-    private void setHandler(Handler handler) {
-        this.handler = handler;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    private void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public ArrayList<Entity> getEntities() {
+    public ArrayList<EntityImpl> getEntities() {
         return entities;
-    }
-
-    private void setEntities(ArrayList<Entity> entities) {
-        this.entities = entities;
     }
 }
