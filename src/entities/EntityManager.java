@@ -9,7 +9,6 @@ import java.util.Iterator;
 
 public class EntityManager {
 
-
     private Player player;
     private ArrayList<EntityImpl> entities;
     private Comparator<EntityImpl> renderSort = (a, b) -> {

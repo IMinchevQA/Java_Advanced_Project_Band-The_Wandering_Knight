@@ -8,9 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-/**
- * Created by Home on 2/9/2017.
- */
 public class MouseManager implements MouseListener, MouseMotionListener{
 
     private boolean leftPressed, rightPressed;
@@ -82,8 +79,6 @@ public class MouseManager implements MouseListener, MouseMotionListener{
     public void mouseClicked(MouseEvent e) {
 
     }
-
-
 
     @Override
     public void mousePressed(MouseEvent e) {

@@ -12,7 +12,7 @@ import java.awt.image.BufferStrategy;
 //GAME LOOP CLASS
 public class Game implements Runnable {
 
-    public String title;
+    private String title;
     private int width, height;
 
     private Display display;
@@ -28,10 +28,10 @@ public class Game implements Runnable {
     private Graphics g;
 
     //States
-    public State gameState;
-    public State menuState;
-    public State aboutState;
-    public State pauseState;
+    private State gameState;
+    private State menuState;
+    private State aboutState;
+    private State pauseState;
 
     //Input
     private InputManager keyManager;
@@ -43,9 +43,7 @@ public class Game implements Runnable {
     //Handler
     private Handler handler;
 
-
-
-    public Game(String title, int width, int height) {
+    Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
@@ -77,9 +75,7 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
         aboutState = new AboutState(handler);
 
-
         State.setState(menuState);
-
     }
 
     private void tick() {
@@ -92,7 +88,6 @@ public class Game implements Runnable {
         }else{
             this.sound.stopMusic();
         }
-
     }
 
     private void render() {
@@ -197,6 +192,22 @@ public class Game implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public State getGameState() {
+        return gameState;
+    }
+
+    public State getMenuState() {
+        return menuState;
+    }
+
+    public State getAboutState() {
+        return aboutState;
+    }
+
+    public State getPauseState() {
+        return pauseState;
     }
 
     public boolean isMuted() {

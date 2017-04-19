@@ -9,12 +9,11 @@ public abstract class Creature extends EntityImpl {
 
     //CREATURE VARIABLES GO HERE HEALTH DAMAGE ARMOR ETC ETC
 
-    public static final float DEFAULT_SPEED = 3.0f;
-    public static final int DEFAULT_CREATURE_WIDTH = 64,
-            DEFAULT_CREATURE_HEIGHT = 64;
+    private static final float DEFAULT_SPEED = 3.0f;
+    private static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 64;
 
-    protected float speed;
-    protected float xMove, yMove;
+    private float speed;
+    private float xMove, yMove;
 
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -23,7 +22,7 @@ public abstract class Creature extends EntityImpl {
         yMove = 0;
     }
 
-    public void move(){
+    protected void move(){
         if (!checkEntityCollisions(xMove, 0f)) {
             moveX();
         }
@@ -32,7 +31,7 @@ public abstract class Creature extends EntityImpl {
         }
     }
 
-    public void moveX(){
+    private void moveX(){
         if (this.xMove > 0) {//Move right
             //Tile (Index in the world matrix)WHERE THE HERO/CREATURE IS POSITIONED AT MOMENT
             int tx = (int) (super.getX() + this.xMove + super.getBoundsRect().getX() + super.getBoundsRect().getWidth()) / Tile.getTileWidth();
@@ -55,7 +54,7 @@ public abstract class Creature extends EntityImpl {
         }
     }
 
-    public void moveY(){
+    private void moveY(){
         if(this.yMove < 0) { //Move up
             int ty = (int) (super.getY() + this.yMove + super.getBoundsRect().getY()) / Tile.getTileHeight();
             if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
@@ -76,11 +75,9 @@ public abstract class Creature extends EntityImpl {
     }
 
 
-    protected boolean collisionWithTile(int x, int y) {
+    private boolean collisionWithTile(int x, int y) {
         return super.getHandler().getWorld().getTile(x, y).isSolid();
     }
-
-    //GETTERS & SETTERS
 
     public int getHealth() {
         return super.getHealth();
@@ -90,4 +87,27 @@ public abstract class Creature extends EntityImpl {
         super.setHealth(health);
     }
 
+    protected static int getDefaultCreatureWidth() {
+        return DEFAULT_CREATURE_WIDTH;
+    }
+
+    protected static int getDefaultCreatureHeight() {
+        return DEFAULT_CREATURE_HEIGHT;
+    }
+
+    protected float getxMove() {
+        return xMove;
+    }
+
+    protected float getyMove() {
+        return yMove;
+    }
+
+    protected void setxMove(float xMove) {
+        this.xMove = xMove;
+    }
+
+    protected void setyMove(float yMove) {
+        this.yMove = yMove;
+    }
 }

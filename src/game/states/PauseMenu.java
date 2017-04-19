@@ -8,12 +8,9 @@ import gfx.UI.UIImageButton;
 
 import java.awt.*;
 
-/**
- * Created by Home on 3/8/2017.
- */
 public class PauseMenu extends State {
-    private PauseManager pauseManager;
 
+    private PauseManager pauseManager;
 
     public PauseMenu(Handler handler) {
         super(handler);
@@ -40,7 +37,7 @@ public class PauseMenu extends State {
         pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
             @Override
             public void onClick() {
-                State.setState(handler.getGame().gameState);
+                State.setState(handler.getGame().getGameState());
                 handler.getMouseManager().setPauseManager(null);
 
             }

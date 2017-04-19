@@ -24,7 +24,7 @@ public abstract class Villain extends Creature {
     private String lastMovedDirection = "Down";
     private long lastAttackTimer, attackTimer;
 
-    protected Villain(Handler handler, float x, float y, int width, int height) {
+    Villain(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
 
         //Animations
@@ -49,7 +49,7 @@ public abstract class Villain extends Creature {
         this.animDown.tick();
     }
 
-    protected void checkAttacks() {
+    void checkAttacks() {
         this.attackTimer += System.currentTimeMillis() - this.lastAttackTimer;
         this.lastAttackTimer = System.currentTimeMillis();
         if (this.attackTimer < this.getAttackCoolDown()) {
@@ -72,50 +72,50 @@ public abstract class Villain extends Creature {
         }
     }
 
-    protected int getAttackRange() {
+    private int getAttackRange() {
         return ATTACK_RANGE;
     }
 
-    protected int getAttackCoolDown() {
+    private int getAttackCoolDown() {
         return ATTACK_COOLDOWN;
     }
 
-    protected int[] getInitialCollisionOffsets() {
+    private int[] getInitialCollisionOffsets() {
         return INITIAL_COLLISION_OFFSETS;
     }
 
-    protected int getAttackAreaSize() {
+    private int getAttackAreaSize() {
         return ATTACK_AREA_SIZE;
     }
 
-    protected void setDamageHealthPoints(int damageHealthPoints) {
+    void setDamageHealthPoints(int damageHealthPoints) {
         this.damageHealthPoints = damageHealthPoints;
     }
 
-    protected int getNanotimeDivisor() {
+    int getNanotimeDivisor() {
         return NANOTIME_DIVISOR;
     }
 
-    protected int[] getInitialChaseMoveXYValues() {
+    int[] getInitialChaseMoveXYValues() {
         return INITIAL_CHASE_MOVE_X_Y_VALUES;
     }
 
-    protected int getChaseActivationRange() {
+    int getChaseActivationRange() {
         return CHASE_ACTIVATION_RANGE;
     }
 
 
-    protected BufferedImage getCurrentAnimationFrame() {
-        if (super.xMove < 0) {
+    BufferedImage getCurrentAnimationFrame() {
+        if (super.getxMove() < 0) {
             this.lastMovedDirection = "Left";
             return this.animLeft.getCurrentFrame();
-        } else if (super.xMove > 0) {
+        } else if (super.getxMove() > 0) {
             this.lastMovedDirection = "Right";
             return this.animRight.getCurrentFrame();
-        } else if (super.yMove < 0) {
+        } else if (super.getyMove() < 0) {
             this.lastMovedDirection = "Up";
             return this.animUp.getCurrentFrame();
-        } else if (super.yMove > 0) {
+        } else if (super.getyMove() > 0) {
             this.lastMovedDirection = "Down";
             return this.animDown.getCurrentFrame();
         } else {

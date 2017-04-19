@@ -17,7 +17,6 @@ public class GameState extends State {
     private Tree tree;
     private PauseManager pauseManager;
 
-
     public GameState(Handler handler) {
         super(handler);
         //PLAYER'S START POSITION INITIALIZING
@@ -30,18 +29,16 @@ public class GameState extends State {
     @Override
     public void tick() {
         world.tick();
-        handler.getGameCamera().move(1, 1);
-        if(handler.getGame().getKeyManager().pause){
-            State.setState(handler.getGame().pauseState);
-            handler.getMouseManager().setPauseManager(pauseManager);
+        super.getHandler().getGameCamera().move(1, 1);
+        if(super.getHandler().getGame().getKeyManager().pause){
+            State.setState(super.getHandler().getGame().getPauseState());
+            super.getHandler().getMouseManager().setPauseManager(pauseManager);
         }
-
     }
 
     @Override
     public void render(Graphics g) {
         world.render(g);
-
     }
 
 }

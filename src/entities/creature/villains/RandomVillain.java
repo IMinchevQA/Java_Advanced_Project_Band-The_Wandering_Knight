@@ -1,6 +1,5 @@
 package entities.creature.villains;
 
-import entities.creature.Creature;
 import game.Handler;
 import items.Item;
 
@@ -11,9 +10,8 @@ public class RandomVillain extends Villain{
 
     private static final int DAMAGE_HEALTH_POINTS = 1;
 
-
     public RandomVillain(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
         setDamageHealthPoints(DAMAGE_HEALTH_POINTS);
     }
 
@@ -45,11 +43,11 @@ public class RandomVillain extends Villain{
 
     private void moveVillain(){
         Random rand = new Random();
-        super.xMove = rand.nextInt(3) - 1;
-        super.yMove = rand.nextInt(3) - 1;
+        super.setxMove(rand.nextInt(3) - 1);
+        super.setyMove(rand.nextInt(3) - 1);
         if(rand.nextInt(3) == 0){
-            super.xMove = 0;
-            super.yMove = 0;
+            super.setxMove(0);
+            super.setyMove(0);
         }
     }
 }

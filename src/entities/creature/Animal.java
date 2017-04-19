@@ -11,11 +11,12 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Animal extends Creature{
+
     private Animation animLeft, animRight, animUp, animDown;
     private String lastMovedDirection = "Down";
 
     public Animal(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
         this.animLeft = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Left"));
         this.animRight = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Right"));
         this.animUp = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Up"));
@@ -42,24 +43,24 @@ public class Animal extends Creature{
 
     private void moveSheep(){
         Random rand = new Random();
-        this.xMove = rand.nextInt(3) - 1;
-        this.yMove = rand.nextInt(3) - 1;
+        this.setxMove(rand.nextInt(3) - 1);
+        this.setyMove(rand.nextInt(3) - 1);
         if(rand.nextInt(3) == 0){
-            this.xMove = 0;
-            this.yMove = 0;
+            this.setxMove(0);
+            this.setyMove(0);
         }
     }
     private BufferedImage getCurrentAnimationFrame() {
-        if (this.xMove < 0) {
+        if (this.getxMove() < 0) {
             this.lastMovedDirection = "Left";
             return this.animLeft.getCurrentFrame();
-        } else if (this.xMove > 0) {
+        } else if (this.getxMove() > 0) {
             this.lastMovedDirection = "Right";
             return this.animRight.getCurrentFrame();
-        } else if (this.yMove < 0) {
+        } else if (this.getyMove() < 0) {
             this.lastMovedDirection = "Up";
             return this.animUp.getCurrentFrame();
-        } else if (this.yMove > 0) {
+        } else if (this.getyMove()> 0) {
             this.lastMovedDirection = "Down";
             return this.animDown.getCurrentFrame();
         } else {

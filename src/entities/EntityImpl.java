@@ -26,7 +26,6 @@ public abstract class EntityImpl implements Entity {
 
     }
 
-
     public void hurt(int amt){
         this.health -= amt;
         if(this.health <= 0){
@@ -35,7 +34,7 @@ public abstract class EntityImpl implements Entity {
         }
     }
 
-    public boolean checkEntityCollisions(float xOffset, float yOffset) {
+    protected boolean checkEntityCollisions(float xOffset, float yOffset) {
         for (EntityImpl entityImpl : this.handler.getWorld().getEntityManager().getEntities()) {
             if (entityImpl.equals(this)) {
                 continue;
@@ -53,7 +52,7 @@ public abstract class EntityImpl implements Entity {
     }
 
     public void tick(){
-//  If someone can fix this, have a kiss from me. I lost a lot of time trying.
+//  If someone can fix this, get a kiss from me. I lost a lot of time trying.
     }
 
     public void die(){
@@ -104,11 +103,11 @@ public abstract class EntityImpl implements Entity {
         return this.handler;
     }
 
-    public boolean isActive() {
+    boolean isActive() {
         return this.active;
     }
 
-    public void setActive(boolean active) {
+    protected void setActive(boolean active) {
         this.active = active;
     }
 

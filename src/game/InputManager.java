@@ -12,7 +12,7 @@ public class InputManager implements KeyListener {
     public boolean attack, run, pickUp;
     public boolean pause;
 
-    public InputManager () {
+    InputManager() {
         keys = new boolean[256];
         justPressed = new boolean[keys.length];
         cantPress = new boolean[keys.length];

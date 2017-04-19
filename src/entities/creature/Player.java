@@ -43,7 +43,7 @@ public class Player extends Creature {
     private MouseManager mouseManager = super.getHandler().getMouseManager();
 
     public Player(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
         //Player MUST TAKE THE game OBJECT.
         //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
         //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
@@ -72,7 +72,7 @@ public class Player extends Creature {
         this.inventory = new Inventory(handler);
     }
 
-    public void classic_Images(){
+    private void classic_Images(){
         //Still positions
         player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
         player_RightStill = Assets.getPlayerStillPositions("player_RightStill");
@@ -95,7 +95,7 @@ public class Player extends Creature {
     }
 
 
-    public void changeAnimations_Images() {
+    private void changeAnimations_Images() {
         this.animLeft = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Left"));
         this.animRight = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Right"));
         this.animUp = new Animation(400, Assets.getPlayerMotionPositions("playerArmored_Up"));
@@ -152,8 +152,6 @@ public class Player extends Creature {
 
     }
 
-
-
     public boolean isShooting() {
         return shoot;
     }
@@ -178,13 +176,10 @@ public class Player extends Creature {
         this.mana = this.getMana() - 5;
     }
 
-
-
     private void updateShoot(){
         double dx = this.mouseManager.getMouseX() - (((int)super.getX() + 20)- super.getHandler().getGameCamera().getxOffset());
         double dy = this.mouseManager.getMouseY() - (((int)super.getY() + 20)- super.getHandler().getGameCamera().getyOffset());
-        double direction = Math.atan2(dy, dx);
-        this.dir = direction;
+        this.dir = Math.atan2(dy, dx);
         this.shoot = mouseManager.isPressed();
     }
 
@@ -235,9 +230,9 @@ public class Player extends Creature {
         State.setState(new EndGame(super.getHandler()));
     }
 
-    public void getInput() {
-        xMove = 0;
-        yMove = 0;
+    private void getInput() {
+        super.setxMove(0);
+        super.setyMove(0);
 
         if(super.getHandler().getKeyManager().run) {
             playerSpeed = 2.0f;
@@ -246,16 +241,16 @@ public class Player extends Creature {
         }
 
         if (super.getHandler().getKeyManager().up) {
-            yMove -= playerSpeed;
+            super.setyMove(super.getyMove() - playerSpeed);
         }
         if (super.getHandler().getKeyManager().down) {
-            yMove += playerSpeed;
+            super.setyMove(super.getyMove() + playerSpeed);
         }
         if (super.getHandler().getKeyManager().left) {
-            xMove -= playerSpeed;
+            super.setxMove(super.getxMove() - playerSpeed);
         }
         if (super.getHandler().getKeyManager().right) {
-            xMove += playerSpeed;
+            super.setxMove(super.getxMove() + playerSpeed);
         }
     }
 
@@ -275,7 +270,7 @@ public class Player extends Creature {
         drawMana(g);
     }
 
-    public BufferedImage getCurrentAnimationFrame() {
+    private BufferedImage getCurrentAnimationFrame() {
         if(super.getHandler().getKeyManager().attack) {
             switch(lastMovedDirection) {
                 case "Up" :
@@ -289,16 +284,16 @@ public class Player extends Creature {
 
             }
         }
-        if (xMove < 0) {
+        if (this.getxMove() < 0) {
             lastMovedDirection = "Left";
             return animLeft.getCurrentFrame();
-        } else if (xMove > 0) {
+        } else if (this.getxMove() > 0) {
             lastMovedDirection = "Right";
             return animRight.getCurrentFrame();
-        } else if (yMove < 0) {
+        } else if (this.getyMove() < 0) {
             lastMovedDirection = "Up";
             return animUp.getCurrentFrame();
-        } else if (yMove > 0){
+        } else if (this.getyMove() > 0){
             lastMovedDirection = "Down";
             return animDown.getCurrentFrame();
         } else {

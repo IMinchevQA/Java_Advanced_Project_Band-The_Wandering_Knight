@@ -1,6 +1,5 @@
 package entities.creature.villains;
 
-import entities.creature.Creature;
 import entities.creature.Player;
 import game.Handler;
 import items.Item;
@@ -13,7 +12,7 @@ public class ChaserVillain extends Villain{
     private static final int DAMAGE_HEALTH_POINTS = 3;
 
     public ChaserVillain(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
         setDamageHealthPoints(DAMAGE_HEALTH_POINTS);
     }
 
@@ -44,27 +43,27 @@ public class ChaserVillain extends Villain{
     }
 
     private void chase() {
-        super.xMove = super.getInitialChaseMoveXYValues()[0];
-        super.yMove = super.getInitialChaseMoveXYValues()[1];
+        super.setxMove(super.getInitialChaseMoveXYValues()[0]);
+        super.setyMove(super.getInitialChaseMoveXYValues()[1]);
         Player player = super.getHandler().getWorld().getEntityManager().getPlayer();
 
         if (Math.abs(super.getX() - player.getX()) < super.getChaseActivationRange() && Math.abs(super.getY() - player.getY()) < super.getChaseActivationRange()) {
             if (super.getX() < player.getX()) {
-                super.xMove++;
+                super.setxMove(super.getxMove() +1);
             }
             if (super.getX() > player.getX()) {
-                super.xMove--;
+                super.setxMove(super.getxMove() -1);
             }
             if (super.getY() < player.getY()) {
-                super.yMove++;
+                super.setyMove(super.getyMove() +1);
             }
             if (super.getY() > player.getY()) {
-                super.yMove--;
+                super.setyMove(super.getyMove() -1);
             }
         } else {
             Random rand = new Random();
-            super.xMove = rand.nextInt(3) - 1;
-            super.yMove = rand.nextInt(3) - 1;
+            super.setxMove(rand.nextInt(3) - 1);
+            super.setyMove(rand.nextInt(3) - 1);
         }
     }
 }

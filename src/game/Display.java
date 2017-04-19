@@ -7,10 +7,11 @@ import java.awt.*;
 //DISPLAY SETTINGS CLASS
 
 public class Display {
+
     private JFrame frame;
     private Canvas canvas;
     private int width, height;
-    String title;
+    private String title;
 
     public Display(String title, int width, int height) {
         this.title = title;

@@ -8,10 +8,15 @@ import java.awt.*;
 public abstract class State {
 
     private static State currentState = null;
+    private Handler handler;
 
-    private boolean isMuted;
+    public State(Handler handler) {
+        this.handler = handler;
+    }
 
-
+    protected Handler getHandler() {
+        return handler;
+    }
 
     public static void setState(State state) {
         currentState = state;
@@ -21,14 +26,6 @@ public abstract class State {
         return currentState;
     }
 
-    protected Handler handler;
-
-    public State(Handler handler) {
-        this.handler = handler;
-    }
-
     public abstract void tick();
     public abstract void render(Graphics g);
-
-
 }

@@ -89,7 +89,7 @@ public class Projectile extends EntityImpl {
         }
     }
 
-    public void moveY(){
+    private void moveY(){
         if(this.ny < 0) { //Move up
             int ty = (int) (super.getY() + this.ny + super.getBoundsRect().getY()) / Tile.getTileHeight();
             if(!collisionWithTile((int)(super.getX() + super.getBoundsRect().getX()) / Tile.getTileWidth(), ty) &&
@@ -111,7 +111,7 @@ public class Projectile extends EntityImpl {
         }
     }
 
-    protected boolean collisionWithTile(int x, int y) {
+    private boolean collisionWithTile(int x, int y) {
         return super.getHandler().getWorld().getTile(x, y).isSolid();
     }
 
