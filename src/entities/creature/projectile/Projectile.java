@@ -121,9 +121,4 @@ public class Projectile extends EntityImpl {
                 ().getyOffset()), super.getWidth(), super.getHeight(), null);
     }
 
-
-    @Override
-    public void die() {
-
-    }
 }

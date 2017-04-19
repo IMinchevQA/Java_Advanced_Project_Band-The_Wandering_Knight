@@ -10,10 +10,11 @@ import java.util.Random;
 public class RandomVillain extends Villain{
 
     private static final int DAMAGE_HEALTH_POINTS = 1;
-    private long lastAttackTimer, attackTimer;
+
 
     public RandomVillain(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        setDamageHealthPoints(DAMAGE_HEALTH_POINTS);
     }
 
     @Override
@@ -33,26 +34,6 @@ public class RandomVillain extends Villain{
     @Override
     public void die() {
         super.getHandler().getWorld().getItemManager().addItem(Item.meatItem.createNew((int) super.getX(), (int) super.getY()));
-    }
-    private void checkAttacks() {
-        this.attackTimer += System.currentTimeMillis() - this.lastAttackTimer;
-        this.lastAttackTimer = System.currentTimeMillis();
-        if (this.attackTimer < super.getAttackCoolDown()) {
-            return;
-        }
-        Rectangle collisionBounds = getCollisionBounds(super.getInitialCollisionOffsets()[0], super.getInitialCollisionOffsets()[1]);
-        Rectangle attackBounds = new Rectangle();
-        attackBounds.width = super.getAttackAreaSize();
-        attackBounds.height = super.getAttackAreaSize();
-
-        attackBounds.x = collisionBounds.x - super.getAttackRange();
-        attackBounds.y = collisionBounds.y - super.getAttackRange();
-
-        this.attackTimer = 0;
-
-        if(super.getHandler().getWorld().getEntityManager().getPlayer().getCollisionBounds(super.getInitialCollisionOffsets()[0],super.getInitialCollisionOffsets()[1]).intersects(attackBounds)){
-            super.getHandler().getWorld().getEntityManager().getPlayer().hurt(DAMAGE_HEALTH_POINTS);
-        }
     }
 
     private void moveTimeChecker(){

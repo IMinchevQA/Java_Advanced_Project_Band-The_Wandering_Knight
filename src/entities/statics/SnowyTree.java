@@ -16,11 +16,6 @@ public class SnowyTree extends StaticEntity {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void die(){
         super.getHandler().getWorld().getItemManager().addItem(Item.woodItem.createNew((int) super.getX(), (int) super.getY()));
     }

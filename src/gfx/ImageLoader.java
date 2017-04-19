@@ -9,9 +9,7 @@ import java.io.IOException;
 public class ImageLoader {
     public static BufferedImage loadImage (String path) {
         if(path.contains("ma")) {
-            System.out.println("hi");
             StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-            System.out.println();
         }
         try {
             return ImageIO.read(new FileInputStream(path));

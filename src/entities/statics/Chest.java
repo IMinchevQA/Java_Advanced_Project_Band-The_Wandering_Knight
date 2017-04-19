@@ -16,11 +16,6 @@ public class Chest extends StaticEntity {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void die(){
         super.getHandler().getWorld().getItemManager().addItem(Item.key.createNew((int) super.getX(), (int) super.getY()));
     }

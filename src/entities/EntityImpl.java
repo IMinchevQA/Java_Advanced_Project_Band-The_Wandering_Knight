@@ -27,7 +27,6 @@ public abstract class EntityImpl implements Entity {
     }
 
 
-
     public void hurt(int amt){
         this.health -= amt;
         if(this.health <= 0){
@@ -51,6 +50,14 @@ public abstract class EntityImpl implements Entity {
 
     public Rectangle getCollisionBounds(float xOffset, float yOffset) {
         return new Rectangle((int) (this.x + this.boundsRect.x + xOffset), (int) (this.y + this.boundsRect.y + yOffset), this.boundsRect.width, this.boundsRect.height);
+    }
+
+    public void tick(){
+//  If someone can fix this, have a kiss from me. I lost a lot of time trying.
+    }
+
+    public void die(){
+//  Same story. Interface segregation principle is so difficult here.
     }
 
     public float getX() {

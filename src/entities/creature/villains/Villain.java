@@ -5,6 +5,7 @@ import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Villain extends Creature {
@@ -18,8 +19,10 @@ public abstract class Villain extends Creature {
     private static final int CHASE_ACTIVATION_RANGE = 150;
     private static final int DEFAULT_VILLAIN_SPEED = 500;
 
+    private int damageHealthPoints;
     private Animation animLeft, animRight, animUp, animDown;
     private String lastMovedDirection = "Down";
+    private long lastAttackTimer, attackTimer;
 
     protected Villain(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -46,6 +49,29 @@ public abstract class Villain extends Creature {
         this.animDown.tick();
     }
 
+    protected void checkAttacks() {
+        this.attackTimer += System.currentTimeMillis() - this.lastAttackTimer;
+        this.lastAttackTimer = System.currentTimeMillis();
+        if (this.attackTimer < this.getAttackCoolDown()) {
+            return;
+        }
+
+        Rectangle collisionBounds = getCollisionBounds(this.getInitialCollisionOffsets()[0], this.getInitialCollisionOffsets()[1]);
+        Rectangle attackBounds = new Rectangle();
+
+        attackBounds.width = this.getAttackAreaSize();
+        attackBounds.height = this.getAttackAreaSize();
+
+        attackBounds.x = collisionBounds.x - this.getAttackRange();
+        attackBounds.y = collisionBounds.y - this.getAttackRange();
+
+        this.attackTimer = 0;
+
+        if (super.getHandler().getWorld().getEntityManager().getPlayer().getCollisionBounds(this.getInitialCollisionOffsets()[0], this.getInitialCollisionOffsets()[1]).intersects(attackBounds)) {
+            super.getHandler().getWorld().getEntityManager().getPlayer().hurt(damageHealthPoints);
+        }
+    }
+
     protected int getAttackRange() {
         return ATTACK_RANGE;
     }
@@ -60,6 +86,10 @@ public abstract class Villain extends Creature {
 
     protected int getAttackAreaSize() {
         return ATTACK_AREA_SIZE;
+    }
+
+    protected void setDamageHealthPoints(int damageHealthPoints) {
+        this.damageHealthPoints = damageHealthPoints;
     }
 
     protected int getNanotimeDivisor() {

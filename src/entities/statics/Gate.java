@@ -37,11 +37,6 @@ public class Gate extends StaticEntity {
         }
     }
 
-   @Override
-   public void die(){
-
-   }
-
     @Override
     public void render(Graphics g) {
        if(isGateOpened){
