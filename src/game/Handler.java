@@ -1,6 +1,6 @@
 package game;
 
-import entities.creature.Player;
+
 import gfx.GameCamera;
 import world.World;
 

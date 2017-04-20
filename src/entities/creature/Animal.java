@@ -12,15 +12,17 @@ import java.util.Random;
 
 public class Animal extends Creature{
 
+    private static final int ANIMATION_SPEED = 500;
+
     private Animation animLeft, animRight, animUp, animDown;
     private String lastMovedDirection = "Down";
 
     public Animal(Handler handler, float x, float y) {
         super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
-        this.animLeft = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Left"));
-        this.animRight = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Right"));
-        this.animUp = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Up"));
-        this.animDown = new Animation(500, Assets.getEntitiesMotionPositions("sheep_Down"));
+        this.animLeft = new Animation(ANIMATION_SPEED, Assets.getEntitiesMotionPositions("sheep_Left"));
+        this.animRight = new Animation(ANIMATION_SPEED, Assets.getEntitiesMotionPositions("sheep_Right"));
+        this.animUp = new Animation(ANIMATION_SPEED, Assets.getEntitiesMotionPositions("sheep_Up"));
+        this.animDown = new Animation(ANIMATION_SPEED, Assets.getEntitiesMotionPositions("sheep_Down"));
         super.getBoundsRect().setBounds(30, 30, 30, 30);
     }
 
@@ -36,16 +38,16 @@ public class Animal extends Creature{
     }
     private void time(){
         Random random = new Random();
-        if(System.nanoTime() % (random.nextInt(50) + 30 )== 0){
+        if(System.nanoTime() % (random.nextInt(super.getRandomDivisorBound()) + super.getDirectionChangeDelay()) == 0){
             moveSheep();
         }
     }
 
     private void moveSheep(){
         Random rand = new Random();
-        this.setxMove(rand.nextInt(3) - 1);
-        this.setyMove(rand.nextInt(3) - 1);
-        if(rand.nextInt(3) == 0){
+        this.setxMove(rand.nextInt(super.getRandomMoveStepGenerationBound()) - super.getDefaultSpeed());
+        this.setyMove(rand.nextInt(super.getRandomMoveStepGenerationBound()) - super.getDefaultSpeed());
+        if(rand.nextInt(super.getRandomMoveStepGenerationBound()) == 0){
             this.setxMove(0);
             this.setyMove(0);
         }

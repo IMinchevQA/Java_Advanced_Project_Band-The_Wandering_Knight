@@ -88,19 +88,19 @@ public abstract class Villain extends Creature {
         return ATTACK_AREA_SIZE;
     }
 
-    void setDamageHealthPoints(int damageHealthPoints) {
+    protected void setDamageHealthPoints(int damageHealthPoints) {
         this.damageHealthPoints = damageHealthPoints;
     }
 
-    int getNanotimeDivisor() {
+    protected int getNanotimeDivisor() {
         return NANOTIME_DIVISOR;
     }
 
-    int[] getInitialChaseMoveXYValues() {
+    protected int[] getInitialChaseMoveXYValues() {
         return INITIAL_CHASE_MOVE_X_Y_VALUES;
     }
 
-    int getChaseActivationRange() {
+    protected int getChaseActivationRange() {
         return CHASE_ACTIVATION_RANGE;
     }
 

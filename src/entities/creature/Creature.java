@@ -8,18 +8,18 @@ import tiles.Tile;
 public abstract class Creature extends EntityImpl {
 
     //CREATURE VARIABLES GO HERE HEALTH DAMAGE ARMOR ETC ETC
-
-    private static final float DEFAULT_SPEED = 3.0f;
     private static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 64;
+    private static final int RANDOM_DIVISOR_BOUND = 50;
+    private static final int DIRECTION_CHANGE_DELAY = 30;
+    private static final int RANDOM_MOVE_STEP_GENERATION_BOUND = 3;
+    private static final int DEFAULT_SPEED = 1;
 
-    private float speed;
     private float xMove, yMove;
 
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        speed = DEFAULT_SPEED;
-        xMove = 0;
-        yMove = 0;
+        this.xMove = 0;
+        this.yMove = 0;
     }
 
     protected void move(){
@@ -96,11 +96,11 @@ public abstract class Creature extends EntityImpl {
     }
 
     protected float getxMove() {
-        return xMove;
+        return this.xMove;
     }
 
     protected float getyMove() {
-        return yMove;
+        return this.yMove;
     }
 
     protected void setxMove(float xMove) {
@@ -109,5 +109,21 @@ public abstract class Creature extends EntityImpl {
 
     protected void setyMove(float yMove) {
         this.yMove = yMove;
+    }
+
+    protected int getRandomDivisorBound() {
+        return RANDOM_DIVISOR_BOUND;
+    }
+
+    protected int getDirectionChangeDelay() {
+        return DIRECTION_CHANGE_DELAY;
+    }
+
+    protected int getRandomMoveStepGenerationBound() {
+        return RANDOM_MOVE_STEP_GENERATION_BOUND;
+    }
+
+    protected int getDefaultSpeed() {
+        return DEFAULT_SPEED;
     }
 }

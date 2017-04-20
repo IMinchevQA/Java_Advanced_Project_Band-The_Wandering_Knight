@@ -36,16 +36,16 @@ public class RandomVillain extends Villain{
 
     private void moveTimeChecker(){
         Random random = new Random();
-        if (System.nanoTime() % (random.nextInt(50) + 30 ) == 0){
+        if (System.nanoTime() % (random.nextInt(super.getRandomDivisorBound()) + super.getDirectionChangeDelay()) == 0){
             moveVillain();
         }
     }
 
     private void moveVillain(){
         Random rand = new Random();
-        super.setxMove(rand.nextInt(3) - 1);
-        super.setyMove(rand.nextInt(3) - 1);
-        if(rand.nextInt(3) == 0){
+        super.setxMove(rand.nextInt(super.getRandomMoveStepGenerationBound()) - super.getDefaultSpeed());
+        super.setyMove(rand.nextInt(super.getRandomMoveStepGenerationBound()) - super.getDefaultSpeed());
+        if(rand.nextInt(super.getRandomMoveStepGenerationBound()) == 0){
             super.setxMove(0);
             super.setyMove(0);
         }

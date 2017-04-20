@@ -47,8 +47,8 @@ public class Game implements Runnable {
         this.width = width;
         this.height = height;
         this.title = title;
-        keyManager = new InputManager();
-        mouseManager = new MouseManager();
+        this.keyManager = new InputManager();
+        this.mouseManager = new MouseManager();
         this.setMuted(false);
         this.sound = new Sound();
     }

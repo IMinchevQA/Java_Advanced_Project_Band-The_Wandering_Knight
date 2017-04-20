@@ -11,8 +11,8 @@ public class Animation {
     public Animation(int speed, BufferedImage[] frames) {
         this.speed = speed;
         this.frames = frames;
-        index = 0;
-        timer = 0;
+        this.index = 0;
+        this.timer = 0;
         lastTime = System.currentTimeMillis();
     }
 
