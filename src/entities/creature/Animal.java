@@ -5,6 +5,7 @@ import game.Handler;
 import gfx.Animation;
 import gfx.Assets;
 import items.Item;
+import items.ItemFactory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -87,7 +88,7 @@ public class Animal extends Creature{
 
     @Override
     public void die() {
-        super.getHandler().getWorld().getItemManager().addItem(Item.meatItem.createNew((int) super.getX(), (int) super.getY()));
+        super.getHandler().getWorld().getItemManager().addItem(ItemFactory.createNew("meat", (int) super.getX(), (int) super.getY(), super.getHandler()));
 
     }
 

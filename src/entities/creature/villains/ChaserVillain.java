@@ -3,6 +3,7 @@ package entities.creature.villains;
 import entities.creature.Player;
 import game.Handler;
 import items.Item;
+import items.ItemFactory;
 
 import java.awt.*;
 import java.util.Random;
@@ -33,7 +34,7 @@ public class ChaserVillain extends Villain{
 
     @Override
     public void die() {
-        super.getHandler().getWorld().getItemManager().addItem(Item.coinItem.createNew((int) super.getX(), (int) super.getY()));
+        super.getHandler().getWorld().getItemManager().addItem(ItemFactory.createNew("coin",(int) super.getX(), (int) super.getY(), super.getHandler()));
 
     }
 

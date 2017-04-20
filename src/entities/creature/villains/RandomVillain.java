@@ -2,6 +2,7 @@ package entities.creature.villains;
 
 import game.Handler;
 import items.Item;
+import items.ItemFactory;
 
 import java.awt.*;
 import java.util.Random;
@@ -31,7 +32,7 @@ public class RandomVillain extends Villain{
 
     @Override
     public void die() {
-        super.getHandler().getWorld().getItemManager().addItem(Item.meatItem.createNew((int) super.getX(), (int) super.getY()));
+        super.getHandler().getWorld().getItemManager().addItem(ItemFactory.createNew("meat", (int) super.getX(), (int) super.getY(), super.getHandler()));
     }
 
     private void moveTimeChecker(){

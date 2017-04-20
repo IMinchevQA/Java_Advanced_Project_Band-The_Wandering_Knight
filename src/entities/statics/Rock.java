@@ -3,6 +3,7 @@ package entities.statics;
 import game.Handler;
 import gfx.Assets;
 import items.Item;
+import items.ItemFactory;
 
 import java.awt.*;
 
@@ -18,7 +19,7 @@ public class Rock extends StaticEntity{
 
     @Override
     public void die(){
-        super.getHandler().getWorld().getItemManager().addItem(Item.rockItem.createNew((int) super.getX(), (int) super.getY()));
+        super.getHandler().getWorld().getItemManager().addItem(ItemFactory.createNew("rock",(int) super.getX(), (int) super.getY(), super.getHandler()));
     }
 
     @Override

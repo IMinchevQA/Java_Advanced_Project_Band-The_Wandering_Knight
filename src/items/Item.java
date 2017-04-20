@@ -1,41 +1,35 @@
 package items;
 
 import game.Handler;
-import gfx.Assets;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Item {
-    //TODO - to be refractored to collections...
+
     public static Item[] items = new Item[256];
-    public static  Item coinItem = new Item(Assets.getFieldElement("coin"), "coin", 0);
-    public static Item woodItem = new Item(Assets.getFieldElement("cutDownTree"), "Wood", 1);
-    public static Item rockItem = new Item(Assets.getFieldElement("rockItem"), "rock", 2);
-    public static Item meatItem = new Item(Assets.getFieldElement("meat"), "meat", 3);
-    public static Item key = new Item(Assets.getFieldElement("key"), "key", 4);//AY
 
-
-    public static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
+    private static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 
     protected Handler handler;
-    protected BufferedImage texture;
-    protected String name;
-    protected final int id;
+    private BufferedImage texture;
+    private String name;
+    private final int id;
 
-    protected Rectangle bounds;
+    private Rectangle bounds;
 
-    protected int x, y;
-    protected boolean pickedUp = false;
+    private int x, y;
+    private boolean pickedUp = false;
 
-    private Item(BufferedImage texture, String name, int id) {
+    public Item(BufferedImage texture, String name, int id, int x, int y, Handler handler) {
         this.texture = texture;
         this.name = name;
         this.id = id;
-
-        bounds = new Rectangle(x, y, ITEMWIDTH, ITEMHEIGHT);
+        this.handler = handler;
+        bounds = new Rectangle(this.x, this.y, ITEMWIDTH, ITEMHEIGHT);
 
         items[id] = this;
+        this.setPosition(x, y);
     }
 
     public void tick(){
@@ -80,13 +74,8 @@ public class Item {
         g.drawImage(texture, x, y + 20,ITEMWIDTH, ITEMHEIGHT,null);
     }
 
-    public Item createNew(int x, int y){
-        Item i = new Item(texture, name, id);
-        i.setPosition(x, y + 20);
-        return i;
-    }
 
-    public void setPosition(int x, int y){
+    private void setPosition(int x, int y){
         this.x = x;
         this.y = y;
         bounds.x = x;
@@ -97,7 +86,7 @@ public class Item {
         return handler;
     }
 
-    public void setHandler(Handler handler) {
+    private void setHandler(Handler handler) {
         this.handler = handler;
     }
 
@@ -105,17 +94,17 @@ public class Item {
         return texture;
     }
 
-    public void setTexture(BufferedImage texture) {
+    /*public void setTexture(BufferedImage texture) {
         this.texture = texture;
-    }
+    }*/
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -125,17 +114,17 @@ public class Item {
         return x;
     }
 
-    public void setX(int x) {
+    /*public void setX(int x) {
         this.x = x;
-    }
+    }*/
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
+    /*public void setY(int y) {
         this.y = y;
-    }
+    }*/
 
     public boolean isPickedUp() {
         return pickedUp;

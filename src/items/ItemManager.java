@@ -28,14 +28,13 @@ public class ItemManager {
     }
 
     public void render(Graphics g) {
-        for (Item item : items) {
+        for (Item item : this.items) {
             item.render(g);
         }
     }
 
     public void addItem(Item i) {
-        i.setHandler(handler);
-        items.add(i);
+        this.items.add(i);
     }
 
     public Handler getHandler() {
