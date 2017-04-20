@@ -4,8 +4,6 @@ package game;
 import gfx.GameCamera;
 import world.World;
 
-import java.io.Serializable;
-
 public class Handler {
 
     private Game game;
@@ -44,7 +42,7 @@ public class Handler {
     }
 
     public World getWorld() {
-        return world;
+        return this.world;
     }
 
     public void setWorld(World world) {

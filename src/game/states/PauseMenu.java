@@ -5,6 +5,7 @@ import gfx.Assets;
 import gfx.ClickListener;
 import gfx.UI.PauseManager;
 import gfx.UI.UIImageButton;
+import gfx.UI.UIImageWallpaper;
 import saves.Save;
 
 import java.awt.*;
@@ -16,17 +17,12 @@ public class PauseMenu extends State {
 
     public PauseMenu(Handler handler) {
         super(handler);
-        pauseManager = new PauseManager(handler);
+        this.pauseManager = new PauseManager(handler);
 
         handler.getMouseManager().setPauseManager(pauseManager);
 
-        pauseManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("startScreen"), new ClickListener() {
-            @Override
-            public void onClick() {
-
-            }
-        }));
-        pauseManager.addObject(new UIImageButton(900, 150, 52, 52, Assets.getMenuElement("sound"), new ClickListener() {
+        this.pauseManager.addObject(new UIImageWallpaper(0, 0, 999, 556, Assets.getMenuElement("startScreen")));
+        this.pauseManager.addObject(new UIImageButton(900, 150, 52, 52, Assets.getMenuElement("sound"), new ClickListener() {
             @Override
             public void onClick() {
                 handler.getGame().setMuted(!handler.getGame().isMuted());
@@ -36,7 +32,8 @@ public class PauseMenu extends State {
                 Assets.getMenuElement("soundAlt")[0]= Assets.getMenuElement("sound")[1];
             }
         }));
-        pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
+
+        this.pauseManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().getGameState());
@@ -44,7 +41,7 @@ public class PauseMenu extends State {
 
             }
         }));
-        pauseManager.addObject(new UIImageButton(800, 50, 159, 107, Assets.getMenuElement("btn_quit"), new ClickListener() {
+        this.pauseManager.addObject(new UIImageButton(800, 50, 159, 107, Assets.getMenuElement("btn_quit"), new ClickListener() {
             @Override
             public void onClick() {
                 try {
@@ -62,11 +59,11 @@ public class PauseMenu extends State {
 
     @Override
     public void tick() {
-        pauseManager.tick();
+        this.pauseManager.tick();
     }
 
     @Override
     public void render(Graphics g) {
-        pauseManager.render(g);
+        this.pauseManager.render(g);
     }
 }

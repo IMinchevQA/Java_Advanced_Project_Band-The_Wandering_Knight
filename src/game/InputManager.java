@@ -13,44 +13,44 @@ public class InputManager implements KeyListener {
     public boolean pause;
 
     InputManager() {
-        keys = new boolean[256];
-        justPressed = new boolean[keys.length];
-        cantPress = new boolean[keys.length];
+        this.keys = new boolean[256];
+        this.justPressed = new boolean[this.keys.length];
+        this.cantPress = new boolean[this.keys.length];
     }
 
     public void tick() {
-        for (int i = 0; i < keys.length; i++) {
-            if (cantPress[i] && !keys[i]){
-                cantPress[i] = false;
-            } else if (justPressed[i]){
-                cantPress[i] = true;
-                justPressed[i] = false;
+        for (int i = 0; i < this.keys.length; i++) {
+            if (this.cantPress[i] && !this.keys[i]){
+                this.cantPress[i] = false;
+            } else if (this.justPressed[i]) {
+                this.cantPress[i] = true;
+                this.justPressed[i] = false;
             }
-            if (!cantPress[i] && keys[i]){
-                justPressed[i] = true;
+            if (!this.cantPress[i] && this.keys[i]){
+                this.justPressed[i] = true;
             }
         }
 
-        up = keys[KeyEvent.VK_W];
-        down = keys[KeyEvent.VK_S];
-        left = keys[KeyEvent.VK_A];
-        right = keys[KeyEvent.VK_D];
+        this.up = this.keys[KeyEvent.VK_W];
+        this.down = this.keys[KeyEvent.VK_S];
+        this.left = this.keys[KeyEvent.VK_A];
+        this.right = this.keys[KeyEvent.VK_D];
 
-        pause = keys[KeyEvent.VK_ESCAPE];
+        this.pause = this.keys[KeyEvent.VK_ESCAPE];
 
         //Adding a single one attack button.
-        attack = keys[KeyEvent.VK_SPACE];
+        this.attack = this.keys[KeyEvent.VK_SPACE];
 
-        pickUp = keys[KeyEvent.VK_Q];
-        run = keys[KeyEvent.VK_SHIFT];
+        this.pickUp = this.keys[KeyEvent.VK_Q];
+        this.run = this.keys[KeyEvent.VK_SHIFT];
 
     }
 
     public boolean keyJustPressed(int keyCode){
-        if(keyCode < 0 || keyCode >= keys.length) {
+        if(keyCode < 0 || keyCode >= this.keys.length) {
             return false;
         }
-        return justPressed[keyCode];
+        return this.justPressed[keyCode];
     }
 
     @Override
@@ -60,16 +60,16 @@ public class InputManager implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() < 0 || e.getKeyCode() >= keys.length){
+        if (e.getKeyCode() < 0 || e.getKeyCode() >= this.keys.length){
             return;
         }
-        keys[e.getKeyCode()] = true;
+        this.keys[e.getKeyCode()] = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
+        if(e.getKeyCode() < 0 || e.getKeyCode() >= this.keys.length)
             return;
-        keys[e.getKeyCode()] = false;
+        this.keys[e.getKeyCode()] = false;
     }
 }

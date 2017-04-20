@@ -12,7 +12,6 @@ import saves.SaveObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
 
 //PLAYER CLASS, PLAYER LOGIC GOES HERE
 public class Player extends Creature {

@@ -13,23 +13,23 @@ public class Animation {
         this.frames = frames;
         this.index = 0;
         this.timer = 0;
-        lastTime = System.currentTimeMillis();
+        this.lastTime = System.currentTimeMillis();
     }
 
     public void tick() {
-        timer += System.currentTimeMillis() - lastTime;
-        lastTime = System.currentTimeMillis();
+        this.timer += System.currentTimeMillis() - lastTime;
+        this.lastTime = System.currentTimeMillis();
 
-        if(timer > speed) {
-            index++;
-            timer = 0;
-            if(index > frames.length - 1) {
-                index = 0;
+        if(this.timer > this.speed) {
+            this.index++;
+            this.timer = 0;
+            if (this.index > this.frames.length - 1) {
+                this.index = 0;
             }
         }
     }
 
     public BufferedImage getCurrentFrame() {
-        return frames[index];
+        return this.frames[this.index];
     }
 }

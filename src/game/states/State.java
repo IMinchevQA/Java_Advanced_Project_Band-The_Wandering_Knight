@@ -3,7 +3,6 @@ package game.states;
 import game.Handler;
 
 import java.awt.*;
-import java.io.Serializable;
 
 //ABSTRACT STATE CLASS
 public abstract class State {
@@ -16,7 +15,7 @@ public abstract class State {
     }
 
     protected Handler getHandler() {
-        return handler;
+        return this.handler;
     }
 
     public static void setState(State state) {

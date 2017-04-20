@@ -24,20 +24,20 @@ public class UIImageButton extends UIObject {
 
     @Override
     public void render(Graphics g) {
-        if(hovering){
+        if (super.isHovering()){
             //Added if block to avoid exception when load BufferedImage with only 1 element = startScreen.
             if (this.images.length == 1) {
-                g.drawImage(images[0], (int) x, (int) y, width, height, null);
+                g.drawImage(this.images[0], (int) super.getX(), (int) super.getY(), super.getWidth(), super.getHeight(), null);
             } else {
-                g.drawImage(images[1], (int) x, (int) y, width, height, null);
+                g.drawImage(this.images[1], (int) super.getX(), (int) super.getY(), super.getWidth(), super.getHeight(), null);
             }
         }else{
-            g.drawImage(images[0], (int) x, (int) y, width, height, null);
+            g.drawImage(this.images[0], (int) super.getX(), (int) super.getY(), super.getWidth(), super.getHeight(), null);
         }
     }
 
     @Override
     public void onClick() {
-        click.onClick();
+        this.click.onClick();
     }
 }

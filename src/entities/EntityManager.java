@@ -20,12 +20,12 @@ public class EntityManager {
 
     public EntityManager(Player player) {
         this.player = player;
-        entities = new ArrayList<>();
+        this.entities = new ArrayList<>();
         addEntity(player);
     }
 
     public void tick(){
-        Iterator<EntityImpl> it = entities.iterator();
+        Iterator<EntityImpl> it = this.entities.iterator();
         while (it.hasNext()){
             EntityImpl e = it.next();
             e.tick();
@@ -33,25 +33,25 @@ public class EntityManager {
                 it.remove();
             }
         }
-        entities.sort(renderSort);
+        this.entities.sort(this.renderSort);
     }
 
     public void render(Graphics g){
-        for (EntityImpl entityImpl : entities) {
+        for (EntityImpl entityImpl : this.entities) {
             entityImpl.render(g);
         }
     }
 
     public void addEntity(EntityImpl e){
-        entities.add(e);
+        this.entities.add(e);
     }
 
     public Player getPlayer() {
-        return player;
+        return this.player;
     }
 
     public ArrayList<EntityImpl> getEntities() {
-        return entities;
+        return this.entities;
     }
 
     public void setSavedPlayer(Player player) {

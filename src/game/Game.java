@@ -4,7 +4,6 @@ import game.states.*;
 import gfx.Assets;
 import gfx.GameCamera;
 import music.Sound;
-import saves.Save;
 
 
 import java.awt.*;
@@ -14,6 +13,9 @@ import java.io.IOException;
 //GAME LOOP CLASS
 public class Game implements Runnable {
 
+    private static final int[] INITIAL_XY_OFFSETS = {0, 0};
+    private static final int FRAMES_PER_SECOND = 60;
+    public static final int SECOND_AS_NANOSECONDS = 1000000000;
     private String title;
     private int width, height;
 
@@ -56,32 +58,32 @@ public class Game implements Runnable {
     }
 
     private void init() {
-        display = new Display(title, width, height);
+        this.display = new Display(this.title, this.width, this.height);
 
         //ADDING KeyListener TO THE frame VARIABLE OF CLASS Display!!!
         //HOW? - BY PASSING THE INSTANCE keyManager OF CLASS InputManager!!!
-        display.getFrame().addKeyListener(keyManager);
-        display.getFrame().addMouseListener(mouseManager);
-        display.getFrame().addMouseMotionListener(mouseManager);
-        display.getCanvas().addMouseListener(mouseManager);
-        display.getCanvas().addMouseMotionListener(mouseManager);
+        this.display.getFrame().addKeyListener(this.keyManager);
+        this.display.getFrame().addMouseListener(this.mouseManager);
+        this.display.getFrame().addMouseMotionListener(this.mouseManager);
+        this.display.getCanvas().addMouseListener(this.mouseManager);
+        this.display.getCanvas().addMouseMotionListener(this.mouseManager);
 
         Assets.init();
 
-        handler = new Handler(this);
-        gameCamera = new GameCamera(handler, 0, 0);
+        this.handler = new Handler(this);
+        this.gameCamera = new GameCamera(this.handler, INITIAL_XY_OFFSETS[0], INITIAL_XY_OFFSETS[1]);
 
-        pauseState = new PauseMenu(this.handler);
-        gameState = new GameState(this.handler);
+        this.pauseState = new PauseMenu(this.handler);
+        this.gameState = new GameState(this.handler);
 
-        menuState = new MenuState(this.handler);
-        aboutState = new AboutState(this.handler);
+        this.menuState = new MenuState(this.handler);
+        this.aboutState = new AboutState(this.handler);
 
-        State.setState(menuState);
+        State.setState(this.menuState);
     }
 
     private void tick() {
-        keyManager.tick();
+        this.keyManager.tick();
         if(State.getState() != null) {
             State.getState().tick();
         }
@@ -94,40 +96,40 @@ public class Game implements Runnable {
 
     private void render() {
 
-        bs = display.getCanvas().getBufferStrategy();
+        this.bs = this.display.getCanvas().getBufferStrategy();
 
-        if(bs == null) {
-            display.getCanvas().createBufferStrategy(3);
+        if (this.bs == null) {
+            this.display.getCanvas().createBufferStrategy(3);
             return;
         }
-        g = bs.getDrawGraphics();
+        this.g = this.bs.getDrawGraphics();
 
         //CLEAR THE SCREEN
-        g.clearRect(0, 0, width, height);
+        this.g.clearRect(INITIAL_XY_OFFSETS[0], INITIAL_XY_OFFSETS[1], this.width, this.height);
         //START DRAWING
         if(State.getState() != null)
-            State.getState().render(g);
+            State.getState().render(this.g);
 
         //END DRAWING
-        bs.show();
-        g.dispose();
+        this.bs.show();
+        this.g.dispose();
     }
 
     public void run() {
 
         init();
         // NUMBER OF TICKS PER SECOND
-        int fps = 60;
+        int fps = FRAMES_PER_SECOND;
 
         //TIME IN NANOSECONDS - 1 SECOND == 1000000000(1 Billion) nanoseconds!
         //timePerTick - THE MAXIMUM AMOUNT OF TIME AVAILABLE FOR EXECUTING ticket() and render() METHODS IN ORDER TO ACHIEVE 60 FRAMES PER SECOND .
-        double timePerTick = 1000000000/fps;
+        double timePerTick = SECOND_AS_NANOSECONDS /fps;
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
         long timer = 0;
         long ticks = 0;
-        while(running) {
+        while (this.running) {
             now = System.nanoTime();
 
             //TIME AVAILABLE UNTIL tick() and render() METHODS GETS CALLED AGAIN!!!
@@ -147,7 +149,7 @@ public class Game implements Runnable {
             }
 
             //OPTIONAL CODE
-            if(timer >= 1000000000) {
+            if(timer >= SECOND_AS_NANOSECONDS) {
 //               System.out.println("FPS: " + ticks);
                 ticks = 0;
                 timer = 0;
@@ -162,67 +164,71 @@ public class Game implements Runnable {
     }
 
     public InputManager getKeyManager() {
-        return keyManager;
+        return this.keyManager;
     }
 
     public MouseManager getMouseManager() {
-        return mouseManager;
+        return this.mouseManager;
     }
 
     public GameCamera getGameCamera() {
-        return gameCamera;
+        return this.gameCamera;
     }
 
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     public synchronized void start() {
-        if(running)
+        if (this.running) {
             return;
-        running = true;
-        thread = new Thread(this);
-        thread.start();
+        }
+        this.running = true;
+        this.thread = new Thread(this);
+        this.thread.start();
     }
 
     public synchronized void stop() throws IOException {
         //Save.exportSave(this.handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems());
-        if(!running)
+        if (!this.running) {
             return;
-        running = false;
+        }
+
+        this.running = false;
+
         try {
-            thread.join();
+            this.thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public State getGameState() {
-        return gameState;
+        return this.gameState;
     }
 
     public State getMenuState() {
-        return menuState;
+        return this.menuState;
     }
 
     public State getAboutState() {
-        return aboutState;
+        return this.aboutState;
     }
 
     public State getPauseState() {
-        return pauseState;
+        return this.pauseState;
     }
 
     public boolean isMuted() {
-        return isMuted;
+        return this.isMuted;
     }
 
     public void setMuted(boolean muted) {
-        isMuted = muted;
+        this.isMuted = muted;
     }
 
 

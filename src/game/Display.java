@@ -22,20 +22,20 @@ public class Display {
     }
 
     private void createDisplay() {
-        frame = new JFrame(title);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(width, height);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        this.frame = new JFrame(title);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.frame.setSize(width, height);
+        this.frame.setResizable(false);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
 
-        canvas = new Canvas();
-        canvas.setMinimumSize(new Dimension(width, height));
-        canvas.setMaximumSize(new Dimension(width, height));
-        canvas.setPreferredSize(new Dimension(width, height));
-        canvas.setFocusable(false);
-        frame.add(canvas);
-        frame.pack();
+        this.canvas = new Canvas();
+        this.canvas.setMinimumSize(new Dimension(width, height));
+        this.canvas.setMaximumSize(new Dimension(width, height));
+        this.canvas.setPreferredSize(new Dimension(width, height));
+        this.canvas.setFocusable(false);
+        this.frame.add(canvas);
+        this.frame.pack();
 
     }
 

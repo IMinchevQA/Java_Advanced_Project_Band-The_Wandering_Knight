@@ -20,47 +20,39 @@ public class GameCamera {
     //METHOD THAT RESETS to ZERO (0) THE x/yOffsets(BLANK AREA BEYOND THE GAME WORLD)
     //PURPOSE - THE BLANK AREA NOT TO BE VISIBLE ON THE DISPLAY.
     public void checkBlankSpace() {
-        if(xOffset < 0) {
-            xOffset = 0;
+        if (this.xOffset < 0) {
+            this.xOffset = 0;
             //handler.getWidth() - CURRENT WINDOW WIDTH IN PIXELS
-        } else if(xOffset > handler.getWorld().getWidth() * Tile.getTileWidth()- handler.getWidth()) {
-            xOffset = handler.getWorld().getWidth() * Tile.getTileWidth() - handler.getWidth();
+        } else if (this.xOffset > this.handler.getWorld().getWidth() * Tile.getTileWidth()- this.handler.getWidth()) {
+            this.xOffset = this.handler.getWorld().getWidth() * Tile.getTileWidth() - this.handler.getWidth();
         }
-        if(yOffset < 0) {
-            yOffset = 0;
-        } else if(yOffset > handler.getWorld().getHeight() * Tile.getTileHeight() - handler.getHeight()){
-            yOffset = handler.getWorld().getHeight() * Tile.getTileHeight() - handler.getHeight();
+        if (this.yOffset < 0) {
+            this.yOffset = 0;
+        } else if (this.yOffset > this.handler.getWorld().getHeight() * Tile.getTileHeight() - this.handler.getHeight()){
+            this.yOffset = this.handler.getWorld().getHeight() * Tile.getTileHeight() - this.handler.getHeight();
         }
 
     }
 
     public void centerOnEntity(EntityImpl e){
-        xOffset = e.getX() - handler.getWidth() / 2  + e.getWidth() / 2;
-        yOffset = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
+        this.xOffset = e.getX() - this.handler.getWidth() / 2  + e.getWidth() / 2;
+        this.yOffset = e.getY() - this.handler.getHeight() / 2 + e.getHeight() / 2;
         checkBlankSpace();
     }
 
     // xAmt, yAmt respectively - move amount by axis x, and axis y
     public void move(float xAmt, float yAmt){
-        xOffset += xAmt;
-        yOffset += yAmt;
+        this.xOffset += xAmt;
+        this.yOffset += yAmt;
         checkBlankSpace();
     }
 
     public float getxOffset() {
-        return xOffset;
-    }
-
-    public void setxOffset(float xOffset) {
-        this.xOffset = xOffset;
-    }
-
-    public void setyOffset(float yOffset) {
-        this.yOffset = yOffset;
+        return this.xOffset;
     }
 
     public float getyOffset() {
-        return yOffset;
+        return this.yOffset;
     }
 
 

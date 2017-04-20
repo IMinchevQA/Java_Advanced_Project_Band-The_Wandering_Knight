@@ -5,10 +5,10 @@ import gfx.Assets;
 import gfx.ClickListener;
 import gfx.UI.AboutManager;
 import gfx.UI.UIImageButton;
+import gfx.UI.UIImageWallpaper;
 import gfx.UI.UIManager;
 
 import java.awt.*;
-import java.io.Serializable;
 
 public class AboutState extends State{
 
@@ -21,23 +21,13 @@ public class AboutState extends State{
         this.uiManager = handler.getMouseManager().getUiManager();
         handler.getMouseManager().setAboutManager(aboutManager);
 
-        this.aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("startScreen"), new ClickListener() {
-            @Override
-            public void onClick() {
-
-            }
-        }));
+        this.aboutManager.addObject(new UIImageWallpaper(0, 0, 999, 556, Assets.getMenuElement("startScreen")));
 
 
-        aboutManager.addObject(new UIImageButton(0, 0, 999, 556, Assets.getMenuElement("infoTeam"), new ClickListener() {
-            @Override
-            public void onClick() {
-
-            }
-        }));
+        this.aboutManager.addObject(new UIImageWallpaper(0, 0, 999, 556, Assets.getMenuElement("infoTeam")));
 
 
-        aboutManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
+        this.aboutManager.addObject(new UIImageButton(800, 470, 198, 91, Assets.getMenuElement("btn_back"), new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().getMenuState());
@@ -49,7 +39,7 @@ public class AboutState extends State{
 
     @Override
     public void tick() {
-        this.aboutManager.tick();
+//        this.aboutManager.tick();
     }
 
     @Override

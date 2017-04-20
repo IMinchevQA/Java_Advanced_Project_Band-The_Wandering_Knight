@@ -1,16 +1,11 @@
 package gfx.UI;
 
 import game.Handler;
-import gfx.UI.UIObject;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by Ivan Minchev on 2/14/2017.
- */
 public class AboutManager{
 
 
@@ -19,56 +14,44 @@ public class AboutManager{
 
     public AboutManager(Handler handler) {
         this.handler = handler;
-        this.aboutObjects = new ArrayList<UIObject>();
+        this.aboutObjects = new ArrayList<>();
     }
 
     public Handler getHandler() {
-        return handler;
+        return this.handler;
     }
 
     public void setHandler(Handler handler) {
         this.handler = handler;
     }
 
-    public ArrayList<UIObject> getObjects() {
-        return aboutObjects;
-    }
-
-    public void setObjects(ArrayList<UIObject> objects) {
-        this.aboutObjects = objects;
-    }
-
 
     public void tick() {
-        for (UIObject o : aboutObjects) {
+        for (UIObject o : this.aboutObjects) {
             o.tick();
         }
     }
 
     public void render(Graphics g) {
-        for (UIObject o : aboutObjects) {
+        for (UIObject o : this.aboutObjects) {
             o.render(g);
         }
     }
 
     public void onMouseMove(MouseEvent e) {
-        for (UIObject o : aboutObjects) {
+        for (UIObject o : this.aboutObjects) {
             o.onMouseMove(e);
         }
     }
 
     public void onMouseRelease(MouseEvent e) {
-        for (UIObject o : aboutObjects) {
+        for (UIObject o : this.aboutObjects) {
             o.onMouseRelease(e);
         }
     }
 
     public void addObject(UIObject o) {
-        aboutObjects.add(o);
-    }
-
-    public void removeObject(UIObject o) {
-        aboutObjects.remove(o);
+        this.aboutObjects.add(o);
     }
 
 

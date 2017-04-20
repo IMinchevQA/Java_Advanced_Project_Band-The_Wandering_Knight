@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.Serializable;
 
-public class MouseManager implements MouseListener, MouseMotionListener{
+public class MouseManager implements MouseListener, MouseMotionListener {
 
     private boolean leftPressed, rightPressed;
     private  int mouseX, mouseY;
@@ -24,7 +24,7 @@ public class MouseManager implements MouseListener, MouseMotionListener{
     }
 
     public PauseManager getPauseManager() {
-        return pauseManager;
+        return this.pauseManager;
     }
 
     public void setPauseManager(PauseManager pauseManager) {
@@ -40,33 +40,15 @@ public class MouseManager implements MouseListener, MouseMotionListener{
     }
 
     public UIManager getUiManager() {
-        return uiManager;
+        return this.uiManager;
     }
 
     // Getters
-    public boolean isLeftPressed(){
-        return leftPressed;
-    }
-
-    public boolean isRightPressed(){
-        return rightPressed;
-    }
-
     public int getMouseX(){
-        return mouseX;
+        return this.mouseX;
     }
     public int getMouseY(){
-        return mouseY;
-    }
-
-    public int[] registerMouse(){
-        int[] xy = new int[2];
-        if(this.leftPressed){
-
-            xy[0] = mouseX;
-            xy[1] = mouseY;
-        }
-        return xy;
+        return this.mouseY;
     }
 
     public boolean isPressed(){
@@ -83,31 +65,31 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
-            leftPressed = true;
-        }else if(e.getButton() == MouseEvent.BUTTON3){
-            rightPressed = true;
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            this.leftPressed = true;
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
+            this.rightPressed = true;
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
-            leftPressed = false;
-        }else if(e.getButton() == MouseEvent.BUTTON3){
-            rightPressed = false;
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            this.leftPressed = false;
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
+            this.rightPressed = false;
         }
 
-        if(uiManager != null){
-            uiManager.onMouseRelease(e);
+        if (this.uiManager != null) {
+            this.uiManager.onMouseRelease(e);
         }
 
-        if(aboutManager != null) {
-            aboutManager.onMouseRelease(e);
+        if (this.aboutManager != null) {
+            this.aboutManager.onMouseRelease(e);
         }
 
-        if(pauseManager != null){
-            pauseManager.onMouseRelease(e);
+        if (this.pauseManager != null) {
+            this.pauseManager.onMouseRelease(e);
         }
     }
 
@@ -126,21 +108,22 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 
     }
 
+    //mouseMove listener
     @Override
     public void mouseMoved(MouseEvent e) {
-        mouseX = e.getX();
-        mouseY = e.getY();
+        this.mouseX = e.getX();
+        this.mouseY = e.getY();
 
-        if(uiManager != null){
-            uiManager.onMouseMove(e);
+        if (this.uiManager != null) {
+            this.uiManager.onMouseMove(e);
         }
 
-        if(aboutManager != null) {
-            aboutManager.onMouseMove(e);
+        if (this.aboutManager != null) {
+            this.aboutManager.onMouseMove(e);
         }
 
-        if(pauseManager != null){
-            pauseManager.onMouseMove(e);
+        if (this.pauseManager != null){
+            this.pauseManager.onMouseMove(e);
         }
     }
 }

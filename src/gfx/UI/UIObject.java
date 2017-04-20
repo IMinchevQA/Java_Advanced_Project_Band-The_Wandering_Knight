@@ -8,8 +8,8 @@ import java.io.Serializable;
 public abstract class UIObject{
     protected float x, y;
     protected int width, height;
-    protected Rectangle bounds;
-    protected boolean hovering = false;
+    private Rectangle bounds;
+    private boolean hovering = false;
 
     public UIObject(float x, float y, int width, int height){
         this.x = x;
@@ -73,7 +73,7 @@ public abstract class UIObject{
     }
 
     public boolean isHovering() {
-        return hovering;
+        return this.hovering;
     }
 
     public void setHovering(boolean hovering) {
