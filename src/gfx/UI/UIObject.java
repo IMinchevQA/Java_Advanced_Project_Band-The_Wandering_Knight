@@ -2,9 +2,10 @@ package gfx.UI;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
 
-public abstract class UIObject {
+public abstract class UIObject{
     protected float x, y;
     protected int width, height;
     protected Rectangle bounds;

@@ -5,8 +5,10 @@ import gfx.Assets;
 import gfx.ClickListener;
 import gfx.UI.PauseManager;
 import gfx.UI.UIImageButton;
+import saves.Save;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class PauseMenu extends State {
 
@@ -45,6 +47,14 @@ public class PauseMenu extends State {
         pauseManager.addObject(new UIImageButton(800, 50, 159, 107, Assets.getMenuElement("btn_quit"), new ClickListener() {
             @Override
             public void onClick() {
+                try {
+                    Save.exportSave(PauseMenu.super.getHandler().getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems(),
+                            PauseMenu.super.getHandler().getWorld().getEntityManager().getPlayer().isHasArmor(),
+                            PauseMenu.super.getHandler().getWorld().getEntityManager().getPlayer().getTotalHealth(),
+                            PauseMenu.super.getHandler().getWorld().getEntityManager().getPlayer().getCurrentHealth());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.exit(0);
             }
         }));

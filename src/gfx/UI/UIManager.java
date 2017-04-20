@@ -4,9 +4,10 @@ import game.Handler;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class UIManager {
+public class UIManager{
 
     private Handler handler;
     private ArrayList<UIObject> objects;

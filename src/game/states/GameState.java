@@ -5,6 +5,7 @@ import entities.statics.Tree;
 import game.Handler;
 
 import gfx.UI.PauseManager;
+import saves.SaveObject;
 import world.World;
 
 import java.awt.*;

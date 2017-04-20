@@ -4,6 +4,8 @@ package game;
 import gfx.GameCamera;
 import world.World;
 
+import java.io.Serializable;
+
 public class Handler {
 
     private Game game;

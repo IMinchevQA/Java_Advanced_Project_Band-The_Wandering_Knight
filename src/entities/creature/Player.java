@@ -8,9 +8,11 @@ import game.states.State;
 import gfx.Animation;
 import gfx.Assets;
 import inventory.Inventory;
+import saves.SaveObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 //PLAYER CLASS, PLAYER LOGIC GOES HERE
 public class Player extends Creature {
@@ -55,6 +57,8 @@ public class Player extends Creature {
     private double dir;
     private boolean hasArmor = false;
 
+
+
     private MouseManager mouseManager = super.getHandler().getMouseManager();
 
     public Player(Handler handler, float x, float y) {
@@ -84,9 +88,53 @@ public class Player extends Creature {
         this.animRightAttack = new Animation(ANIMATION_ATTACK_SPEED,Assets.getPlayerMotionPositions("player_RightAttack"));
         this.animDownAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_DownAttack"));
         this.animUpAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_UpAttack"));
-        this.inventory = new Inventory(handler);
+        this.inventory = new Inventory(handler, null);
     }
 
+    public Player(Handler handler, float x, float y, SaveObject saveObject) {
+        super(handler, x, y, getDefaultCreatureWidth(), getDefaultCreatureHeight());
+        //Player MUST TAKE THE game OBJECT.
+        //WHY? - TO GET ACCESS TO THE InputManager's INPUT METHODS(up, down, left, right)!
+        //HOW? = BY CALLING Game CLASS METHOD - get.KeyManager().up/down/left/right
+        super.setHealth(saveObject.getCurrentHealth());
+        this.totalHealth = saveObject.getHealth();
+        this.totalMana = TOTAL_MANA_AVAILABLE;
+        this.mana = TOTAL_MANA_AVAILABLE;
+        super.getBoundsRect().setBounds(32, 24, 24, 32);
+        this.hasArmor = saveObject.isHasArmoe();
+
+        if(this.hasArmor){
+            this.animLeft = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("playerArmored_Left"));
+            this.animRight = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("playerArmored_Right"));
+            this.animUp = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("playerArmored_Up"));
+            this.animDown = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("playerArmored_Down"));
+            this.animLeftAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("playerArmored_LeftAttack"));
+            this.animRightAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("playerArmored_RightAttack"));
+            this.animUpAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("playerArmored_UpAttack"));
+            this.animDownAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("playerArmored_DownAttack"));
+            player_LeftStill = Assets.getPlayerStillPositions("playerArmored_LeftStill");
+            player_RightStill = Assets.getPlayerStillPositions("playerArmored_RightStill");
+            player_UpStill = Assets.getPlayerStillPositions("playerArmored_UpStill");
+            player_DownStill = Assets.getPlayerStillPositions("playerArmored_DownStill");
+        }else{
+            //Still positions
+            player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
+            player_RightStill = Assets.getPlayerStillPositions("player_RightStill");
+            player_UpStill = Assets.getPlayerStillPositions("player_UpStill");
+            player_DownStill = Assets.getPlayerStillPositions("player_DownStill");
+
+            //Animations
+            this.animLeft = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("player_Left"));
+            this.animRight = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("player_Right"));
+            this.animUp = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("player_Up"));
+            this.animDown = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("player_Down"));
+            this.animLeftAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_LeftAttack"));
+            this.animRightAttack = new Animation(ANIMATION_ATTACK_SPEED,Assets.getPlayerMotionPositions("player_RightAttack"));
+            this.animDownAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_DownAttack"));
+            this.animUpAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_UpAttack"));
+        }
+        this.inventory = new Inventory(handler, saveObject.getInventory());
+    }
     private void classic_Images(){
         //Still positions
         player_LeftStill = Assets.getPlayerStillPositions("player_LeftStill");
@@ -103,7 +151,7 @@ public class Player extends Creature {
         this.animRightAttack = new Animation(ANIMATION_ATTACK_SPEED,Assets.getPlayerMotionPositions("player_RightAttack"));
         this.animDownAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_DownAttack"));
         this.animUpAttack = new Animation(ANIMATION_ATTACK_SPEED, Assets.getPlayerMotionPositions("player_UpAttack"));
-        this.inventory = new Inventory(super.getHandler());
+        //this.inventory = new Inventory(super.getHandler());
 
         this.totalHealth = DEFAULT_HEALTH;
         this.hasArmor = false;
@@ -343,5 +391,13 @@ public class Player extends Creature {
     }
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public boolean isHasArmor() {
+        return hasArmor;
+    }
+
+    public int getCurrentHealth(){
+        return super.getHealth();
     }
 }

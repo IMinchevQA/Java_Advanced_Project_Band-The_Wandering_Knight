@@ -20,6 +20,8 @@ public class Assets {
     private static final String INFO_TEAM = "./res/Buttons/aboutINFO.png";
     private static final String START_BUTTON = "./res/Buttons/startGame.png";
     private static final String START_BUTTON_HOVERED = "./res/Buttons/startGameRed.png";
+    private static final String LOAD_BUTTON = "./res/Buttons/loadGame.png";
+    private static final String LOAD_BUTTON_HOVERED = "./res/Buttons/loadGameRed.png";
     private static final String ABOUT_BUTTON = "./res/Buttons/aboutBlack.png";
     private static final String ABOUT_BUTTON_HOVERED = "./res/Buttons/aboutRed.png";
     private static final String QUIT_BUTTON = "./res/Buttons/quitBlack.png";
@@ -66,6 +68,8 @@ public class Assets {
         SpriteSheet info = new SpriteSheet(ImageLoader.loadImage(INFO_TEAM));
         SpriteSheet buttonNormal = new SpriteSheet(ImageLoader.loadImage(START_BUTTON));
         SpriteSheet buttonHovered = new SpriteSheet(ImageLoader.loadImage(START_BUTTON_HOVERED));
+        SpriteSheet buttonLoadNormal = new SpriteSheet(ImageLoader.loadImage(LOAD_BUTTON));
+        SpriteSheet buttonLoadHovered = new SpriteSheet(ImageLoader.loadImage(LOAD_BUTTON_HOVERED));
         SpriteSheet buttonAboutNormal = new SpriteSheet(ImageLoader.loadImage(ABOUT_BUTTON));
         SpriteSheet buttonAboutHovered = new SpriteSheet(ImageLoader.loadImage(ABOUT_BUTTON_HOVERED));
         SpriteSheet buttonQuitNormal = new SpriteSheet(ImageLoader.loadImage(QUIT_BUTTON));
@@ -176,6 +180,7 @@ public class Assets {
 
         //Menu elements
         menuElements.put("btn_start", new BufferedImage[]{ buttonNormal.crop(0, 0, 412, 107), buttonHovered.crop(0, 0, 412, 107)});
+        menuElements.put("btn_load", new BufferedImage[]{ buttonLoadNormal.crop(0, 0, 412, 107), buttonLoadHovered.crop(0, 0, 412, 107)});
         menuElements.put("btn_about", new BufferedImage[]{ buttonAboutNormal.crop(0, 0, 231, 91), buttonAboutHovered.crop(0, 0, 231, 91)});
         menuElements.put("btn_quit", new BufferedImage[]{ buttonQuitNormal.crop(0, 0, 159, 107), buttonQuitHovered.crop(0, 0, 159, 107)});
         menuElements.put("btn_back", new BufferedImage[]{ buttonBackNormal.crop(0, 0, 198, 91), buttonBackHovered.crop(0, 0, 198, 91)});

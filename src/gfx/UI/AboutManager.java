@@ -5,12 +5,13 @@ import gfx.UI.UIObject;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Ivan Minchev on 2/14/2017.
  */
-public class AboutManager {
+public class AboutManager{
 
 
     private Handler handler;

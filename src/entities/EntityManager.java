@@ -53,4 +53,9 @@ public class EntityManager {
     public ArrayList<EntityImpl> getEntities() {
         return entities;
     }
+
+    public void setSavedPlayer(Player player) {
+        this.entities.set(0, player);
+        this.player = player;
+    }
 }

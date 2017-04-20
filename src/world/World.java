@@ -10,6 +10,8 @@ import entities.creature.villains.RandomVillain;
 import entities.statics.*;
 import game.Handler;
 import items.ItemManager;
+import saves.Save;
+import saves.SaveObject;
 import tiles.Tile;
 import utils.Loader;
 
@@ -193,5 +195,9 @@ public class World {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public void savedPlayer(SaveObject saveObject){
+        this.entityManager.setSavedPlayer(new Player(handler, 30, 30, saveObject));
     }
 }

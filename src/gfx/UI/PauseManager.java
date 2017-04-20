@@ -4,12 +4,13 @@ import game.Handler;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Home on 3/8/2017.
  */
-public class PauseManager {
+public class PauseManager{
     private Handler handler;
     private ArrayList<UIObject> pauseObjects;
 

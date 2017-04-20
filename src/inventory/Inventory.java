@@ -7,17 +7,25 @@ import items.Itemable;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
-public class Inventory {
+public class Inventory{
 
     private Handler handler;
     private boolean active = false;
     private HashMap<Integer, Integer> inventoryItems; //the key is the item id, the value is the count
 
-    public Inventory(Handler handler) {
+
+    public Inventory(Handler handler, HashMap<Integer, Integer> items) {
         this.handler = handler;
-        inventoryItems = new HashMap<>();
+        if(items == null){
+            this.inventoryItems = new HashMap<>();
+        }else{
+            inventoryItems = items;
+        }
+
     }
 
     public void tick() {
@@ -111,5 +119,9 @@ public class Inventory {
 
     public void setHandler(Handler handler) {
         this.handler = handler;
+    }
+
+    public HashMap<Integer, Integer> getInventoryItems() {
+        return inventoryItems;
     }
 }

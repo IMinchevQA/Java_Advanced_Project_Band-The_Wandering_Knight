@@ -7,6 +7,7 @@ import gfx.UI.UIManager;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
 
 public class MouseManager implements MouseListener, MouseMotionListener{
 

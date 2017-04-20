@@ -4,6 +4,7 @@ import gfx.ClickListener;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 public class UIImageButton extends UIObject {
 

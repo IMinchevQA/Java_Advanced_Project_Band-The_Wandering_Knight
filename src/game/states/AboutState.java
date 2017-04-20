@@ -8,8 +8,9 @@ import gfx.UI.UIImageButton;
 import gfx.UI.UIManager;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class AboutState extends State {
+public class AboutState extends State{
 
     private AboutManager aboutManager;
     private UIManager uiManager;

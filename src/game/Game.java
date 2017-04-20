@@ -4,10 +4,12 @@ import game.states.*;
 import gfx.Assets;
 import gfx.GameCamera;
 import music.Sound;
+import saves.Save;
 
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 
 //GAME LOOP CLASS
 public class Game implements Runnable {
@@ -69,11 +71,11 @@ public class Game implements Runnable {
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
 
+        pauseState = new PauseMenu(this.handler);
+        gameState = new GameState(this.handler);
 
-        pauseState = new PauseMenu(handler);
-        gameState = new GameState(handler);
-        menuState = new MenuState(handler);
-        aboutState = new AboutState(handler);
+        menuState = new MenuState(this.handler);
+        aboutState = new AboutState(this.handler);
 
         State.setState(menuState);
     }
@@ -151,7 +153,11 @@ public class Game implements Runnable {
                 timer = 0;
             }
         }
-        stop();//A-10
+        try {
+            stop();//A-10
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -183,7 +189,8 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop() {
+    public synchronized void stop() throws IOException {
+        //Save.exportSave(this.handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems());
         if(!running)
             return;
         running = false;
@@ -217,4 +224,6 @@ public class Game implements Runnable {
     public void setMuted(boolean muted) {
         isMuted = muted;
     }
+
+
 }
