@@ -2,37 +2,36 @@ package saves;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Home on 4/20/2017.
  */
 public class SaveObject implements Serializable{
     private HashMap<Integer, Integer> inventory;
-    private boolean hasArmoe;
+    private boolean hasArmor;
     private int health;
     private int currentHealth;
 
-    public SaveObject(HashMap<Integer, Integer> inventory, boolean hasArmoe, int health, int currentHealth) {
+    public SaveObject(HashMap<Integer, Integer> inventory, boolean hasArmor, int health, int currentHealth) {
         this.inventory = inventory;
-        this.hasArmoe = hasArmoe;
+        this.hasArmor = hasArmor;
         this.health = health;
         this.currentHealth = currentHealth;
     }
 
     public HashMap<Integer, Integer> getInventory() {
-        return inventory;
+        return this.inventory;
     }
 
-    public boolean isHasArmoe() {
-        return hasArmoe;
+    public boolean isHasArmor() {
+        return this.hasArmor;
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     public int getCurrentHealth() {
-        return currentHealth;
+        return this.currentHealth;
     }
 }

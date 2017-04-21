@@ -100,7 +100,7 @@ public class Player extends Creature {
         this.totalMana = TOTAL_MANA_AVAILABLE;
         this.mana = TOTAL_MANA_AVAILABLE;
         super.getBoundsRect().setBounds(32, 24, 24, 32);
-        this.hasArmor = saveObject.isHasArmoe();
+        this.hasArmor = saveObject.isHasArmor();
 
         if(this.hasArmor){
             this.animLeft = new Animation(ANIMATION_MOVE_SPEED, Assets.getPlayerMotionPositions("playerArmored_Left"));

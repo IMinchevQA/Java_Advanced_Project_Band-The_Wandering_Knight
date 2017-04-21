@@ -13,11 +13,11 @@ public class ItemManager {
 
     public ItemManager(Handler handler) {
         this.handler = handler;
-        items = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
 
     public void tick() {
-        Iterator<Item> it = items.iterator();
+        Iterator<Item> it = this.items.iterator();
         while (it.hasNext()) {
             Item i = it.next();
             i.tick();
@@ -38,7 +38,7 @@ public class ItemManager {
     }
 
     public Handler getHandler() {
-        return handler;
+        return this.handler;
     }
 
     public void setHandler(Handler handler) {

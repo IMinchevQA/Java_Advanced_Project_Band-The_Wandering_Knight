@@ -21,11 +21,11 @@ public class Sound{
     }
 
     public void startMusic(){
-        MGP.start(loop);
+        this.MGP.start(this.loop);
     }
 
     public void stopMusic(){
-        MGP.stop(loop);
+        this.MGP.stop(this.loop);
     }
 
 

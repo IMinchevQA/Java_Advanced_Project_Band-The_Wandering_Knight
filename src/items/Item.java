@@ -7,11 +7,15 @@ import java.awt.image.BufferedImage;
 
 public class Item {
 
-    public static Item[] items = new Item[256];
+    private static final int ID_MEAT_ITEM = 3;
+    private static final int MEAT_ITEM_HEALTH_POINTS = 10;
+    public static final int ID_COINT_ITEM = 0;
+    public static final int ID_KEY_ITEM = 4;
+    private static Item[] items = new Item[256];
 
     private static final int ITEMWIDTH = 38, ITEMHEIGHT = 38;
 
-    protected Handler handler;
+    private Handler handler;
     private BufferedImage texture;
     private String name;
     private final int id;
@@ -26,38 +30,38 @@ public class Item {
         this.name = name;
         this.id = id;
         this.handler = handler;
-        bounds = new Rectangle(this.x, this.y, ITEMWIDTH, ITEMHEIGHT);
+        this.bounds = new Rectangle(this.x, this.y, ITEMWIDTH, ITEMHEIGHT);
 
-        items[id] = this;
+        this.items[id] = this;
         this.setPosition(x, y);
     }
 
     public void tick(){
-        if (handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
-            if (handler.getKeyManager().pickUp) {
-                pickedUp = true;
-                if(this.getId() == 3){
-                    if(handler.getWorld().getEntityManager().getPlayer().getHealth() > handler.getWorld().getEntityManager().getPlayer().getTotalHealth() - 10){
+        if (this.handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(this.bounds)) {
+            if (this.handler.getKeyManager().pickUp) {
+                this.pickedUp = true;
+                if (this.getId() == ID_MEAT_ITEM) {
+                    if (this.handler.getWorld().getEntityManager().getPlayer().getHealth() > handler.getWorld().getEntityManager().getPlayer().getTotalHealth() - MEAT_ITEM_HEALTH_POINTS) {
                         handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getTotalHealth());
                     } else {
-                        handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + 10);
+                        handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() + MEAT_ITEM_HEALTH_POINTS);
                     }
-                } else if (this.getId() == 0) {
-                    handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+                } else if (this.getId() == ID_COINT_ITEM) {
+                    this.handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                     //int currentCoins = handler.getWorld().getEntityManager().getPlayer().getInventory().getCoins();
                     //if(currentCoins >= 1) {
                     //   System.out.println("Armor activated by: Class Item, row 54!!!");
                     //   handler.getWorld().getEntityManager().getPlayer().changeAnimations_Images();
                     //}
-                } else if(this.getId() == 4){
+                } else if (this.getId() == ID_KEY_ITEM) {
                     /*handler.getWorld().getEntityManager()
                             .getEntities().stream()
                             .filter(x-> (x.getX() == 185 && x.getY() == 550)
                                     || (x.getX() == 1145 && x.getY() == 1090))
                             .forEach(y -> y.removeBounds());*/
-                    handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
-                }else{
-                    handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+                    this.handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+                } else {
+                    this.handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
                 }
             }
         }
@@ -67,7 +71,7 @@ public class Item {
         if (handler == null){
             return;
         }
-        render(g, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()));
+        render(g, (int) (this.x - this.handler.getGameCamera().getxOffset()), (int) (this.y - this.handler.getGameCamera().getyOffset()));
     }
 
     public void render(Graphics g, int x, int y){
@@ -78,55 +82,26 @@ public class Item {
     private void setPosition(int x, int y){
         this.x = x;
         this.y = y;
-        bounds.x = x;
-        bounds.y = y;
+        this.bounds.setBounds(x, y, (int)this.bounds.getWidth(), (int)this.bounds.getHeight());
     }
 
     public Handler getHandler() {
-        return handler;
+        return this.handler;
     }
-
-    private void setHandler(Handler handler) {
-        this.handler = handler;
-    }
-
-    private BufferedImage getTexture() {
-        return texture;
-    }
-
-    /*public void setTexture(BufferedImage texture) {
-        this.texture = texture;
-    }*/
-
-    public String getName() {
-        return name;
-    }
-
-    /*public void setName(String name) {
-        this.name = name;
-    }*/
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
-
-    /*public void setX(int x) {
-        this.x = x;
-    }*/
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
-    /*public void setY(int y) {
-        this.y = y;
-    }*/
-
     public boolean isPickedUp() {
-        return pickedUp;
+        return this.pickedUp;
     }
 }

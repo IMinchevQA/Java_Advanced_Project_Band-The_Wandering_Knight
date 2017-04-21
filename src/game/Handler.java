@@ -14,27 +14,27 @@ public class Handler {
     }
 
     public GameCamera getGameCamera() {
-        return game.getGameCamera();
+        return this.game.getGameCamera();
     }
 
     public InputManager getKeyManager() {
-        return game.getKeyManager();
+        return this.game.getKeyManager();
     }
 
     public MouseManager getMouseManager(){
-        return game.getMouseManager();
+        return this.game.getMouseManager();
     }
 
     public int getWidth() {
-        return game.getWidth();
+        return this.game.getWidth();
     }
 
     public int getHeight() {
-        return game.getHeight();
+        return this.game.getHeight();
     }
 
     public Game getGame() {
-        return game;
+        return this.game;
     }
 
     public void setGame(Game game) {

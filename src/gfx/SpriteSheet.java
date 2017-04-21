@@ -2,7 +2,7 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
-//FOR CROPING SPRITES
+//FOR CROPPING SPRITES
 public class SpriteSheet {
 
     private BufferedImage image = null;
